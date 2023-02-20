@@ -9,7 +9,6 @@ import {RegisterComponent} from "./components/register/register.component";
 import {MessagesComponent} from "./components/messages/messages.component";
 import {SettingsComponent} from "./components/settings/settings.component";
 import {ActivityComponent} from "./components/activity/activity.component";
-
 const routes: Routes = [
   {path:'', component: HomeComponent},
   {path:'login', component:LoginComponent},
