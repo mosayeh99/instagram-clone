@@ -6,5 +6,30 @@ import { Component } from '@angular/core';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
+  highlights = [
+        "assets/images/profile/highlight/story1.jpg",
+        "assets/images/profile/highlight/story2.jpg" ,
+        "assets/images/profile/highlight/story3.jpg",
+        "assets/images/profile/highlight/story4.jpg",
+        "assets/images/profile/highlight/story5.jpg",
+        "assets/images/profile/highlight/story6.jpg",
+        "assets/images/profile/highlight/story7.jpg",
+        "assets/images/profile/highlight/story8.jpg",
+        "assets/images/profile/highlight/story9.jpg",
+        "assets/images/profile/highlight/story10.jpg",
+  ];
 
+highlightName = [
+      "Chelsea" , "Marsilya" , "Man City" , "Arsenal" , "Man United" ,
+      "Byern Munich" , "BVB" , "Benfica" ,"PSG" , "Barcelona"
+  ] ;
+
+  imageShow = "";
+  nameShow = "";
+  count = 0;
+  interval:any;
+  constructor() { 
+      this.imageShow = this.highlights[0] ;
+      this.nameShow = this.highlightName[0] ;
+    }
 }

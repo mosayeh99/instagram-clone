@@ -13,6 +13,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { ActivityComponent } from './components/activity/activity.component';
+// import {FontAwesomeModule} from '@font-awesome/angular-font-awesome';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { ActivityComponent } from './components/activity/activity.component';
     LoginComponent,
     RegisterComponent,
     SettingsComponent,
-    ActivityComponent
+    ActivityComponent,
   ],
   imports: [
     BrowserModule,
