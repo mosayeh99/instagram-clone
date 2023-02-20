@@ -1,5 +1,4 @@
-import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
-import {Routes} from "@angular/router";
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,6 +9,7 @@ export class SidebarComponent {
   isSearchActive:boolean = false;
   isNotificationActive:boolean = false;
   isSidebarTextActive:boolean = true;
+  isPopupMenuActive:boolean = false;
   ToggleSearchDrawer() {
     if (this.isNotificationActive) {
       this.isNotificationActive = false;
@@ -26,9 +26,18 @@ export class SidebarComponent {
     this.isSidebarTextActive = !this.isSidebarTextActive;
     this.isNotificationActive = !this.isNotificationActive;
   }
+  TogglePopupMenu() {
+    this.isPopupMenuActive = !this.isPopupMenuActive;
+  }
   CloseDrawers() {
     this.isSearchActive = false;
     this.isNotificationActive = false;
+    this.isPopupMenuActive = false;
     this.isSidebarTextActive = true;
+  }
+  currentUrl:string;
+  constructor() {
+    this.currentUrl = window.location.pathname;
+    console.log(this.currentUrl);
   }
 }
