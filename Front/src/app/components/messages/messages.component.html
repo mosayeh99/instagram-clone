@@ -1,1 +1,217 @@
-<p>messages works!</p>
+<head>
+  <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+</head>
+<body>
+  <!-- <header>
+    <img src="assets/images/Instagram_logo.svg.png" id="logo">
+         <input type="text" placeholder="search"/>
+         <nav>
+            <i class='fas fa-home'></i>
+            <i class='far fa-paper-plane'></i>
+            <i class='far fa-compass'></i>
+            <i class='far fa-heart'></i>
+            <div id="user">
+                <img id="pic" src="assets/images/BRN_5799.jpg"/>
+            </div>
+        </nav>
+    </header> -->
+  <main>
+    <div class="preview">
+      <!------------------------- user ------------------------>
+      <div id="user-name1">ahmed hassan</div>
+      <!------------------------------------------------------->
+      <div class="d-flex align-items-start">
+        <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <!-- -----------------friend ----------------------------------->
+          <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">
+            <div>
+                <span id="pic-div">
+                  <img id="pic" src="assets/images/massege/232475936_2999812896932106_124302062026537119_n.jpg">
+                </span>
+                <div id="chat-username">
+                  <span id="name">edriso</span>
+                  <span id="msg">how are you..</span>
+                </div>
+              </div>
+          </button>
+          <!--------------------------------------------------------------------------->
+          <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">
+            <div>
+                <span id="pic-div">
+                  <img id="pic" src="assets/images/massege/ashraf.jpg">
+                </span>
+                <div id="chat-username">
+                  <span id="name"> ahmed ashraf</span>
+                  <span id="msg">call me when your free</span>
+                </div>
+              </div>
+          </button>
+                    <!--------------------------------------------------------------------------->
+          <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">
+            <div>
+                <span id="pic-div">
+                  <img id="pic" src="assets/images/massege/sayed.jpg">
+                </span>
+                <div id="chat-username">
+                  <span id="name">mahmoud el sayed</span>
+                  <span id="msg">hey did you message your..</span>
+                </div>
+              </div>
+          </button>
+                    <!--------------------------------------------------------------------------->
+
+          <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">
+
+            <div>
+                <span id="pic-div">
+                  <img id="pic" src="assets/images/massege/shayh.PNG">
+                </span>
+                <div id="chat-username">
+                  <span id="name">mohamed el sayeh</span>
+                  <span id="msg">Let's go out this weekend!</span>
+                </div>
+              </div>
+          </button>
+                    <!--------------------------------------------------------------------------->
+
+        </div>
+
+          </div>
+          </div>
+          <!----------------   allChat----------------------------------------------------------->
+          <!---------------------friend------------------------------------------------------>
+          <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+
+              <div class="chats">
+                  <div class="chat-banner">
+                    <div>
+                        <span id="chat-pic">
+                      <img id="pic" src="assets/images/massege/232475936_2999812896932106_124302062026537119_n.jpg"/>
+                      </span>
+                        </div>
+                    <div class="icon">
+                        <i class="fa-sharp fa-solid fa-phone-volume"></i>
+                        <i class="fa-sharp fa-solid fa-video"></i>
+                        <i class='fas fa-info'></i>
+                    </div>
+                  </div>
+                 <!------------------------------- chatOfFriend-------------------------------------------->
+                  <div class="sender" onclick="like()">hello! how are you?</div><div id="heart">❤️</div>
+                    <div class="receiver">heyy! much better</div>
+                  <div class="sender" onclick="like()">Thats great!🥰</div><div id="heart">❤️</div>
+                    <div class="receiver">How did the interview go? was it good?</div>
+                  <div class="sender" onclick="like()">Yeah. I think I did good🙈</div><div id="heart">❤️</div>
+                    <div class="receiver">Wow I'm soo happy for you</div>
+                  <div class="sender" onclick="like()">Thanks for always supporting me. Means a lot💖</div><div id="heart">❤️</div>
+                    <div class="receiver">your most welcome</div>
+                  <div class="user-input"></div>
+                  <div class="input-msg">
+                    <input type="text" id="send-input" placeholder="type something" onfocus="this.value=''"/>
+                    <i onclick="send()" class='far fa-paper-plane'></i>
+                  </div>
+                </div>
+            </div>
+                      <!---------------------friend------------------------------------------------------>
+            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+              <div class="chats">
+                  <div class="chat-banner">
+                    <div>
+                        <span id="chat-pic">
+                      <img id="pic" src="assets/images/massege/ashraf.jpg"/>
+                      </span>
+                        </div>
+                    <div class="icon">
+                        <i class="fa-sharp fa-solid fa-phone-volume"></i>
+                        <i class="fa-sharp fa-solid fa-video"></i>
+                        <i class='fas fa-info'></i>
+
+                    </div>
+                  </div>
+                    <!------------------------------- chatOfFriend-------------------------------------------->
+                  <div class="sender" onclick="like()">hello! how are you?</div><div id="heart">❤️</div>
+                    <div class="receiver">heyy! much better</div>
+                  <div class="sender" onclick="like()">Thats great!🥰</div><div id="heart">❤️</div>
+                    <div class="receiver">How did the interview go? was it good?</div>
+                  <div class="sender" onclick="like()">Yeah. I think I did good🙈</div><div id="heart">❤️</div>
+                    <div class="receiver">Wow I'm soo happy for you</div>
+                  <div class="sender" onclick="like()">Thanks for always supporting me. Means a lot💖</div><div id="heart">❤️</div>
+                    <div class="receiver">your most welcome</div>
+                  <div class="user-input"></div>
+                  <div class="input-msg">
+                    <input type="text" id="send-input" placeholder="type something" onfocus="this.value=''"/>
+                    <i onclick="send()" class='far fa-paper-plane'></i>
+                  </div>
+                </div>
+            </div>
+               <!---------------------friend------------------------------------------------------>
+            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+              <div class="chats">
+                  <div class="chat-banner">
+                    <div>
+                        <span id="chat-pic">
+                      <img id="pic" src="assets/images/massege/sayed.jpg"/>
+                      </span>
+                        </div>
+                    <div class="icon">
+                        <i class="fa-sharp fa-solid fa-phone-volume"></i>
+                        <i class="fa-sharp fa-solid fa-video"></i>
+                        <i class='fas fa-info'></i>
+
+                    </div>
+                  </div>
+                   <!------------------------------- chatOfFriend-------------------------------------------->
+                  <div class="sender" onclick="like()">hello! how are you?</div><div id="heart">❤️</div>
+                    <div class="receiver">heyy! much better</div>
+                  <div class="sender" onclick="like()">Thats great!🥰</div><div id="heart">❤️</div>
+                    <div class="receiver">How did the interview go? was it good?</div>
+                  <div class="sender" onclick="like()">Yeah. I think I did good🙈</div><div id="heart">❤️</div>
+                    <div class="receiver">Wow I'm soo happy for you</div>
+                  <div class="sender" onclick="like()">Thanks for always supporting me. Means a lot💖</div><div id="heart">❤️</div>
+                    <div class="receiver">your most welcome</div>
+                  <div class="user-input"></div>
+                  <div class="input-msg">
+                    <input type="text" id="send-input" placeholder="type something" onfocus="this.value=''"/>
+                    <i onclick="send()" class='far fa-paper-plane'></i>
+                  </div>
+                </div>
+            </div>
+                 <!---------------------friend------------------------------------------------------>
+
+            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+              <div class="chats">
+                  <div class="chat-banner">
+                    <div>
+                        <span id="chat-pic">
+                      <img id="pic" src="assets/images/massege/shayh.PNG"/>
+                      </span>
+                        </div>
+                    <div class="icon">
+                        <i class="fa-sharp fa-solid fa-phone-volume"></i>
+                        <i class="fa-sharp fa-solid fa-video"></i>
+                        <i class='fas fa-info'></i>
+
+                    </div>
+                  </div>
+                   <!------------------------------- chatOfFriend-------------------------------------------->
+                  <div class="sender" onclick="like()">hello! how are you?</div><div id="heart">❤️</div>
+                    <div class="receiver">heyy! much better</div>
+                  <div class="sender" onclick="like()">Thats great!🥰</div><div id="heart">❤️</div>
+                    <div class="receiver">How did the interview go? was it good?</div>
+                  <div class="sender" onclick="like()">Yeah. I think I did good🙈</div><div id="heart">❤️</div>
+                    <div class="receiver">Wow I'm soo happy for you</div>
+                  <div class="sender" onclick="like()">Thanks for always supporting me. Means a lot💖</div><div id="heart">❤️</div>
+                    <div class="receiver">your most welcome</div>
+                  <div class="user-input"></div>
+                  <div class="input-msg">
+                    <input type="text" id="send-input" placeholder="type something" onfocus="this.value=''"/>
+                    <i onclick="send()" class='far fa-paper-plane'></i>
+                  </div>
+                </div>
+            </div>
+          </div>
+
+  </main>
+
+</body>

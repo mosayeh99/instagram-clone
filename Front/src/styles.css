@@ -12,6 +12,17 @@ body {
 }
 
 :root {
+  /* .......massege....... */
+  --white: #fafafa;
+  --grey: #717171;
+  --medium-grey: #dbdbdb;
+  --strong-grey: #545454;
+  --header-color: #fff;
+  --text-color:#262626;
+--background-color: #fafafa;
+--main-text: rgb(38 38 38);
+/* .............. */
+
   --font-family-system: apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --main-bg-color: #fafafa;
   --seccondry-bg-color: rgb(250 250 250);
