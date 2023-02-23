@@ -9,6 +9,20 @@ import {RegisterComponent} from "./components/register/register.component";
 import {MessagesComponent} from "./components/messages/messages.component";
 import {SettingsComponent} from "./components/settings/settings.component";
 import {ActivityComponent} from "./components/activity/activity.component";
+import {EditProfileComponent} from "./components/settings/settingsComponents/edit-profile/edit-profile.component";
+import {ChangePasswordComponent} from "./components/settings/settingsComponents/change-password/change-password.component";
+import {PushNotificationsComponent} from "./components/settings/settingsComponents/push-notifications/push-notifications.component";
+import {AppsAndWebsitesComponent} from "./components/settings/settingsComponents/apps-and-websites/apps-and-websites.component";
+import {EmailNotificationsComponent} from "./components/settings/settingsComponents/email-notifications/email-notifications.component";
+import {ManageContactsComponent} from "./components/settings/settingsComponents/manage-contacts/manage-contacts.component";
+import {AdsComponent} from "./components/settings/settingsComponents/ads/ads.component";
+import {SupervisionComponent} from "./components/settings/settingsComponents/supervision/supervision.component";
+import {LoginActivityComponent} from "./components/settings/settingsComponents/login-activity/login-activity.component";
+import {EmailsFromInstagramComponent} from "./components/settings/settingsComponents/emails-from-instagram/emails-from-instagram.component";
+import {HelpComponent} from "./components/settings/settingsComponents/help/help.component";
+import {DigitalCollectiblesComponent} from "./components/settings/settingsComponents/digital-collectibles/digital-collectibles.component";
+import {PrivacyAndSecurityComponent} from "./components/settings/settingsComponents/privacy-and-security/privacy-and-security.component";
+
 const routes: Routes = [
   {path:'', component: HomeComponent},
   {path:'login', component:LoginComponent},
@@ -17,7 +31,21 @@ const routes: Routes = [
   {path:'explore', component:ExploreComponent},
   {path:'reels', component:ReelsComponent},
   {path:'messages', component:MessagesComponent},
-  {path:'settings', component:SettingsComponent},
+  {path:'settings', component:SettingsComponent,children: [
+    {path:"editprofile",component:EditProfileComponent},
+    {path:"changepassword",component:ChangePasswordComponent},
+    {path:"appsandwebsites",component:AppsAndWebsitesComponent},
+    {path:"emailnotifications",component:EmailNotificationsComponent},
+    {path:"pushnotifications",component:PushNotificationsComponent},
+    {path:"managecontacts",component:ManageContactsComponent},
+    {path:"privacyandsecurity",component:PrivacyAndSecurityComponent},
+    {path:"ads",component:AdsComponent},
+    {path:"supervision",component:SupervisionComponent},
+    {path:"loginactivity",component:LoginActivityComponent},
+    {path:"emailsfrominstagram",component:EmailsFromInstagramComponent},
+    {path:"help",component:HelpComponent},
+    {path:"digitalcollectibles",component:DigitalCollectiblesComponent},
+  ]},
   {path:'activity', component:ActivityComponent}
 ];
 
