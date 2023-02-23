@@ -11,7 +11,7 @@ aside .sidebar {
   border-right: 1px solid var(--separator);
   background-color: var(--white-bd-color);
   transition: width var(--transition-03s);
-  z-index: 1;
+  z-index: 999;
 }
 
 aside .sidebar.link-text-is-active {
@@ -154,6 +154,7 @@ aside .sidebar.link-text-is-active {
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
   transition: left var(--transition-03s);
+  z-index: 998;
 }
 
 .search-drawer.active {
@@ -266,6 +267,7 @@ aside .sidebar.link-text-is-active {
   box-shadow: 1px 0 30px #ccc;
   transition: left var(--transition-03s);
   overflow: auto;
+  z-index: 998;
 }
 
 .notification-drawer.active {
