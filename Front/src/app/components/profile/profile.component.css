@@ -55,6 +55,12 @@ img {
     padding: 0 2rem;
 }
 
+.maincontainer{
+    width: calc(100vw - 220px);
+    margin-left: auto;
+    
+}
+
 .btn {
     display: inline-block;
     font: inherit;
@@ -156,7 +162,7 @@ img {
 
 .profile-bio {
     font-weight: 400;
-    line-height: 1.5;
+    line-height: 1.8em;
 }
 
 .profile-real-name,
@@ -207,6 +213,12 @@ img {
     align-items: center;
     height: 52px;
     cursor: pointer;
+    border-style: none;
+  }
+  button:focus {
+    border-top: 1px solid hsl(0, 0%, 15%);
+    margin-top: -1px;
+    color: hsl(0, 0%, 15%);
   }
   .tab-item.active {
     border-top: 1px solid hsl(0, 0%, 15%);
@@ -272,11 +284,9 @@ img {
     display: block;
   }
 
-.addhighlight{
-    font-size: 77px ;
-    width: 77px;
-    height: 77px;
-    border-radius: 50%;
+.addstory{
+    margin-top: -5px ;
+    cursor: pointer;
   }
 
   @media only screen and (max-width: 735px) {
@@ -338,16 +348,17 @@ img {
 /* Gallery Section */
 
 .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    margin: -1rem -1rem;
-    padding-bottom: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+   
 }
 
 .gallery-item {
     position: relative;
     flex: 1 0 22rem;
     margin: 1rem;
+    margin-left: 1rem;
     color: #fff;
     cursor: pointer;
 }
@@ -398,7 +409,7 @@ img {
 }
 
 
-/* Gallery */
+  /*Gallery */
 /* .gallery-item img {
     width: 100%;
     display: block;
@@ -421,8 +432,10 @@ img {
     .gallery {
       gap: 3px;
     }
-  }
-   */
+  } */
+  
+
+
 /* Loader */
 
 .loader {
