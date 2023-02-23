@@ -97,7 +97,9 @@
 
 
 main {
-  width: 100%;
+  width: calc(100vw - 220px);
+  margin-left: auto;
+  /* width: 100%; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -228,11 +230,11 @@ main .container {
   width: 100%;
   /* min-height: 400px; */
   display: inline-block;
-  border: 1px solid rgba(7, 7, 7, 0.24);
+  /* border: 1px solid rgba(7, 7, 7, 0.24); */
 }
 
 .col-9 .card .top {
-  padding: 10px 20px;
+  /* padding: 10px 20px; */
   display: flex;
   justify-content: space-between;
   align-items: center;
