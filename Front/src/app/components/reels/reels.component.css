@@ -26,10 +26,56 @@ main {
 
 .reel .main-video-section {
   position: relative;
+  cursor: pointer;
 }
 
-.reel .main-video-section .reel-video{
+.reel .main-video-section .reel-video {
+  position: relative;
+}
 
+.reel .main-video-section .reel-video .mute-video-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: rgba(219,219,219,.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reel .main-video-section .reel-video .play-pause-icon {
+  position: absolute;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background-color: rgba(0,0,0,.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform var(--transition-03s);
+}
+
+.reel .main-video-section .reel-video .play-pause-icon.active {
+  animation: playVideoIconFade 0.3s ease-in-out;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+@keyframes playVideoIconFade {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+  }
+  65% {
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
 
 .reel .main-video-section .reel-video video {
