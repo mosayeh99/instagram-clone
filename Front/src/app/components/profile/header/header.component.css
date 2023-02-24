@@ -1,61 +1,9 @@
-/* 
-
-All grid code is placed in a 'supports' rule (feature query) at the bottom of the CSS (Line 310). 
-        
-The 'supports' rule will only run if your browser supports CSS grid.
-
-Flexbox and floats are used as a fallback so that browsers which don't support grid will still recieve a similar layout.
-
-*/
-
-
-:root {
-	--background-color: #fafafa;
-	--main-text: rgb(38 38 38);
-	--secondry-text: rgb(142 142 142);
-	--tertiary-text: rgb(199 199 199);
-	--link: rgb(0 55 107);
-	--primary-button: rgb(0 149 246);
-	--primary-button-hover: rgb(24 119 242);
-	--secondry-button: rgb(239 239 239);
-	--secondry-button-hover: rgb(219 219 219);
-	--green-online: #78de45;
-    --main-transition: 0.3s linear;
-    --secondary-transition: 0.3s ease-in-out;
-
-}
-
-/* Base Styles */
-
-:root {
-    font-size: 10px;
-}
-
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif;
-    min-height: 100vh;
-    background-color: #fafafa;
-    color: #262626;
-    padding-bottom: 2rem;
-    
-}
 
 img {
     display: block;
 }
 
-.container {
-    max-width: 93.5rem;
-    margin: 0 100px;
-    padding: 0 2rem;
-}
+
 
 .maincontainer{
     width: calc(100vw - 220px);
@@ -111,6 +59,21 @@ img {
     width: 10rem;
 
 }
+.followers-image {
+
+    /* width: 500px; */
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+
+
+}
+
+.followers-image img {
+    border-radius: 50%;
+    width: 3rem;
+
+}
 
 .profile-user-settings,
 .profile-stats,
@@ -123,7 +86,7 @@ img {
     margin-top: 1.1rem;
 }
 
-/* ---setting alert success--- */
+/* ---setting alert--- */
 #alert-overlay {
     position: fixed;
     width: 100%;
@@ -141,6 +104,7 @@ img {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     gap: 20px;
     top: 50%;
     left: 50%;
@@ -165,6 +129,9 @@ img {
     width:300px  ;
     transition: all 5s ease-in-out;
 }
+
+
+
 
 
 
@@ -224,188 +191,6 @@ img {
     font-weight: 600;
 }
 
-
-
-
-/* Story */
-.story-item .image {
-    padding: 3px;
-    border-radius: 1000px;
-    border: 1px solid hsl(0, 0%, 86%);
-    cursor: pointer;
-  }
-  .story-item .image img {
-    border-radius: 1000px;
-    width: 77px;
-    height: 77px;
-    display: block;
-  }
-
-.addstory{
-    margin-top: -5px ;
-    cursor: pointer;
-  }
-
-  @media only screen and (max-width: 735px) {
-    .story-item .image img {
-      width: 56px;
-      height: 56px;
-    }
-  }
-  .story-item .title {
-    padding-top: 15px;
-    font-size: 14px;
-    font-weight: 600;
-    text-align: center;
-    white-space: nowrap;
-    width: 80px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  @media only screen and (max-width: 735px) {
-    .story-item .title {
-      font-size: 12px;
-      padding-top: 8px;
-      font-weight: 400;
-      width: 65px;
-    }
-  }
-  .story-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px 15px;
-  }
-  @media only screen and (max-width: 735px) {
-    .story-item {
-      padding: 0px 5px;
-    }
-  }
-  .stories {
-    display: flex;
-    justify-content: start;
-    padding: 0 24px;
-    overflow-x: scroll;
-    position: relative;
-  }
-  @media only screen and (max-width: 735px) {
-    .stories {
-      padding: 0;
-      margin-bottom: 21px;
-    }
-  }
-  
-  .slider-button-next {
-    position: sticky;
-    right: 0;
-    cursor: pointer;
-  }
-
-
-/* Gallery Section */
-
-.gallery {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 2px;
-
-}
-
-.gallery-item {
-    position: relative;
-    flex: 1 0 22rem;
-    margin: 1rem;
-    margin-left: 1rem;
-    color: #fff;
-    cursor: pointer;
-
-}
-
-.gallery-item:hover .gallery-item-info,
-.gallery-item:focus .gallery-item-info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-}
-
-.gallery-item-info {
-    display: none;
-}
-
-.gallery-item-info li {
-    display: inline-block;
-    font-size: 1.7rem;
-    font-weight: 600;
-}
-
-.gallery-item-likes {
-    margin-right: 2.2rem;
-}
-
-.gallery-item-type {
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 2.5rem;
-    text-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.1);
-}
-
-.fa-clone,
-.fa-comment {
-    transform: rotateY(180deg);
-}
-
-.gallery-image {
-    width: 100%;
-    height: 100%;
-    object-fit:cover;
-    display: block;
-}
-
-
-  /*Gallery */
-/* .gallery-item img {
-    width: 100%;
-    display: block;
-  }
-  .gallery-item {
-    background: tomato;
-    position: relative;
-  }
-  .gallery-item .media-icon {
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
-  .gallery {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 28px;
-  }
-  @media only screen and (max-width: 735px) {
-    .gallery {
-      gap: 3px;
-    }
-  } */
-  
-
-
-/* Loader */
-
-.loader {
-    width: 5rem;
-    height: 5rem;
-    border: 0.6rem solid #999;
-    border-bottom-color: transparent;
-    border-radius: 50%;
-    margin: 0 auto;
-    animation: loader 500ms linear infinite;
-}
 
 /* Media Query */
 
@@ -537,18 +322,13 @@ Remove or comment-out the code block below to see how the browser will fall-back
         grid-row: 1 / -1;
     }
 
-    .gallery {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(22rem, 1fr));
-        grid-gap: 2rem;
-    }
+
 
     .profile-image,
     .profile-user-settings,
     .profile-stats,
-    .profile-bio,
-    .gallery-item,
-    .gallery {
+    .profile-bio
+     {
         width: auto;
         margin: 0;
     }

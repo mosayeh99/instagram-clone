@@ -13,6 +13,13 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { ActivityComponent } from './components/activity/activity.component';
+import { HeaderComponent } from './components/profile/header/header.component';
+import { HighlightsComponent } from './components/profile/highlights/highlights.component';
+import { GalleryComponent } from './components/profile/gallery/gallery.component';
+import { ShowtapComponent } from './components/profile/showtap/showtap.component';
+import { MyreelsComponent } from './components/profile/myreels/myreels.component';
+import { SavedComponent } from './components/profile/saved/saved.component';
+import { TaggedComponent } from './components/profile/tagged/tagged.component';
 // import {FontAwesomeModule} from '@font-awesome/angular-font-awesome';
 
 @NgModule({
@@ -28,6 +35,13 @@ import { ActivityComponent } from './components/activity/activity.component';
     RegisterComponent,
     SettingsComponent,
     ActivityComponent,
+    HeaderComponent,
+    HighlightsComponent,
+    GalleryComponent,
+    ShowtapComponent,
+    MyreelsComponent,
+    SavedComponent,
+    TaggedComponent,
   ],
   imports: [
     BrowserModule,
