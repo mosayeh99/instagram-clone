@@ -1,4 +1,25 @@
-<div>
-    <p>welcome to Download Page</p>
-    <h3>Soon</h3>
+<div class="main-big-div">
+    <h1>Get a copy of your information</h1>
+    <p class="small-Text">
+        We'll email you a link to a file with your information. You can receive it in HTML, which may be easier to view, or JSON, which may be easier to import to another service.
+    </p>
+    <div class="input-div">
+        <label>
+            <span>Email</span>
+            <input autocapitalize="off" autocorrect="off" name="email" type="text" value="{{email}}">
+        </label>
+    </div>
+    <hr>
+    <div>
+        <span ><b>Information format</b></span>
+        <div class="radio-input">
+            <span>HTML</span>
+            <input class="form-check-input" id="igCoreRadioButtonoutputFormatHTML" name="outputFormat" type="radio" value="HTML" checked="">
+        </div>
+        <div class="radio-input">
+            <span>JSON</span>
+            <input class="form-check-input" id="igCoreRadioButtonoutputFormatJSON" name="outputFormat" type="radio" value="JSON">
+        </div>
+    </div>
+    <button class="btn btn-primary" type="button">Next</button>
 </div>
