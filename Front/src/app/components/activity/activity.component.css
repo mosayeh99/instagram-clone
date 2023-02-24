@@ -1,0 +1,137 @@
+main {
+    width: calc(100vw - 237px);
+    margin-left: auto;
+}
+.activity-Big-Div {
+    border: 1px solid gainsboro;
+    border-radius: 3px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    justify-content: stretch;
+    margin: 60px auto 0;
+    max-width: 935px;
+    overflow: hidden;
+    width: 100%;    
+}
+
+/* ---------- Left Side ---------- */
+.activity-left-Side{
+    color: black;
+    display: flex;
+    flex-basis: 236px;
+    flex-direction: column;
+    flex-grow: 0;
+    flex-shrink: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.activity-left-Side-tittle{
+    padding: 16px;
+    flex: 0 0 auto;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: stretch;
+    display: flex;
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    font-weight: bold ;
+    font-size: 16px;
+    height: 16;
+    border-bottom:1px solid gainsboro;
+}
+.activity-left-Side a{
+    color: black;
+    text-decoration: none;
+}
+.li-Big-Div{
+    display: flex;
+    flex-direction: row;
+    margin-left: 2px ;
+}
+.li-icon-div{
+    padding-left: 16px;
+    padding-top: 16px;
+}
+.li-text-div{
+    padding: 16px 16px 16px calc(32px - 2px);
+}
+.li-text-div-tittle{
+    font-size: 14px;
+    overflow-y: visible;
+    min-width: 0;
+    margin: 0!important;
+    word-wrap: break-word;
+    font-weight: 600;
+    overflow-x: visible;
+    position: relative;
+    display: block;
+    white-space: pre-line;
+    max-width: 100%;
+    word-break: break-word;
+    line-height: 1.2em;    
+}
+.li-text-div-sText{
+    padding-top: 6px;
+}
+.li-text-span-sText{    
+    overflow-y: visible;
+    font-weight: 400;
+    min-width: 0;
+    margin: 0!important;
+    word-wrap: break-word;
+    overflow-x: visible;
+    position: relative;
+    display: block;
+    color: gray;
+    white-space: pre-line;
+    font-size: 12px;
+    max-width: 100%;
+    word-break: break-word;
+    line-height: 1.2em;
+}
+.activity-left-Side a:focus .li-text-div-tittle{
+    font-weight: bold ; /* --or-- font-weight: 650; */      
+}
+.activity-left-Side a:hover .li-Big-Div {
+    margin-left: 0px ;
+    border-left: 2px solid gainsboro;
+    background-color: rgba(220, 220, 220, 0.219) ;   
+}
+.activity-left-Side a:focus .li-Big-Div {
+    margin-left: 0px ;
+    border-left: 2px solid black;     
+}
+
+/* ---------- Right Side ---------- */
+
+.activity-Right-Side{
+    border-left: 1px solid gainsboro;
+    align-items: stretch;
+    box-sizing: border-box;
+    display: flex;
+    flex: 1 1 400px;
+    flex-direction: column;
+    font: inherit;
+    font-size: 100%;
+    margin: 0;
+    min-width: 50px;
+    padding: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+.activity-right-Side-big-div{
+    padding: 0px 20px 0px 20px ;
+    flex: 1 1 auto;
+    min-height: 0;
+    min-width: 0;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: stretch;
+    display: flex;
+    box-sizing: border-box;
+    position: relative;
+}
