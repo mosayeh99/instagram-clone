@@ -33,7 +33,6 @@ import { ShowtapComponent } from './components/profile/showtap/showtap.component
 import { MyreelsComponent } from './components/profile/myreels/myreels.component';
 import { SavedComponent } from './components/profile/saved/saved.component';
 import { TaggedComponent } from './components/profile/tagged/tagged.component';
-// import {FontAwesomeModule} from '@font-awesome/angular-font-awesome';
 
 @NgModule({
   declarations: [
