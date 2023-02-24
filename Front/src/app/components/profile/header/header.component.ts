@@ -1,53 +1,17 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css']
 })
-export class ProfileComponent {
-  highlights = 
-        ["assets/images/profile/highlight/story1.jpg",
-        "assets/images/profile/highlight/story2.jpg" ,
-        "assets/images/profile/highlight/story3.jpg",
-        "assets/images/profile/highlight/story4.jpg",
-        "assets/images/profile/highlight/story5.jpg",
-        "assets/images/profile/highlight/story6.jpg",
-        "assets/images/profile/highlight/story7.jpg",
-        "assets/images/profile/highlight/story8.jpg",
-        "assets/images/profile/highlight/story9.jpg",
-        "assets/images/profile/highlight/story10.jpg",
-        // ],
-
-        // [
-        // "Chelsea" , "Marsilya" , "Man City" , "Arsenal" , "Man United" ,
-        // "Byern Munich" , "BVB" , "Benfica" ,"PSG" , "Barcelona"
-      
-        // ]
-  ];
-
-highlightName = [
-      "Chelsea" , "Marsilya" , "Man City" , "Arsenal" , "Man United" ,
-      "Byern Munich" , "BVB" , "Benfica" ,"PSG" , "Barcelona"
-  ] ;
-
-  imageShow = "";
-  nameShow = "";
-  count = 0;
-  interval:any;
-  constructor() { 
-      this.imageShow = this.highlights[0] ;
-      // this.nameShow = this.highlights[1][0] ;
-      this.nameShow = this.highlightName[0] ;
-    }
-
-
-    setting() {
+export class HeaderComponent {
+  setting() {
     let alert :any =document.getElementById("alert-overlay");
     let setting :any =document.getElementById("setting-alert-menu");
 
-      alert.style.display = "block" ;
       setting.style.transition= " 0.2s ease-in-out" ;
+      alert.style.display = "block" ;
       setting.style.visibility = "visible" ;
       setting.style.opacity = 1 ;
     }
@@ -76,13 +40,13 @@ highlightName = [
     let alert :any =document.getElementById("alert-overlay");
     let setting :any =document.getElementById("setting-alert-menu");
     let followers :any =document.getElementById("followers-alert-menu");
+    let following :any =document.getElementById("following-alert-menu");
     alert.style.display = "none" ;
     setting.style.visibility = "hidden" ;
     setting.style.opacity = 0 ;
     followers.style.visibility = "hidden" ;
     followers.style.opacity = 0 ;
+    following.style.visibility = "hidden" ;
+    following.style.opacity = 0 ;
   }
-
-
-
 }
