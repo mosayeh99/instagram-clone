@@ -33,6 +33,11 @@ import { ShowtapComponent } from './components/profile/showtap/showtap.component
 import { MyreelsComponent } from './components/profile/myreels/myreels.component';
 import { SavedComponent } from './components/profile/saved/saved.component';
 import { TaggedComponent } from './components/profile/tagged/tagged.component';
+import { ActivityComponentsComponent } from './components/activity/activity-components/activity-components.component';
+import { InteractionsComponent } from './components/activity/activity-components/interactions/interactions.component';
+import { PhotosComponent } from './components/activity/activity-components/photos/photos.component';
+import { HistoryComponent } from './components/activity/activity-components/history/history.component';
+import { DownloadComponent } from './components/activity/activity-components/download/download.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +71,12 @@ import { TaggedComponent } from './components/profile/tagged/tagged.component';
     ShowtapComponent,
     MyreelsComponent,
     SavedComponent,
-    TaggedComponent
+    TaggedComponent,
+    ActivityComponentsComponent,
+    InteractionsComponent,
+    PhotosComponent,
+    HistoryComponent,
+    DownloadComponent
 
 
   ],

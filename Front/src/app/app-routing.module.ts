@@ -27,6 +27,10 @@ import { GalleryComponent } from './components/profile/gallery/gallery.component
 import { MyreelsComponent } from './components/profile/myreels/myreels.component';
 import { SavedComponent } from './components/profile/saved/saved.component';
 import { TaggedComponent } from './components/profile/tagged/tagged.component';
+import { InteractionsComponent } from './components/activity/activity-components/interactions/interactions.component';
+import { PhotosComponent } from './components/activity/activity-components/photos/photos.component';
+import { HistoryComponent } from './components/activity/activity-components/history/history.component';
+import { DownloadComponent } from './components/activity/activity-components/download/download.component';
 const routes: Routes = [
   {path:'', component: HomeComponent},
   {path:'login', component:LoginComponent},
@@ -55,7 +59,12 @@ const routes: Routes = [
     {path:"help",component:HelpComponent},
     {path:"digitalcollectibles",component:DigitalCollectiblesComponent},
   ]},
-  {path:'activity', component:ActivityComponent}
+  {path:'activity', component:ActivityComponent,children:[
+    {path:"",component:InteractionsComponent},
+    {path:"photos_and_videos",component:PhotosComponent},
+    {path:"account_history",component:HistoryComponent},
+    {path:"download",component:DownloadComponent}
+  ]}
 ];
 
 @NgModule({
