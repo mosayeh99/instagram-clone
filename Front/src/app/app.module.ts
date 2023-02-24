@@ -26,6 +26,13 @@ import { EmailsFromInstagramComponent } from './components/settings/settingsComp
 import { HelpComponent } from './components/settings/settingsComponents/help/help.component';
 import { DigitalCollectiblesComponent } from './components/settings/settingsComponents/digital-collectibles/digital-collectibles.component';
 import { AdsComponent } from './components/settings/settingsComponents/ads/ads.component';
+import { HeaderComponent } from './components/profile/header/header.component';
+import { HighlightsComponent } from './components/profile/highlights/highlights.component';
+import { GalleryComponent } from './components/profile/gallery/gallery.component';
+import { ShowtapComponent } from './components/profile/showtap/showtap.component';
+import { MyreelsComponent } from './components/profile/myreels/myreels.component';
+import { SavedComponent } from './components/profile/saved/saved.component';
+import { TaggedComponent } from './components/profile/tagged/tagged.component';
 // import {FontAwesomeModule} from '@font-awesome/angular-font-awesome';
 
 @NgModule({
@@ -48,12 +55,21 @@ import { AdsComponent } from './components/settings/settingsComponents/ads/ads.c
     EmailNotificationsComponent,
     ManageContactsComponent,
     PrivacyAndSecurityComponent,
-    AdsComponent,
     SupervisionComponent,
     LoginActivityComponent,
     EmailsFromInstagramComponent,
     HelpComponent,
     DigitalCollectiblesComponent,
+    AdsComponent,
+    HeaderComponent,
+    HighlightsComponent,
+    GalleryComponent,
+    ShowtapComponent,
+    MyreelsComponent,
+    SavedComponent,
+    TaggedComponent
+
+
   ],
   imports: [
     BrowserModule,

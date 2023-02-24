@@ -23,16 +23,25 @@ import {HelpComponent} from "./components/settings/settingsComponents/help/help.
 import {DigitalCollectiblesComponent} from "./components/settings/settingsComponents/digital-collectibles/digital-collectibles.component";
 import {PrivacyAndSecurityComponent} from "./components/settings/settingsComponents/privacy-and-security/privacy-and-security.component";
 
+import { GalleryComponent } from './components/profile/gallery/gallery.component';
+import { MyreelsComponent } from './components/profile/myreels/myreels.component';
+import { SavedComponent } from './components/profile/saved/saved.component';
+import { TaggedComponent } from './components/profile/tagged/tagged.component';
 const routes: Routes = [
   {path:'', component: HomeComponent},
   {path:'login', component:LoginComponent},
   {path:'register', component:RegisterComponent},
-  {path:'profile', component:ProfileComponent},
+  {path:'profile', component:ProfileComponent , children: [
+    {path:'', component:GalleryComponent},
+    {path:'myreels', component:MyreelsComponent},
+    {path:'saved', component:SavedComponent},
+    {path:'tagged', component:TaggedComponent},
+  ]},
   {path:'explore', component:ExploreComponent},
   {path:'reels', component:ReelsComponent},
   {path:'messages', component:MessagesComponent},
   {path:'settings', component:SettingsComponent,children: [
-    {path:"editprofile",component:EditProfileComponent},
+    {path:"",component:EditProfileComponent},
     {path:"changepassword",component:ChangePasswordComponent},
     {path:"appsandwebsites",component:AppsAndWebsitesComponent},
     {path:"emailnotifications",component:EmailNotificationsComponent},

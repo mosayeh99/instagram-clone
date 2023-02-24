@@ -1,0 +1,90 @@
+
+<div id="alert-overlay" (click)="cancel()"></div>
+    <div id="setting-alert-menu">
+        <div class="settingMenu">
+            <a>Change password</a><hr>
+            <a>QR Code</a><hr>
+            <a>Apps and Websites</a><hr>
+            <a>Notifications</a><hr>
+            <a>Privacy and security</a><hr>
+            <a>Supervision</a><hr>
+            <a>Login activity</a><hr>
+            <a>Emails from Instagram</a><hr>
+            <a>Report a problem</a><hr>
+            <a>Log Out</a><hr>
+            <a id="cancel-setting" (click)="cancel()">Cancel</a>
+        </div>
+    </div>
+
+
+<div id="alert-overlay" (click)="cancel()"></div>
+<div id="followers-alert-menu">
+    <div class="followersMenu">
+        <div style="display: flex ; flex-direction: row; justify-content: space-evenly;">
+        <h6 >Followers</h6><a id="cancel-followers" (click)="cancel()">X</a><hr>
+        </div>
+
+
+    </div>
+</div>
+
+<div id="alert-overlay" (click)="cancel()"></div>
+    <div id="following-alert-menu">
+        <div class="followingMenu">
+            <a>Mohamed Elsayeh</a><hr>
+            <a>Ahmed Hassan</a><hr>
+            <a>Mahmoud Saad</a><hr>
+            <a>Mahmoud Elsayed</a><hr>
+        <a id="cancel-following" (click)="cancel()">Cancel</a>
+        </div>
+</div>
+
+
+
+
+
+<main class="maincontainer">
+    <div class="container">
+        
+		<div class="profile">
+
+			<div class="profile-image">
+				<img src="assets/images/profile/images/profile.jpg" alt=""> 
+			</div>
+
+			<div class="profile-user-settings">
+
+				<h1 class="profile-user-name">ahmed09torres</h1>
+
+				<button class="btn profile-edit-btn"><a routerLink="/settings" style="color:black; text-decoration: none;">Edit Profile</a></button>
+
+				<button class="btn profile-settings-btn" id="settingBtn" aria-label="profile settings" (click)="setting()">
+                    <svg width="20" height="20" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" fill="black">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier"> <defs> <style>.cls-1{fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:20px;}</style> </defs> <g data-name="Layer 2" id="Layer_2"> <g data-name="E407, setting, Media, media player, multimedia" id="E407_setting_Media_media_player_multimedia"> <path class="cls-1" d="M502,291.14V220.86H469a214.81,214.81,0,0,0-37.54-90.63L454.8,106.9,405.1,57.2,381.77,80.53A214.81,214.81,0,0,0,291.14,43V10H220.86V43a214.81,214.81,0,0,0-90.63,37.54L106.9,57.2,57.2,106.9l23.33,23.33A214.81,214.81,0,0,0,43,220.86H10v70.28H43a214.81,214.81,0,0,0,37.54,90.63L57.2,405.1l49.7,49.7,23.33-23.33A214.81,214.81,0,0,0,220.86,469v33h70.28V469a214.81,214.81,0,0,0,90.63-37.54L405.1,454.8l49.7-49.7-23.33-23.33A214.81,214.81,0,0,0,469,291.14Z"></path> <circle class="cls-1" cx="256" cy="256" r="141.79"></circle> </g> </g> </g></svg></button>
+            
+		    </div>
+
+
+			<div class="profile-stats">
+
+				<ul>
+					<li><span class="profile-stat-count">529</span> posts</li>
+					<li (click)="followers()"><span class="profile-stat-count">4,937</span> followers</li>
+					<li (click)="following()"><span class="profile-stat-count">1,443</span> following</li>
+				</ul>
+			</div>
+
+			<div class="profile-bio">
+
+				<p><span class="profile-real-name">Ahmed Torres</span><br> Electrical Engineer in (TS-Co..) 🚥🚦🚥<br>
+                    f⚽⚽tbAll ❤❤<br>
+                    Zamalek  ✊✊<br>
+                    Fernando Torres (FT9) 😎❤❤✊</p>
+                    
+			</div>
+	</div>
+		<!-- End of profile section -->
+</div>
+	<!-- End of container -->

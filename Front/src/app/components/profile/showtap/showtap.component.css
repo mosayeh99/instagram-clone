@@ -1,0 +1,95 @@
+.container {
+    max-width: 93.5rem;
+    margin: 0 100px;
+    padding: 0 2rem;
+}
+
+.maincontainer{
+    width: calc(100vw - 220px);
+    margin-left: auto;
+    
+}
+
+
+
+.tab-item span {
+    font-size: 12px;
+    font-weight: 600;
+    color: hsl(0, 0%, 56%);
+    margin-left: 6px;
+  }
+  .tab-item {
+    display: flex;
+    align-items: center;
+    height: 52px;
+    cursor: pointer;
+    border-style: none;
+  }
+
+  a {
+   text-decoration: none;
+   color:  hsl(0, 0%, 56%);
+   padding: 10px ;
+  
+  }
+  .tab-item a:focus {
+    border-top: 2px solid hsl(0, 0%, 15%);
+    margin-top: -5px;
+    color: hsl(0, 0%, 15%);
+  }
+  .tabs {
+    border-top: 1px solid hsl(0, 0%, 86%);
+    display: flex;
+    justify-content: center;
+  }
+  .tabs:focus {
+    border-top: 1px solid hsl(0, 0%, 15%);
+    margin-top: -1px;
+    color: hsl(0, 0%, 15%);
+  }
+
+
+
+  /* Mobile Tabs */
+.mobile-tabs li {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(142, 142, 142);
+    line-height: 18px;
+    text-align: center;
+  }
+  .mobile-tabs li div {
+    font-weight: 600;
+    color: rgb(38, 38, 38);
+  }
+  .mobile-tabs ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 12px 0;
+    border-top: 1px solid rgb(219, 219, 219);
+  }
+  .mobile-tabs .actions {
+    display: flex;
+    justify-content: space-around;
+    height: 44px;
+    align-items: center;
+    border-top: 1px solid rgb(219, 219, 219);
+  }
+  .mobile-only {
+  display: none;
+}
+@media only screen and (max-width: 735px) {
+  .mobile-only {
+    display: block;
+  }
+}
+@media only screen and (max-width: 735px) {
+  .desktop-only {
+    display: none;
+  }
+}
+
+
+
+
+
