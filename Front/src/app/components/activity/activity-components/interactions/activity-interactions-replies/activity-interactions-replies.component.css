@@ -1,0 +1,18 @@
+.tittle{
+    text-align: center;
+    padding: 20px 15px 60px 15px;
+}
+.text{
+    color: rgb(142, 142, 142) ;
+}
+.main-big-div button{
+    padding: 0 15px 0 ;
+    width: auto;
+    min-height: 32px;
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 8px;
+    font-weight: 650;
+    font-size: 14px;
+}

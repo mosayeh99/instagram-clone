@@ -38,6 +38,14 @@ import { InteractionsComponent } from './components/activity/activity-components
 import { PhotosComponent } from './components/activity/activity-components/photos/photos.component';
 import { HistoryComponent } from './components/activity/activity-components/history/history.component';
 import { DownloadComponent } from './components/activity/activity-components/download/download.component';
+import { ACtivityPhotosPostsComponent } from './components/activity/activity-components/photos/activity-photos-posts/activity-photos-posts.component';
+import { ACtivityPhotosReelsComponent } from './components/activity/activity-components/photos/activity-photos-reels/activity-photos-reels.component';
+import { ACtivityPhotosVideosComponent } from './components/activity/activity-components/photos/activity-photos-videos/activity-photos-videos.component';
+import { ACtivityPhotosHighlightsComponent } from './components/activity/activity-components/photos/activity-photos-highlights/activity-photos-highlights.component';
+import { ACtivityInteractionslikesComponent } from './components/activity/activity-components/interactions/activity-interactionslikes/activity-interactionslikes.component';
+import { ACtivityInteractionsCommentsComponent } from './components/activity/activity-components/interactions/activity-interactions-comments/activity-interactions-comments.component';
+import { ACtivityInteractionsRepliesComponent } from './components/activity/activity-components/interactions/activity-interactions-replies/activity-interactions-replies.component';
+import { ACtivityInteractionsReviewsComponent } from './components/activity/activity-components/interactions/activity-interactions-reviews/activity-interactions-reviews.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +84,15 @@ import { DownloadComponent } from './components/activity/activity-components/dow
     InteractionsComponent,
     PhotosComponent,
     HistoryComponent,
-    DownloadComponent
+    DownloadComponent,
+    ACtivityPhotosPostsComponent,
+    ACtivityPhotosReelsComponent,
+    ACtivityPhotosVideosComponent,
+    ACtivityPhotosHighlightsComponent,
+    ACtivityInteractionslikesComponent,
+    ACtivityInteractionsCommentsComponent,
+    ACtivityInteractionsRepliesComponent,
+    ACtivityInteractionsReviewsComponent
 
 
   ],
