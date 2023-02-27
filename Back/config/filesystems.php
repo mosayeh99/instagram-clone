@@ -44,6 +44,22 @@ return [
             'throw' => false,
         ],
 
+        'imagesDisk' => [
+            'driver' => 'local',
+            'root' => public_path('images'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'reelsDisk' => [
+            'driver' => 'local',
+            'root' => public_path('videos'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
