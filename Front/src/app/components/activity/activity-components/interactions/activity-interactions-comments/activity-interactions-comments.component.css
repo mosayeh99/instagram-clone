@@ -1,11 +1,4 @@
-.tittle{
-    text-align: center;
-    padding: 20px 15px 60px 15px;
-}
-.text{
-    color: rgb(142, 142, 142) ;
-}
-.main-big-div button{
+main button{
     padding: 0 15px 0 ;
     width: auto;
     min-height: 32px;
@@ -15,4 +8,37 @@
     border-radius: 8px;
     font-weight: 650;
     font-size: 14px;
+    margin-bottom: 10px;
+}
+.main-body{
+    pointer-events: auto;
+    min-height: 0;
+    outline: none;
+    flex-shrink: 1;
+    min-width: 0;
+    flex-basis: auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    flex-grow: 0;
+}
+.child-div{
+    width: 100%;
+    flex-shrink: 1;
+    min-width: 0;
+    flex-basis: auto;
+    box-sizing: border-box;
+    pointer-events: auto;
+    min-height: 0;
+    flex-direction: row;
+    position: relative;
+    outline: none;
+    display: flex;
+    flex-grow: 0;
+}
+.comments{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0  0 30px;
 }

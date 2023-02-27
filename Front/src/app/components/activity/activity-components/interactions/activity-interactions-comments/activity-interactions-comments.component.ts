@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./activity-interactions-comments.component.css']
 })
 export class ACtivityInteractionsCommentsComponent {
-
+  account_name:any="mahmoud_mohmed6675";
+  comment_date:any="3m";
+  comment:any="nice work";
 }
