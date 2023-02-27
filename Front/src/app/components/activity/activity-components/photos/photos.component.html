@@ -1,4 +1,39 @@
-<div>
-    <p>welcome to your Photos & videos</p>
-    <h3>Soon</h3>
-</div>
+<main>
+    <div class="title">
+        <a routerLink="/activity/photos_and_videos">
+            <div class="parent-div">
+                <svg
+                 role="img" viewBox="0 0 24 24" width="12"><rect fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="18" x="3" y="3"></rect><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="9.015" x2="9.015" y1="3" y2="21"></line><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="14.985" x2="14.985" y1="3" y2="21"></line><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="21" x2="3" y1="9.015" y2="9.015"></line><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="21" x2="3" y1="14.985" y2="14.985"></line>
+                </svg>
+                <span>POSTS</span>
+            </div>
+        </a>
+        <a  routerLink="/activity/photos_and_videos/reels">
+            <div class="parent-div">
+                <svg 
+                role="img" viewBox="0 0 24 24" width="12"><line fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" x1="2.049" x2="21.95" y1="7.002" y2="7.002"></line><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="13.504" x2="16.362" y1="2.001" y2="7.002"></line><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="7.207" x2="10.002" y1="2.11" y2="7.002"></line><path d="M2 12.001v3.449c0 2.849.698 4.006 1.606 4.945.94.908 2.098 1.607 4.946 1.607h6.896c2.848 0 4.006-.699 4.946-1.607.908-.939 1.606-2.096 1.606-4.945V8.552c0-2.848-.698-4.006-1.606-4.945C19.454 2.699 18.296 2 15.448 2H8.552c-2.848 0-4.006.699-4.946 1.607C2.698 4.546 2 5.704 2 8.552Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M9.763 17.664a.908.908 0 0 1-.454-.787V11.63a.909.909 0 0 1 1.364-.788l4.545 2.624a.909.909 0 0 1 0 1.575l-4.545 2.624a.91.91 0 0 1-.91 0Z" fill-rule="evenodd"></path>
+            </svg>
+                <span>REELS</span>
+            </div>
+        </a>
+        <a  routerLink="/activity/photos_and_videos/videos">
+            <div class="parent-div">
+                <svg 
+                 role="img" viewBox="0 0 24 24" width="12"><path d="M2.989 16.06c0 2.582.633 3.632 1.456 4.484C5.297 21.367 6.346 22 8.928 22h6.25c2.582 0 3.632-.633 4.484-1.456.823-.852 1.456-1.902 1.456-4.483V9.808c0-2.582-.633-3.631-1.456-4.483-.852-.823-1.902-1.456-4.483-1.456H8.928c-2.582 0-3.631.633-4.483 1.456-.823.852-1.456 1.901-1.456 4.483Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><polyline fill="none" points="6.78 13.195 12.053 11.557 12.053 14.312 17.327 12.674" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polyline><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="9.472" x2="12.053" y1="1" y2="3.796"></line><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="14.634" x2="12.053" y1="1" y2="3.796"></line>
+                </svg>
+                <span>VIDEOS</span>
+            </div>
+        </a>
+        <a  routerLink="/activity/photos_and_videos/highlights">
+            <div class="parent-div">
+                <svg 
+                role="img" viewBox="0 0 24 24" width="12"><path d="M3.915 5.31q.337-.407.713-.779m-3.121 7.855Q1.5 12.194 1.5 12a10.505 10.505 0 0 1 .516-3.265m3.243 11.338a10.55 10.55 0 0 1-2.89-3.864m14.482 5.108a10.547 10.547 0 0 1-8.163.65M12.002 1.5a10.504 10.504 0 0 1 7.925 17.39" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+            </svg>
+                <span>HIGHLIGHTS</span>
+            </div>
+        </a>
+    </div>
+    <div class="body">
+        <router-outlet></router-outlet>
+    </div>
+</main>
