@@ -67,6 +67,11 @@ class AuthController extends Controller
                 ];
         }
 
+
+//        public function refresh(){
+//            return $this->CreateNewToken(auth()->refresh()) ;
+//        }
+
         public function torres(){
             return "Hello torres" ;
         }

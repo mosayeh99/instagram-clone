@@ -1,10 +1,7 @@
 <?php
 
-<<<<<<< HEAD
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\PostController;
-=======
->>>>>>> main
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\SearchHistoryController;
@@ -21,7 +18,7 @@ use App\Http\Controllers\Api\FollowerController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->get('/user_profile', function (Request $request) {
     return $request->user();
 });
 
@@ -48,7 +45,7 @@ Route::post('/login', [AuthController::class, 'login']);
         //Route::get('/posts/search/{title}', [PostController::class, 'search']);
 
 // public likes routes
-
+    //your likes route
 
 // private posts and authors routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
