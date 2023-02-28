@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\Api\CommentController;
-use App\Http\Controllers\Api\LikeController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\PostController;
+use App\Http\Controllers\Api\CommentController;
+use App\Http\Controllers\Api\LikeController;
 use App\Http\Controllers\Api\ReelController;
 use App\Http\Controllers\Api\SaveController;
 use Illuminate\Http\Request;
@@ -22,7 +22,7 @@ use App\Http\Controllers\Api\FollowerController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->get('/user_profile', function (Request $request) {
     return $request->user();
 });
 
@@ -30,6 +30,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // register and login
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+
+// public post routes
+        //Route::get('/posts/search/{title}', [PostController::class, 'search']);
+
+// public likes routes
+    //your likes route
 
 // private posts and authors routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
