@@ -7,6 +7,8 @@ use App\Http\Controllers\Api\ReelController;
 use App\Http\Controllers\Api\SaveController;
 use App\Http\Controllers\Api\StoryController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\FollowerController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
 
 //---------------------Posts------------------------------
 Route::get('/posts/user/{id}', [PostController::class, 'index'])->name('posts.index');
