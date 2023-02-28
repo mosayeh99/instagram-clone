@@ -24,13 +24,13 @@ Route::get('/', function () {
 });
 
 //---------------------Posts------------------------------
-Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('/posts/user/{id}', [PostController::class, 'index'])->name('posts.index');
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 Route::get('/posts/{id}', [PostController::class, 'show'])->name('posts.show');
 Route::DELETE('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
 
 
-Route::get('/likes/{id}', [LikeController::class, 'addPostLike'])->name('likes.add');
+Route::post('/likes/{id}', [LikeController::class, 'addPostLike'])->name('likes.add');
 Route::get('/likes/{id}/delete', [LikeController::class, 'removePostLike'])->name('likes.remove');
 Route::get('/likes/post/{id}', [LikeController::class, 'usersLikes']);
 
@@ -42,6 +42,7 @@ Route::get('/saves/{id}', [SaveController::class, 'savedPosts']);
 
 Route::get('/comments/{id}', [CommentController::class, 'allPostComments'])->name('comments.index');
 Route::post('/comments/{id}', [CommentController::class, 'storePostComment'])->name('comments.store');
+Route::get('/comments/replies/{id}', [CommentController::class, 'commentReplies']);
 
 //----------------------Reels------------------------
 Route::post('/reels',[ReelController::class, 'store'])->name('reels.store');
@@ -57,10 +58,13 @@ Route::get('/comments/reels/{id}', [CommentController::class, 'allReelComments']
 Route::post('/comments/reels/{id}', [CommentController::class, 'storeReelComment'])->name('comments.reel.store');
 
 
-Route::get('/saves/reels/{id}', [SaveController::class, 'addReelToSaved'])->name('saves.reel.add');
+Route::get('/saves/reels/{id}/save', [SaveController::class, 'addReelToSaved'])->name('saves.reel.add');
 Route::get('/saves/reels/{id}/delete', [SaveController::class, 'removeReelFromSaved'])->name('saves.reel.remove');
 Route::get('/saves/reels/{id}', [SaveController::class, 'savedReels']);
 
+// ------------------Comments----------------------
+Route::get('/likes/comments/{id}', [LikeController::class, 'addCommentLike'])->name('likes.comment.add');
+Route::get('/likes/comments/{id}/delete', [LikeController::class, 'removeCommentLike'])->name('likes.comment.remove');
 
 
 // ------------------Stories------------------------

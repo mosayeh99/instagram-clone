@@ -14,15 +14,15 @@ class SaveController extends Controller
     public function addPostToSaved($id)
     {
         $post = Post::findOrFail($id);
-        $post->saves()->create(['user_id' => '1']);
-        return back();
+        $post->saves()->create(['user_id' => '3']);
+        return response('Post Added To Saved', 201);
     }
 
     public function removePostFromSaved($id)
     {
         $post = Post::findOrFail($id);
         $post->saves()->where('user_id', '1')->delete();
-        return back();
+        return response('Post Removed From Saved', 200);
     }
 
     public function savedPosts($id)
@@ -31,21 +31,21 @@ class SaveController extends Controller
         foreach ($user->saves->where('saveable_type','App\Models\Post') as $save){
             $posts[] = new PostResource($save->saveable);
         }
-        return $posts;
+        return response($posts, 200);
     }
 
     public function addReelToSaved($id)
     {
         $reel = Reel::findOrFail($id);
-        $reel->saves()->create(['user_id' => '1']);
-        return back();
+        $reel->saves()->create(['user_id' => '3']);
+        return response('Reel Added To Saved', 201);
     }
 
     public function removeReelFromSaved($id)
     {
         $reel = Reel::findOrFail($id);
         $reel->saves()->where('user_id', '1')->delete();
-        return back();
+        return response('Reel Removed From Saved', 200);
     }
     public function savedReels($id)
     {
@@ -53,6 +53,6 @@ class SaveController extends Controller
         foreach ($user->saves->where('saveable_type','App\Models\Reel') as $save){
             $reels[] = new ReelResource($save->saveable);
         }
-        return $reels;
+        return response($reels, 200);
     }
 }

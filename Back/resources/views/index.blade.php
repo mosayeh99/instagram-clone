@@ -10,9 +10,17 @@
         <a href="{{route('saves.add', $post->id)}}" >Save</a>
         <a href="{{route('saves.remove', $post->id)}}" >Unsaved</a>
     </div>
+    @foreach($post->comments as $comment)
+    <div>
+        <span>{{$comment->body}}</span>
+        <a href="{{route('likes.comment.add', $comment->id)}}" >like</a>
+        <a href="{{route('likes.comment.remove', $comment->id)}}" >Unlike</a>
+    </div>
+    @endforeach
     <form action="{{route('comments.store', $post->id)}}" method="post">
         @csrf
         <textarea name="body"></textarea>
+        <input type="text" placeholder="Comment reply to id" name="repliedCommentId">
         <input type="submit">
     </form>
 </div>
@@ -33,6 +41,7 @@
     <form action="{{route('comments.reel.store', $reel->id)}}" method="post">
         @csrf
         <textarea name="body"></textarea>
+        <input type="text" placeholder="Comment reply to id" name="repliedCommentId">
         <input type="submit">
     </form>
 </div>
