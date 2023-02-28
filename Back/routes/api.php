@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,9 +22,32 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::get('user',[UserController::class ,'index']) ;
-//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
+// register and login
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
 
-Route::get('/posts/{id}', [PostController::class, 'show'])->name('posts.show');
+// public post routes
+        //Route::get('/posts/search/{title}', [PostController::class, 'search']);
+
+// public likes routes
+
+
+// private posts and authors routes
+Route::group(['middleware' => ['auth:sanctum']], function () {
+
+    Route::get('/torres', [AuthController::class, 'torres']);
+
+    // private post routes
+           //Route::post('/posts', [PostController::class, 'store']);
+           //Route::put('/posts/{id}', [PostController::class, 'update']);
+           //Route::delete('/posts/{id}', [PostController::class, 'destroy']);
+
+    // private author routes
+           // Route::post('/authors', [AuthorController::class, 'store']);
+           //  Route::put('/authors/{id}', [AuthorController::class, 'update']);
+           //   Route::delete('/authors/{id}', [AuthorController::class, 'destroy']);
+
+    // logout
+        Route::post('/logout', [AuthController::class, 'logout']);
+});
+
