@@ -40,4 +40,20 @@ export class SidebarComponent {
     this.currentUrl = window.location.pathname;
     console.log(this.currentUrl);
   }
+  openPopUp() {
+    let PopUp :any =document.getElementById("PopUp");
+    let create :any =document.getElementById("create-alert-menu");
+
+      create.style.transition= " 0.2s ease-in-out" ;
+      PopUp.style.display = "block" ;
+      create.style.visibility = "visible" ;
+      create.style.opacity = 1 ;
+    }
+    cancelPopUp(){
+      let PopUp :any =document.getElementById("PopUp");
+      let create :any =document.getElementById("create-alert-menu");
+      PopUp.style.display = "none" ;
+      create.style.visibility = "hidden" ;
+      create.style.opacity = 0 ;
+    }
 }

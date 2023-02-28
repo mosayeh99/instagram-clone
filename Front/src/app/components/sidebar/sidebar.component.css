@@ -364,3 +364,56 @@ aside .sidebar.link-text-is-active {
 .popup-menu .menu-link:hover {
   background-color: var(--seccondry-bg-color);
 }
+
+/*  */
+#PopUp {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0 0 0 / 0.6);
+  top: 0;
+  z-index: 9999;
+  display: none;  
+}
+#create-alert-menu{
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  top: 50%;
+  left: 50%;
+  width:500px ;
+  height: 70%;
+  min-height: 48px;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding:15px 20px 20px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  z-index: 9999;
+  transition:  var(--secondary-transition);
+  opacity: 0;
+  visibility: hidden;
+  vertical-align: middle;
+}
+.createMenu{
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  width:500px  ;
+  transition: all 5s ease-in-out;
+}
+.PopUp-body{
+  top: 18%;
+  padding:24px;
+  flex: 0 0 auto;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  align-content: stretch;
+  display: flex;
+  box-sizing: border-box;
+  position: relative;
+}
