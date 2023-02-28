@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
+    //--------------------Post Comments---------------------
     public function allPostComments($id)
     {
         $post = Post::findOrFail($id);
@@ -25,15 +26,17 @@ class CommentController extends Controller
         $post = Post::findOrFail($id);
         $post->comments()->create([
             'body' => $request->body,
-            'user_id' => '1'
+            'user_id' => '4',
+            'replied_comment_id' => $request->repliedCommentId,
         ]);
-        return back();
+        return response('Comment Added', 201);
     }
 
+    //--------------------Reel Comments---------------------
     public function allReelComments($id)
     {
         $reel = Reel::findOrFail($id);
-        foreach ($reel->comments as $comment){
+        foreach ($reel->comments->whereNull('replied_comment_id') as $comment){
             $comments[] = new CommentResource($comment);
         }
         return response($comments, 200);
@@ -44,10 +47,19 @@ class CommentController extends Controller
         $reel = Reel::findOrFail($id);
         $reel->comments()->create([
             'body' => $request->body,
-            'user_id' => '3'
+            'user_id' => '1',
+            'replied_comment_id' => $request->repliedCommentId,
         ]);
-        return back();
+        return response('Comment Saved', 201);
     }
 
-
+    //--------------------Comment Replies---------------------
+    public function commentReplies($id)
+    {
+        $replies = Comment::where('replied_comment_id', $id)->get();
+        foreach ($replies as $reply){
+            $commentReplies[] = new CommentResource($reply);
+        }
+        return response($commentReplies, 200);
+    }
 }

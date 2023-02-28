@@ -19,7 +19,7 @@ return new class extends Migration
 	        $table->string('phone')->nullable();
 	        $table->string('gender')->nullable();
 	        $table->text('bio')->nullable();
-	        $table->string('profile_img')->default('storage/profiles_images/default-profile-img.jpg');
+	        $table->string('profile_img')->default('images/profiles/default-profile-img.jpg');
 	        $table->timestamp('email_verified_at')->nullable();
 	        $table->string('password');
 	        $table->rememberToken();

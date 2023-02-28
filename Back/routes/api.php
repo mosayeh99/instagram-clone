@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\Api\CommentController;
+use App\Http\Controllers\Api\LikeController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\PostController;
+use App\Http\Controllers\Api\ReelController;
+use App\Http\Controllers\Api\SaveController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\SearchHistoryController;
@@ -23,31 +27,71 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-
-
-
-
-
-
 // register and login
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
-
-// public post routes
-        //Route::get('/posts/search/{title}', [PostController::class, 'search']);
-
-// public likes routes
-
 
 // private posts and authors routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::get('/torres', [AuthController::class, 'torres']);
 
-    // private post routes
-           //Route::post('/posts', [PostController::class, 'store']);
-           //Route::put('/posts/{id}', [PostController::class, 'update']);
-           //Route::delete('/posts/{id}', [PostController::class, 'destroy']);
+    //--------------------------Post------------------------------
+    Route::controller(PostController::class)->group(function () {
+        Route::get('/posts/user/{id}', 'index');
+        Route::post('/posts', 'store');
+        Route::get('/posts/{id}', 'show');
+        Route::PUT('/posts/{id}', 'update');
+        Route::DELETE('/posts/{id}', 'destroy');
+    });
+
+    //--------------------------Reel------------------------------
+    Route::controller(ReelController::class)->group(function () {
+        Route::get('/reels/user/{id}', 'index');
+        Route::post('/reels', 'store');
+        Route::get('/reels/{id}', 'show');
+        Route::PUT('/reels/{id}', 'update');
+        Route::DELETE('/reels/{id}', 'destroy');
+    });
+
+    //--------------------------Comment------------------------------
+    Route::controller(CommentController::class)->group(function () {
+        // post
+        Route::get('/comments/post/{id}', 'allPostComments');
+        Route::post('/comments/post/{id}', 'storePostComment');
+        // reel
+        Route::get('/comments/reel/{id}', 'allPostComments');
+        Route::post('/comments/reel/{id}', 'storePostComment');
+        // post & reel
+        Route::get('/comments/{id}/reply', 'commentReplies');
+    });
+
+    //--------------------------Like------------------------------
+    Route::controller(LikeController::class)->group(function () {
+        // post
+        Route::post('/likes/post/{id}', 'addPostLike');
+        Route::DELETE('likes/post/{id}', 'removePostLike');
+        Route::get('/likes/post/{id}', 'postUsersLikes');
+        // reel
+        Route::post('/likes/reel/{id}', 'addReelLike');
+        Route::DELETE('/likes/reel/{id}', 'removeReelLike');
+        Route::get('/likes/reel/{id}', 'ReelUsersLikes');
+        // comment
+        Route::post('/likes/comment/{id}', 'addCommentLike');
+        Route::DELETE('/likes/comment/{id}', 'removeCommentLike');
+    });
+
+    //--------------------------Saved------------------------------
+    Route::controller(SaveController::class)->group(function () {
+        // post
+        Route::post('/saves/post/{id}', 'addPostToSaved');
+        Route::DELETE('/saves/post/{id}', 'removePostFromSaved');
+        Route::get('/saves/post/user/{id}', 'savedPosts');
+        // reel
+        Route::post('/saves/reel/{id}', 'addReelToSaved');
+        Route::DELETE('/saves/reel/{id}', 'removeReelFromSaved');
+        Route::get('/saves/reel/user/{id}', 'savedReels');
+    });
 
     // private author routes
            // Route::post('/authors', [AuthorController::class, 'store']);
