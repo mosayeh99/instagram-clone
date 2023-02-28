@@ -1,10 +1,7 @@
 <?php
 
-<<<<<<< HEAD
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\PostController;
-=======
->>>>>>> main
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\SearchHistoryController;
@@ -25,19 +22,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::POST('/store/{id}',[SearchHistoryController::class,'store']);
-Route::GET('/search/{name}',[SearchHistoryController::class,'search']);
-Route::delete('/deleteHistory/{id}',[SearchHistoryController::class,'deleteHistory']);
-Route::get('/History/{id}/users',[SearchHistoryController::class,'searchHistory']);
 
 
 
-Route::POST('/followerStore/{id}',[FollowerController::class,'followerstore']);
-Route::get('/followerNumber/{id}',[FollowerController::class,'followernumber']);
-Route::get('/followingNumber/{id}',[FollowerController::class,'followingnumber']);
-Route::delete('/unfollow/{id}',[FollowerController::class,'unfollow']);
-Route::get('/user/{id}/followers',[FollowerController::class,'userFollowers'])->name('followers');
-Route::get('/user/{id}/followings',[FollowerController::class,'userFollowings']);
+
+
 
 
 // register and login
@@ -67,5 +56,20 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     // logout
         Route::post('/logout', [AuthController::class, 'logout']);
+
+    //History routes
+    Route::POST('/store/{id}',[SearchHistoryController::class,'store']);
+    Route::GET('/search/{name}',[SearchHistoryController::class,'search']);
+    Route::delete('/deleteHistory/{id}',[SearchHistoryController::class,'deleteHistory']);
+    Route::get('/History/{id}/users',[SearchHistoryController::class,'searchHistory']);
+
+    //Followers and Followings routes
+    Route::POST('/followerStore/{id}',[FollowerController::class,'followerstore']);
+    Route::get('/followerNumber/{id}',[FollowerController::class,'followernumber']);
+    Route::get('/followingNumber/{id}',[FollowerController::class,'followingnumber']);
+    Route::delete('/unfollow/{id}',[FollowerController::class,'unfollow']);
+    Route::get('/user/{id}/followers',[FollowerController::class,'userFollowers'])->name('followers');
+    Route::get('/user/{id}/followings',[FollowerController::class,'userFollowings']);
+
 });
 
