@@ -31,6 +31,14 @@ import { InteractionsComponent } from './components/activity/activity-components
 import { PhotosComponent } from './components/activity/activity-components/photos/photos.component';
 import { HistoryComponent } from './components/activity/activity-components/history/history.component';
 import { DownloadComponent } from './components/activity/activity-components/download/download.component';
+import { ACtivityInteractionslikesComponent } from './components/activity/activity-components/interactions/activity-interactionslikes/activity-interactionslikes.component';
+import { ACtivityInteractionsCommentsComponent } from './components/activity/activity-components/interactions/activity-interactions-comments/activity-interactions-comments.component';
+import { ACtivityInteractionsRepliesComponent } from './components/activity/activity-components/interactions/activity-interactions-replies/activity-interactions-replies.component';
+import { ACtivityInteractionsReviewsComponent } from './components/activity/activity-components/interactions/activity-interactions-reviews/activity-interactions-reviews.component';
+import { ACtivityPhotosPostsComponent } from './components/activity/activity-components/photos/activity-photos-posts/activity-photos-posts.component';
+import { ACtivityPhotosReelsComponent } from './components/activity/activity-components/photos/activity-photos-reels/activity-photos-reels.component';
+import { ACtivityPhotosVideosComponent } from './components/activity/activity-components/photos/activity-photos-videos/activity-photos-videos.component';
+import { ACtivityPhotosHighlightsComponent } from './components/activity/activity-components/photos/activity-photos-highlights/activity-photos-highlights.component';
 const routes: Routes = [
   {path:'', component: HomeComponent},
   {path:'login', component:LoginComponent},
@@ -60,11 +68,22 @@ const routes: Routes = [
     {path:"digitalcollectibles",component:DigitalCollectiblesComponent},
   ]},
   {path:'activity', component:ActivityComponent,children:[
-    {path:"",component:InteractionsComponent},
-    {path:"photos_and_videos",component:PhotosComponent},
+    {path:"interactions",component:InteractionsComponent,children:[
+      {path:"",component:ACtivityInteractionslikesComponent},
+      {path:"comments",component:ACtivityInteractionsCommentsComponent},
+      {path:"story_replies",component:ACtivityInteractionsRepliesComponent},
+      {path:"reviews",component:ACtivityInteractionsReviewsComponent}
+    ]},
+    {path:"photos_and_videos",component:PhotosComponent,children:[
+      {path:"",component:ACtivityPhotosPostsComponent},
+      {path:"reels",component:ACtivityPhotosReelsComponent},
+      {path:"videos",component:ACtivityPhotosVideosComponent},
+      {path:"highlights",component:ACtivityPhotosHighlightsComponent}
+    ]},
     {path:"account_history",component:HistoryComponent},
     {path:"download",component:DownloadComponent}
-  ]}
+  ]},
+  
 ];
 
 @NgModule({
