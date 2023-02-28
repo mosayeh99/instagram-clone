@@ -5,10 +5,20 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ReelResource;
 use App\Models\Reel;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ReelController extends Controller
 {
+    public function index($id)
+    {
+        $user = User::findOrFail($id);
+        foreach ($user->reels as $reel){
+            $reels[] = new ReelResource($reel);
+        }
+        return response($reels, 200);
+    }
+
     public function store(Request $request)
     {
         $file = $request->file('reel');
@@ -27,11 +37,11 @@ class ReelController extends Controller
         return response(new ReelResource($reel), 200);
     }
 
-    public function edit($id)
-    {
-        $reel = Reel::findOrFail($id);
-        return response(new ReelResource($reel), 200);
-    }
+//    public function edit($id)
+//    {
+//        $reel = Reel::findOrFail($id);
+//        return response(new ReelResource($reel), 200);
+//    }
 
     public function update(Request $request, $id)
     {

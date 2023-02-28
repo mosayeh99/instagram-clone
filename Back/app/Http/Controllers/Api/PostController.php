@@ -5,17 +5,19 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PostResource;
 use App\Models\Post;
-use App\Models\PostImage;
 use App\Models\Reel;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function index()
+    public function index($id)
     {
-        $posts = Post::all();
-        $reels = Reel::all();
-        return view('index', compact('posts', 'reels'));
+        $user = User::findOrFail($id);
+        foreach ($user->posts as $post){
+            $posts[] = new PostResource($post);
+        }
+        return response($posts, 200);
     }
 
     public function store(Request $request)
@@ -39,11 +41,11 @@ class PostController extends Controller
         return response(new PostResource($post), 200);
     }
 
-    public function edit($id)
-    {
-        $post = Post::findOrFail($id);
-        return response(new PostResource($post), 200);
-    }
+//    public function edit($id)
+//    {
+//        $post = Post::findOrFail($id);
+//        return response(new PostResource($post), 200);
+//    }
 
     public function update(Request $request, $id)
     {
