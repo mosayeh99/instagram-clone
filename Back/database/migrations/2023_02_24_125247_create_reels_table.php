@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->text('caption');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('reel_video');
+            $table->string('reel_src');
             $table->timestamps();
         });
     }
