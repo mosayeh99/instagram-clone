@@ -1,11 +1,9 @@
 <?php
 
-use App\Http\Controllers\Api\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\SearchHistoryController;
 use App\Http\Controllers\Api\FollowerController;
-use App\Http\Controllers\Api\UserController ;
 
 /*
 |--------------------------------------------------------------------------
