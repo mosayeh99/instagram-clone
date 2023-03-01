@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -47,7 +46,7 @@ import { ACtivityInteractionslikesComponent } from './components/activity/activi
 import { ACtivityInteractionsCommentsComponent } from './components/activity/activity-components/interactions/activity-interactions-comments/activity-interactions-comments.component';
 import { ACtivityInteractionsRepliesComponent } from './components/activity/activity-components/interactions/activity-interactions-replies/activity-interactions-replies.component';
 import { ACtivityInteractionsReviewsComponent } from './components/activity/activity-components/interactions/activity-interactions-reviews/activity-interactions-reviews.component';
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -102,7 +101,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
