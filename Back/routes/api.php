@@ -109,18 +109,20 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::post('/logout', [AuthController::class, 'logout']);
 
     //History routes
-    Route::POST('/store/{id}',[SearchHistoryController::class,'store']);
+    Route::POST('/search/store/{id}',[SearchHistoryController::class,'store']);
     Route::GET('/search/{name}',[SearchHistoryController::class,'search']);
-    Route::delete('/deleteHistory/{id}',[SearchHistoryController::class,'deleteHistory']);
-    Route::get('/History/{id}/users',[SearchHistoryController::class,'searchHistory']);
+    Route::delete('/search/deleteHistory/{id}',[SearchHistoryController::class,'deleteHistory']);
+    Route::get('/search/History/{id}/users',[SearchHistoryController::class,'searchHistory']);
 
     //Followers and Followings routes
-    Route::POST('/followerStore/{id}',[FollowerController::class,'followerstore']);
-    Route::get('/followerNumber/{id}',[FollowerController::class,'followernumber']);
-    Route::get('/followingNumber/{id}',[FollowerController::class,'followingnumber']);
-    Route::delete('/unfollow/{id}',[FollowerController::class,'unfollow']);
-    Route::get('/user/{id}/followers',[FollowerController::class,'userFollowers'])->name('followers');
-    Route::get('/user/{id}/followings',[FollowerController::class,'userFollowings']);
+    Route::POST('/follow/followerStore/{id}',[FollowerController::class,'followerstore']);
+    Route::get('/follow/followerNumber/{id}',[FollowerController::class,'followernumber']);
+    Route::get('/follow/followingNumber/{id}',[FollowerController::class,'followingnumber']);
+    Route::delete('/follow/unfollow/{id}',[FollowerController::class,'unfollow']);
+    Route::get('/follow/user/{id}/followers',[FollowerController::class,'userFollowers'])->name('followers');
+    Route::get('/follow/user/{id}/followings',[FollowerController::class,'userFollowings']);
+    
+    
 
     // ------------------Stories------------------------
     Route::get('/stories/Stories_testing',[StoryController::class, 'StoryIndex']);
