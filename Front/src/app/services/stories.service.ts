@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class StoriescService {
+  // ------- URL -------
   private Base_URL = "  " ;
   constructor(private myClient:HttpClient) { }
   
