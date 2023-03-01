@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import { StoriescService } from 'src/app/services/stories.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -36,7 +37,7 @@ export class SidebarComponent {
     this.isSidebarTextActive = true;
   }
   currentUrl:string;
-  constructor() {
+  constructor(public myService:StoriescService) {
     this.currentUrl = window.location.pathname;
   }
   openPopUp() {
@@ -54,5 +55,10 @@ export class SidebarComponent {
     PopUp.style.display = "none" ;
     create.style.visibility = "hidden" ;
     create.style.opacity = 0 ;
+  }
+  // To add Stories
+  AddStory(story_img:string){
+    let newStory = {story_img};
+    this.myService.AddStory(newStory).subscribe();
   }
 }

@@ -10,7 +10,7 @@ import { StoriescService } from 'src/app/services/stories.service';
 export class HomeComponent implements OnInit {
   stories:any;
   id=0;
-  constructor(public myService:StoriescService , myActivate:ActivatedRoute) { 
+  constructor(public myService:StoriescService, myActivate:ActivatedRoute) { 
   this.id = myActivate.snapshot.params["id"];
   }
   ngOnInit(): void {
