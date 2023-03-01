@@ -38,6 +38,7 @@ export class SidebarComponent {
   currentUrl:string;
   constructor() {
     this.currentUrl = window.location.pathname;
+
   }
   openPopUp() {
     let PopUp :any =document.getElementById("PopUp");
@@ -54,5 +55,6 @@ export class SidebarComponent {
     PopUp.style.display = "none" ;
     create.style.visibility = "hidden" ;
     create.style.opacity = 0 ;
+
   }
 }
