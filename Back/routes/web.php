@@ -5,7 +5,6 @@ use App\Http\Controllers\Api\LikeController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\ReelController;
 use App\Http\Controllers\Api\SaveController;
-use App\Http\Controllers\Api\StoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\FollowerController;
 
@@ -70,8 +69,4 @@ Route::get('/likes/comments/{id}', [LikeController::class, 'addCommentLike'])->n
 Route::get('/likes/comments/{id}/delete', [LikeController::class, 'removeCommentLike'])->name('likes.comment.remove');
 
 
-// ------------------Stories------------------------
-Route::get('/Stories_testing',[StoryController::class, 'StoryIndex']);
-Route::get('/add_story',[StoryController::class, 'StoryCreate']);
-Route::post('/add_story',[StoryController::class, 'StoryStore']);
-Route::delete('/Stories_testing/delete_story/{id}',[StoryController::class, 'StoryDestroy']);
+
