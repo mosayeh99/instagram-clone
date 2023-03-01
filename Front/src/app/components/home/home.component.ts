@@ -1,6 +1,6 @@
 import { Component , OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {StoriesService} from 'src/app/services/stories.service';
+import { StoriesService} from 'src/app/services/stories.service';
 
 @Component({
   selector: 'app-home',
@@ -14,11 +14,11 @@ export class HomeComponent implements OnInit {
   this.id = myActivate.snapshot.params["id"];
   }
   ngOnInit(): void {
-    // this.myService.GetAllStories().subscribe({
-    //   next:(data)=>{this.stories = data;},
-    // });
-    // this.myService.DeleteStory(this.id).subscribe({
-    //   next:(data)=>{this.stories = data;},
-    // })
+    this.myService.GetAllStories().subscribe({
+      next:(data)=>{this.stories = data;},
+    });
+    this.myService.DeleteStory(this.id).subscribe({
+      next:(data)=>{this.stories = data;},
+    })
   }
 }

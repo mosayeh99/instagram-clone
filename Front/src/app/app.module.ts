@@ -53,7 +53,7 @@ import {HttpClientModule} from "@angular/common/http";
     AppComponent,
     SidebarComponent,
     ProfileComponent,
-    HomeComponent,
+    HomeComponent,    
     ExploreComponent,
     ReelsComponent,
     MessagesComponent,
