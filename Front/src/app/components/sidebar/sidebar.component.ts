@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import { StoriescService } from 'src/app/services/stories.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -36,7 +37,7 @@ export class SidebarComponent {
     this.isSidebarTextActive = true;
   }
   currentUrl:string;
-  constructor() {
+  constructor(public myService:StoriescService) {
     this.currentUrl = window.location.pathname;
     console.log(this.currentUrl);
   }
@@ -44,16 +45,22 @@ export class SidebarComponent {
     let PopUp :any =document.getElementById("PopUp");
     let create :any =document.getElementById("create-alert-menu");
 
-      create.style.transition= " 0.2s ease-in-out" ;
-      PopUp.style.display = "block" ;
-      create.style.visibility = "visible" ;
-      create.style.opacity = 1 ;
-    }
-    cancelPopUp(){
-      let PopUp :any =document.getElementById("PopUp");
-      let create :any =document.getElementById("create-alert-menu");
-      PopUp.style.display = "none" ;
-      create.style.visibility = "hidden" ;
-      create.style.opacity = 0 ;
-    }
+    create.style.transition= " 0.2s ease-in-out" ;
+    PopUp.style.display = "block" ;
+    create.style.visibility = "visible" ;
+    create.style.opacity = 1 ;
+  }
+  cancelPopUp(){
+    let PopUp :any =document.getElementById("PopUp");
+    let create :any =document.getElementById("create-alert-menu");
+    PopUp.style.display = "none" ;
+    create.style.visibility = "hidden" ;
+    create.style.opacity = 0 ;
+  }
+  
+  // To add Stories
+  AddStory(story_img:string){
+    let newStory = {story_img};
+    this.myService.AddStory(newStory).subscribe();
+  }
 }
