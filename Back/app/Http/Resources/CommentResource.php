@@ -19,6 +19,7 @@ class CommentResource extends JsonResource
         return [
             'commentCreator' => new UserResource($this->user),
             'comment' => $this->body,
+            'likesCount' => $this->likes()->count(),
             'createdSince' => Carbon::parse($this->created_at)->shortAbsoluteDiffForHumans(),
         ];
     }
