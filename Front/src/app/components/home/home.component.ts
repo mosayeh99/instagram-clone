@@ -1,6 +1,6 @@
 import { Component , OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { StoriescService } from 'src/app/services/stories.service';
+import { StoriesService} from 'src/app/services/stories.service';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +10,7 @@ import { StoriescService } from 'src/app/services/stories.service';
 export class HomeComponent implements OnInit {
   stories:any;
   id=0;
-  constructor(public myService:StoriescService , myActivate:ActivatedRoute) { 
+  constructor(public myService:StoriesService , myActivate:ActivatedRoute) {
   this.id = myActivate.snapshot.params["id"];
   }
   ngOnInit(): void {
