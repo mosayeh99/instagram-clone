@@ -39,6 +39,7 @@ export class SidebarComponent {
   currentUrl:string;
   constructor(public myService:StoriescService) {
     this.currentUrl = window.location.pathname;
+
   }
   openPopUp() {
     let PopUp :any =document.getElementById("PopUp");
