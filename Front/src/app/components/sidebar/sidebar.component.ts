@@ -38,6 +38,5 @@ export class SidebarComponent {
   currentUrl:string;
   constructor() {
     this.currentUrl = window.location.pathname;
-    console.log(this.currentUrl);
   }
 }
