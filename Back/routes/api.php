@@ -122,6 +122,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/follow/user/{id}/followers',[FollowerController::class,'userFollowers'])->name('followers');
     Route::get('/follow/user/{id}/followings',[FollowerController::class,'userFollowings']);
     
+    
 
     // ------------------Stories------------------------
     Route::get('/stories/Stories_testing',[StoryController::class, 'StoryIndex']);
