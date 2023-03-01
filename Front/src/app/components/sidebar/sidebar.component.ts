@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import { StoriescService } from 'src/app/services/stories.service';
+import {StoriesService} from 'src/app/services/stories.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -37,7 +37,7 @@ export class SidebarComponent {
     this.isSidebarTextActive = true;
   }
   currentUrl:string;
-  constructor(public myService:StoriescService) {
+  constructor(public myService:StoriesService) {
     this.currentUrl = window.location.pathname;
 
   }
