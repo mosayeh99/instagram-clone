@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class StoriesService {
   // ------- URL -------
-  private Base_URL = "  " ;
+  private Base_URL = "http://localhost:8000/api/stories";
   constructor(private myClient:HttpClient) { }
   
   // ------- Methods -------
