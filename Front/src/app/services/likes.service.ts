@@ -14,28 +14,28 @@ export class LikesService {
   });
 
   private BaseUrl = "http://localhost:8000/api/likes";
-  AddPostLike(user:any, id:any) {
-    return this.likesRes.post(this.BaseUrl+'/post/'+id, user,{headers: this.headers});
+  AddPostLike(id:string) {
+    return this.likesRes.post(this.BaseUrl+'/post/'+id, '',{headers: this.headers});
   }
-  RemovePostLike(id:any) {
+  RemovePostLike(id:string) {
     return this.likesRes.delete(this.BaseUrl+'/post/'+id,{headers: this.headers});
   }
-  GetAllUsersLikedPost(id:any) {
+  GetAllUsersLikedPost(id:string) {
     return this.likesRes.get(this.BaseUrl+'/post/'+id,{headers: this.headers});
   }
-  AddReelLike(user:any, id:any) {
-    return this.likesRes.post(this.BaseUrl+'/reel/'+id, user,{headers: this.headers});
+  AddReelLike(id:string) {
+    return this.likesRes.post(this.BaseUrl+'/reel/'+id, '',{headers: this.headers})
   }
-  RemoveReelLike(id:any) {
+  RemoveReelLike(id:string) {
     return this.likesRes.delete(this.BaseUrl+'/reel/'+id,{headers: this.headers});
   }
-  GetAllUsersLikedReel(id:any) {
+  GetAllUsersLikedReel(id:string) {
     return this.likesRes.get(this.BaseUrl+'/reel/'+id,{headers: this.headers});
   }
-  AddCommentLike(user:any, id:any) {
-    return this.likesRes.post(this.BaseUrl+'/comment/'+id, user,{headers: this.headers});
+  AddCommentLike(id:string) {
+    return this.likesRes.post(this.BaseUrl+'/comment/'+id, '',{headers: this.headers});
   }
-  RemoveCommentLike(id:any) {
+  RemoveCommentLike(id:string) {
     return this.likesRes.delete(this.BaseUrl+'/comment/'+id,{headers: this.headers});
   }
 }

@@ -13,6 +13,9 @@ export class PostsService {
   });
 
   private BaseUrl = "http://localhost:8000/api/posts";
+  GetAllPosts(){
+    return this.postsRes.get(this.BaseUrl,{headers: this.headers});
+  }
   GetAllUserPosts(id: any){
     return this.postsRes.get(this.BaseUrl+'/user/'+id, {headers: this.headers});
   }

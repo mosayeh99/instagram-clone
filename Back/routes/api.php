@@ -45,7 +45,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     //--------------------------Post------------------------------
     Route::controller(PostController::class)->group(function () {
-        Route::get('posts/user/{id}', 'index');
+        Route::get('posts', 'index');
+        Route::get('posts/user/{id}', 'getUserPosts');
         Route::post('posts', 'store');
         Route::get('posts/{id}', 'show');
         Route::PUT('posts/{id}', 'update');
@@ -54,7 +55,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     //--------------------------Reel------------------------------
     Route::controller(ReelController::class)->group(function () {
-        Route::get('reels/user/{id}', 'index');
+        Route::get('reels', 'index');
+        Route::get('reels/user/{id}', 'getUserReels');
         Route::post('reels', 'store');
         Route::get('reels/{id}', 'show');
         Route::PUT('reels/{id}', 'update');
@@ -92,11 +94,11 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::controller(SaveController::class)->group(function () {
         // post
         Route::post('saves/post/{id}', 'addPostToSaved');
-        Route::DELETE('saves/post/{id}', 'removePostFromSaved');
+        Route::DELETE('saves/post/{id}/delete', 'removePostFromSaved');
         Route::get('saves/post/user/{id}', 'savedPosts');
         // reel
         Route::post('saves/reel/{id}', 'addReelToSaved');
-        Route::DELETE('saves/reel/{id}', 'removeReelFromSaved');
+        Route::DELETE('saves/reel/{id}/delete', 'removeReelFromSaved');
         Route::get('saves/reel/user/{id}', 'savedReels');
     });
 
