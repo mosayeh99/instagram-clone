@@ -47,6 +47,7 @@ import { ACtivityInteractionsCommentsComponent } from './components/activity/act
 import { ACtivityInteractionsRepliesComponent } from './components/activity/activity-components/interactions/activity-interactions-replies/activity-interactions-replies.component';
 import { ACtivityInteractionsReviewsComponent } from './components/activity/activity-components/interactions/activity-interactions-reviews/activity-interactions-reviews.component';
 import {HttpClientModule} from "@angular/common/http";
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -101,7 +102,8 @@ import {HttpClientModule} from "@angular/common/http";
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

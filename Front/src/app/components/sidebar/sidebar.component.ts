@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
+import { Router } from '@angular/router';
 import {StoriesService} from 'src/app/services/stories.service';
+import { TokenStorageService } from '../../services/token-storage.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -37,7 +39,7 @@ export class SidebarComponent {
     this.isSidebarTextActive = true;
   }
   currentUrl:string;
-  constructor(public myService:StoriesService) {
+  constructor(public myService:StoriesService ,private tokenStorage: TokenStorageService ,private router: Router)  {
     this.currentUrl = window.location.pathname;
 
   }
@@ -62,5 +64,11 @@ export class SidebarComponent {
     let newStory = {user_id ,story_img};
     this.myService.AddStory(newStory).subscribe();
     // console.log(newStory);    
+  }
+
+
+  logOut(){
+    this.tokenStorage.signOut() ;
+    this.router.navigate(["login"]) ;
   }
 }
