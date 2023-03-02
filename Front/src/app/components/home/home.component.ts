@@ -16,9 +16,13 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.myService.GetAllStories().subscribe({
       next:(data)=>{this.stories = data;},
-    });
-    this.myService.DeleteStory(this.id).subscribe({
-      next:(data)=>{this.stories = data;},
-    })
+    });    
   }
+
+  // deleteStory(){
+  //   this.myService.DeleteStory(this.id).subscribe({
+  //     next:(data)=>{this.stories = data;},
+  //   })
+  // }
+  
 }

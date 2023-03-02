@@ -17,12 +17,12 @@ export class StoriesService {
     return this.myClient.get(this.Base_URL + "/" + id );
   }
   AddStory(story:any){
-    return this.myClient.post(this.Base_URL , story)
+    return this.myClient.post(this.Base_URL+ "/add_story" , story)
   }
   EditStory(id:number , editstory:any){
     return this.myClient.put(this.Base_URL + "/" + id , editstory )
   }
   DeleteStory(id:number){
-    return this.myClient.delete(this.Base_URL + "/" + id)
+    return this.myClient.delete(this.Base_URL + "/delete_story/" + id)
   }
 }

@@ -122,11 +122,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/user/{id}/followers',[FollowerController::class,'userFollowers'])->name('followers');
     Route::get('/user/{id}/followings',[FollowerController::class,'userFollowings']);
 
-    // ------------------Stories------------------------
-    Route::get('/stories/Stories_testing',[StoryController::class, 'StoryIndex']);
-    Route::get('/stories/add_story',[StoryController::class, 'StoryCreate']);
-    Route::post('/stories/add_story',[StoryController::class, 'StoryStore']);
-    Route::delete('/stories/Stories_testing/delete_story/{id}',[StoryController::class, 'StoryDestroy']);
-
 });
 
+
+// ------------------Stories------------------------
+   Route::get('/stories', [StoryController::class, 'StoryIndex']);   
+   Route::post('/stories/add_story',[StoryController::class, 'StoryStore']);
+   Route::delete('/stories/delete_story/{id}', [StoryController::class, 'StoryDestroy']);
