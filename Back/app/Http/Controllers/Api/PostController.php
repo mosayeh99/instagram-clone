@@ -11,7 +11,16 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function index($id)
+    public function index()
+    {
+        $allPosts = Post::all();
+        foreach ($allPosts as $post){
+            $posts[] = new PostResource($post);
+        }
+        return response($posts, 200);
+    }
+
+    public function getUserPosts($id)
     {
         $user = User::findOrFail($id);
         foreach ($user->posts as $post){

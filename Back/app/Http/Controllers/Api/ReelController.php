@@ -10,7 +10,16 @@ use Illuminate\Http\Request;
 
 class ReelController extends Controller
 {
-    public function index($id)
+    public function index()
+    {
+        $allReels = Reel::all();
+        foreach ($allReels as $reel){
+            $reels[] = new ReelResource($reel);
+        }
+        return response($reels, 200);
+    }
+
+    public function getUserReels($id)
     {
         $user = User::findOrFail($id);
         foreach ($user->reels as $reel){
