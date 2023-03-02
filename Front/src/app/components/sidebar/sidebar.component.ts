@@ -58,8 +58,9 @@ export class SidebarComponent {
     create.style.opacity = 0 ;
   }
   // To add Stories
-  AddStory(story_img:string){
-    let newStory = {story_img};
+  AddStory(user_id:any , story_img:string){
+    let newStory = {user_id ,story_img};
     this.myService.AddStory(newStory).subscribe();
+    // console.log(newStory);    
   }
 }

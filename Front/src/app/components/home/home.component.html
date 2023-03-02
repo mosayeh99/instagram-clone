@@ -7,10 +7,15 @@
         <div class="statuses">
           <div class="status">
             <div class="image">
-              <img src="./assets/images/home/user-1.jpeg" alt="">
+              +
             </div>
           </div>
-          <div class="status">
+          <div class="status" *ngFor="let s of stories">
+            <div class="image" >
+              <img src="{{s.story_src}}" alt="">
+            </div>
+          </div>
+          <!-- <div class="status">
             <div class="image">
               <img src="./assets/images/home/user-2.jpeg" alt="">
             </div>
@@ -29,7 +34,7 @@
             <div class="image">
               <img src="./assets/images/home/BRN_5799.jpg" alt="">
             </div>
-          </div>
+          </div> -->
         </div>
         <!-- ----------------post---------------- -->
         <div class="card">
