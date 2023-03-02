@@ -70,5 +70,6 @@ export class SidebarComponent {
   logOut(){
     this.tokenStorage.signOut() ;
     this.router.navigate(["login"]) ;
+
   }
 }
