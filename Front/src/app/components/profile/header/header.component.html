@@ -20,24 +20,55 @@
 <div id="alert-overlay" (click)="cancel()"></div>
 <div id="followers-alert-menu">
     <div class="followersMenu">
-        <div style="display: flex ; flex-direction: row; justify-content: space-evenly;">
-        <h6 >Followers</h6><a id="cancel-followers" (click)="cancel()">X</a><hr>
+        <div style="font-weight: bolder;">
+            <p style="display:inline-block;" >Followings</p><a id="cancel-followers" (click)="cancel()" style="margin-left: 150px;">X</a><hr>
         </div>
 
+        <div class="recent-search-content" *ngFor="let w of FollowersName" >
+        <div class="recent-search-user " >
+            <div class="result-user-img">
+              <img src="assets/images/sidebar/profile-img-not-found.jpg" alt="Profile Image Not Found">
+              <!-- <img src="{{w[0].name}}" alt="Profile Image Not Found"> -->
+            </div>
+            <div class="result-user-info"  style="cursor:pointer;">
+              <p class="user-unique-name">{{w[0].name}}</p>
+              <p class="user-name">{{w[0].username}}</p>
+              
 
+            </div>
+        </div>
+        <div class="line"></div>
+        </div>
     </div>
 </div>
 
 <div id="alert-overlay" (click)="cancel()"></div>
     <div id="following-alert-menu">
-        <div class="followingMenu">
-            <a>Mohamed Elsayeh</a><hr>
-            <a>Ahmed Hassan</a><hr>
-            <a>Mahmoud Saad</a><hr>
-            <a>Mahmoud Elsayed</a><hr>
-        <a id="cancel-following" (click)="cancel()">Cancel</a>
+        <div class="followersMenu">
+            <!-- <div style="display: flex ; flex-direction: row; justify-content: space-around;"> -->
+                <div style="font-weight: bolder;">
+                <p style="display:inline-block;" >Followings</p><a id="cancel-followers" (click)="cancel()" style="margin-left: 150px;">X</a><hr>
+            </div>
+        <div class="recent-search-content" *ngFor="let n of FollowingsName">
+            <div class="recent-search-user "  >
+                <div class="result-user-img">
+                  <img src="assets/images/sidebar/profile-img-not-found.jpg" alt="Profile Image Not Found">
+                  <!-- <img src="{{w[0].name}}" alt="Profile Image Not Found"> -->
+                  <div class="line"></div>
+                </div>
+                <div class="result-user-info"  style="cursor:pointer;">
+                  <p class="user-unique-name">{{n[0].name}}</p>
+                  <p class="user-name">{{n[0].username}}</p>
+                </div>
+               
+
+            </div>
+            <div class="line"></div>
+            </div>
+            </div>
         </div>
-</div>
+        <a id="cancel-following" (click)="cancel()">Cancel</a>
+<!-- </div> -->
 
 
 
@@ -71,8 +102,8 @@
 
 				<ul>
 					<li><span class="profile-stat-count">529</span> posts</li>
-					<li (click)="followers()"><span class="profile-stat-count">4,937</span> followers</li>
-					<li (click)="following()"><span class="profile-stat-count">1,443</span> following</li>
+					<li (click)="followers()"><span class="profile-stat-count" *ngFor="let F of FollowersNumber">{{F.count}}</span> followers</li>
+					<li (click)="following()"><span class="profile-stat-count" *ngFor="let s of FollowingsNumber">{{s.count}}</span> following</li>
 				</ul>
 			</div>
 
@@ -84,6 +115,9 @@
                     Fernando Torres (FT9) 😎❤❤✊</p>
                     
 			</div>
+            <div>
+                <button id="FollowButton"(click)="enableDisableRule()" [ngClass]="{'green' : toggle, 'red': !toggle}">{{status}}</button>
+            </div>
 	</div>
 		<!-- End of profile section -->
 </div>

@@ -5,15 +5,21 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
   providedIn: 'root'
 })
 export class UsersService {
-  constructor(private postsRes:HttpClient) { }
+  loginUser: any;
+  constructor(private userRes:HttpClient) { }
 
   private headers = new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${localStorage.getItem('token')}`
+    'Accept': 'application/json',
+    'Authorization': `Bearer ${JSON.parse(sessionStorage.getItem('auth-user')).token}`
   });
-  private BaseUrl = "http://localhost:8000/api/posts";
-  
-  GetAllUserPosts(id: any){
-    return this.postsRes.get(this.BaseUrl+'/user/'+id, {headers: this.headers});
+
+  private BaseUrl = "http://localhost:8000/api/users";
+
+  GetLoginUser() {
+    return this.userRes.get(this.BaseUrl+'/get/info', {headers: this.headers});
+  }
+
+  GetAllUserDetails(username:string) {
+    return this.userRes.get(this.BaseUrl+'/'+username, {headers: this.headers});
   }
 }

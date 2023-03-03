@@ -44,12 +44,12 @@ const routes: Routes = [
   {path:'login', component:LoginComponent},
   {path:'register', component:RegisterComponent},
   {path:'', component: HomeComponent,canActivate:[AuthGuard]},
-  {path:'profile', component:ProfileComponent ,canActivate:[AuthGuard] , children: [
+  {path:'profile/:username', component:ProfileComponent ,canActivate:[AuthGuard] , children: [
     {path:'', component:GalleryComponent},
     {path:'myreels', component:MyreelsComponent},
     {path:'saved', component:SavedComponent},
     {path:'tagged', component:TaggedComponent},
-  ], 
+  ],
  },
   {path:'explore', component:ExploreComponent,canActivate:[AuthGuard]},
   {path:'reels', component:ReelsComponent,canActivate:[AuthGuard]},
@@ -85,7 +85,7 @@ const routes: Routes = [
     {path:"account_history",component:HistoryComponent},
     {path:"download",component:DownloadComponent}
   ]},
-  
+
 ];
 
 @NgModule({

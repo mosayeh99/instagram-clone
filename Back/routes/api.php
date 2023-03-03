@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\LikeController;
 use App\Http\Controllers\Api\ReelController;
 use App\Http\Controllers\Api\SaveController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\SearchHistoryController;
@@ -26,6 +27,11 @@ use App\Http\Controllers\Api\StoryController;
 Route::middleware('auth:sanctum')->get('/user_profile', function (Request $request) {
     return $request->user();
 });
+Route::get('fetch', [App\Http\Controllers\ChatsController::class, 'fetchMessages']);
+
+Route::post('send', [App\Http\Controllers\ChatsController::class, 'sendMessage']);
+Route::post('recive', [App\Http\Controllers\ChatsController::class, 'reciveMessage']);
+Route::get('users', [App\Http\Controllers\ChatsController::class, 'getUsers']);
 
 
 // register and login
@@ -36,12 +42,19 @@ Route::post('/login', [AuthController::class, 'login']);
         //Route::get('/posts/search/{title}', [PostController::class, 'search']);
 
 // public likes routes
-    //your likes route
+
+
+
+
 
 // private posts and authors routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::get('/torres', [AuthController::class, 'torres']);
+
+    // ------------------------Get Login User info--------------
+    Route::get('users/{username}', [UserController::class, 'getUserDetailsByUsername']);
+    Route::get('users/get/info', [UserController::class, 'getLoginUser']);
 
     //--------------------------Post------------------------------
     Route::controller(PostController::class)->group(function () {
@@ -110,13 +123,14 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     // logout
         Route::post('/logout', [AuthController::class, 'logout']);
 
-    //History routes
+    // History routes
     Route::POST('/search/store/{id}',[SearchHistoryController::class,'store']);
     Route::GET('/search/{name}',[SearchHistoryController::class,'search']);
     Route::delete('/search/deleteHistory/{id}',[SearchHistoryController::class,'deleteHistory']);
+    Route::delete('/search/deleteAllHistory',[SearchHistoryController::class,'deleteAllHistory']);
     Route::get('/search/History/{id}/users',[SearchHistoryController::class,'searchHistory']);
 
-    //Followers and Followings routes
+    // Followers and Followings routes
     Route::POST('/follow/followerStore/{id}',[FollowerController::class,'followerstore']);
     Route::get('/follow/followerNumber/{id}',[FollowerController::class,'followernumber']);
     Route::get('/follow/followingNumber/{id}',[FollowerController::class,'followingnumber']);
