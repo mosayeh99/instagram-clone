@@ -47,6 +47,7 @@ import { ACtivityInteractionsCommentsComponent } from './components/activity/act
 import { ACtivityInteractionsRepliesComponent } from './components/activity/activity-components/interactions/activity-interactions-replies/activity-interactions-replies.component';
 import { ACtivityInteractionsReviewsComponent } from './components/activity/activity-components/interactions/activity-interactions-reviews/activity-interactions-reviews.component';
 import {HttpClientModule} from "@angular/common/http";
+import { AuthGuard } from './services/auth.guard';
 
 @NgModule({
   declarations: [
@@ -93,9 +94,8 @@ import {HttpClientModule} from "@angular/common/http";
     ACtivityInteractionslikesComponent,
     ACtivityInteractionsCommentsComponent,
     ACtivityInteractionsRepliesComponent,
-    ACtivityInteractionsReviewsComponent
-
-
+    ACtivityInteractionsReviewsComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -104,7 +104,9 @@ import {HttpClientModule} from "@angular/common/http";
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
