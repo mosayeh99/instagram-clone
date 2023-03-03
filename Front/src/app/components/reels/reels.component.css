@@ -124,6 +124,16 @@ main {
   cursor: pointer;
 }
 
+.reels .reel .reel-icons .heart-icon svg,
+.reels .reel .reel-icons .save-icon svg {
+  display: none;
+}
+
+.reels .reel .reel-icons .heart-icon svg.active,
+.reels .reel .reel-icons .save-icon svg.active {
+  display: block;
+}
+
 .reels .reel .reel-icons .like-items,
 .reels .reel .reel-icons .comments-items {
   flex-direction: column;

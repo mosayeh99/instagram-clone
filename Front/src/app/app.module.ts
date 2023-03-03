@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -38,8 +38,21 @@ import { InteractionsComponent } from './components/activity/activity-components
 import { PhotosComponent } from './components/activity/activity-components/photos/photos.component';
 import { HistoryComponent } from './components/activity/activity-components/history/history.component';
 import { DownloadComponent } from './components/activity/activity-components/download/download.component';
+<<<<<<< HEAD
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
+=======
+import { ACtivityPhotosPostsComponent } from './components/activity/activity-components/photos/activity-photos-posts/activity-photos-posts.component';
+import { ACtivityPhotosReelsComponent } from './components/activity/activity-components/photos/activity-photos-reels/activity-photos-reels.component';
+import { ACtivityPhotosVideosComponent } from './components/activity/activity-components/photos/activity-photos-videos/activity-photos-videos.component';
+import { ACtivityPhotosHighlightsComponent } from './components/activity/activity-components/photos/activity-photos-highlights/activity-photos-highlights.component';
+import { ACtivityInteractionslikesComponent } from './components/activity/activity-components/interactions/activity-interactionslikes/activity-interactionslikes.component';
+import { ACtivityInteractionsCommentsComponent } from './components/activity/activity-components/interactions/activity-interactions-comments/activity-interactions-comments.component';
+import { ACtivityInteractionsRepliesComponent } from './components/activity/activity-components/interactions/activity-interactions-replies/activity-interactions-replies.component';
+import { ACtivityInteractionsReviewsComponent } from './components/activity/activity-components/interactions/activity-interactions-reviews/activity-interactions-reviews.component';
+import {HttpClientModule} from "@angular/common/http";
+import { AuthGuard } from './services/auth.guard';
+>>>>>>> main
 
 @NgModule({
   declarations: [
@@ -79,17 +92,39 @@ import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http'
     PhotosComponent,
     HistoryComponent,
     DownloadComponent,
+<<<<<<< HEAD
 
 
 
+=======
+    ACtivityPhotosPostsComponent,
+    ACtivityPhotosReelsComponent,
+    ACtivityPhotosVideosComponent,
+    ACtivityPhotosHighlightsComponent,
+    ACtivityInteractionslikesComponent,
+    ACtivityInteractionsCommentsComponent,
+    ACtivityInteractionsRepliesComponent,
+    ACtivityInteractionsReviewsComponent,
+    
+>>>>>>> main
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+<<<<<<< HEAD
     FormsModule,
     HttpClientModule
   ],
   providers: [ ],
+=======
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
+  providers: [
+    AuthGuard
+  ],
+>>>>>>> main
   bootstrap: [AppComponent]
 })
 export class AppModule { }

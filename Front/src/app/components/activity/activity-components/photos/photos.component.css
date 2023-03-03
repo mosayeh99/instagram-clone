@@ -1,4 +1,111 @@
-div {
-    padding: 30%;
-    text-align: center;
+main{
+    height: 0px;
+    padding-left: 24px ;
+    padding-right: 24px ;
+    flex: 1 1 auto;
+    min-height: 0;
+    min-width: 0;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: stretch;
+    align-content: stretch;
+    display: flex;
+    box-sizing: border-box;
+    position: relative;
+    
 }
+
+.title{
+    text-align: center;
+    font-weight: 600;
+    font-size: .75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    flex-direction: row;    
+    padding: 0;
+    margin-left: 0; 
+    margin-right: 0;
+    box-sizing: border-box;    
+    border-bottom:1px solid gainsboro;
+    color: gainsboro;
+    letter-spacing: 1px; 
+    position: relative;
+    vertical-align: baseline;
+}
+
+.title a{
+    display: inline;
+    padding: 0;
+    background-color: transparent;
+    touch-action: manipulation;
+    list-style: none;
+    border-left: 0;
+    border-bottom: 0;
+    box-sizing: border-box;
+    border-top: 0;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    text-decoration: none;
+    border-right: 0;
+    outline: none;
+    text-align: inherit;
+    border-left: 0 ;
+    color: rgb(142,142,142);
+    align-items: center;
+    cursor: pointer;
+    display: flex!important;
+    flex-direction: row;
+    height: 52px;
+    justify-content: center;
+    text-transform: uppercase;
+    margin-right: 60px;
+}
+.title a:focus{
+border-bottom:1px solid rgb(38,38,38);
+color: rgb(38,38,38);
+fill: rgb(38,38,38);
+}
+.parent-div{
+    flex: 0 0 auto;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+    align-content: stretch;
+    display: flex;
+    box-sizing: border-box;
+    position: relative;
+    flex-wrap:wrap;
+}
+.parent-div svg{
+    display: block;
+    position: relative;
+    /* color: rgb(142, 142, 142);
+    fill: rgb(142, 142, 142); */
+    height: 12px;
+}
+.parent-div span{
+    padding: 0;
+    font-size: 100%;
+    margin: 0 0 0 6px;
+    border: 0;
+    vertical-align: baseline;
+}
+
+/* body */
+
+.body{
+    flex: 1 1 auto;
+    min-height: 0;
+    min-width: 0;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: stretch;
+    align-content: stretch;
+    display: flex;
+    box-sizing: border-box;
+    position: relative;
+    margin-top: 15px;
+}
+

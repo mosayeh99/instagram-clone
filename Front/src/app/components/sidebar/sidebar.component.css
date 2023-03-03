@@ -364,3 +364,151 @@ aside .sidebar.link-text-is-active {
 .popup-menu .menu-link:hover {
   background-color: var(--seccondry-bg-color);
 }
+
+/*  */
+#PopUp {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0 0 0 / 0.6);
+  top: 0;
+  z-index: 9999;
+  display: none;
+}
+#create-alert-menu{
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  top: 50%;
+  left: 50%;
+  width: fit-content;
+  min-height: 48px;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 10px;
+  font-size: 14px;
+  z-index: 9999;
+  transition:  var(--secondary-transition);
+  opacity: 0;
+  visibility: hidden;
+  vertical-align: middle;
+}
+.createMenu {
+  text-decoration: none;
+  text-align: center;
+  width:500px;
+  transition: all 5s ease-in-out;
+  display: none;
+}
+
+.createMenu.active {
+  display: block;
+}
+
+.createMenu .create-head {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--separator);
+  font-weight: 600;
+}
+
+.PopUp-body{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 480px;
+}
+
+/*-----------Create New Reel-------------*/
+.new-reel {
+  position: relative;
+  display: none;
+}
+
+.new-reel.active {
+  display: block;
+}
+
+.new-reel .new-reel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--separator);
+  font-weight: 600;
+}
+
+.new-reel .new-reel-head button {
+  background-color: transparent;
+  color: var(--primary-button);
+  border: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.reel-content {
+  display: flex;
+  width: 900px;
+  height: 480px;
+}
+
+.reel-content .upload-img-sec {
+  flex: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reel-content .reel-content-right {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid var(--separator);
+  padding: 20px;
+}
+
+.reel-content-right .user-info {
+  display: flex;
+  align-items: center;
+}
+
+.reel-content-right .user-info .user-img img {
+  width: 44px;
+  margin-right: 16px;
+}
+
+.reel-content-right .caption {
+  height: 100%;
+  margin-bottom: 20px;
+}
+
+.reel-content-right .caption textarea {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  margin-top: 20px;
+  resize: none;
+  outline: 0;
+  font-size: 16px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
