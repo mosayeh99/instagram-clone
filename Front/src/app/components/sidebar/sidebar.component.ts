@@ -1,3 +1,8 @@
+
+import {Component,OnInit} from '@angular/core';
+import { SearchHistoriesService } from 'src/app/services/search-histories.service';
+import {StoriesService} from 'src/app/services/stories.service';
+
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { PostsService } from 'src/app/services/posts.service';
 import { ReelsService } from 'src/app/services/reels.service';
@@ -6,12 +11,18 @@ import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 
+
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit{
+
+  name="";
+  users :any;
+  saved :any;
+
   isSearchActive:boolean = false;
   isNotificationActive:boolean = false;
   isSidebarTextActive:boolean = true;
@@ -41,6 +52,67 @@ export class SidebarComponent implements OnInit{
     this.isPopupMenuActive = false;
     this.isSidebarTextActive = true;
   }
+
+  currentUrl:string;
+  constructor(public myService:StoriesService ,public searchService:SearchHistoriesService) {
+    this.currentUrl = window.location.pathname;
+
+  }
+                             // Search Handling Methods 
+   ngOnInit(): void {
+    // throw new Error('Method not implemented.');
+
+    this.searchService.GetUsersFromSearchHistory('1').subscribe(
+      {
+        next:(data)=>{
+          this.saved = data;
+        },
+        error:(err)=>{}
+      }
+      
+    )
+  }
+
+
+  search(e:any){
+    if(!e.target.value){
+      this.users ='';
+    }
+    this.searchService.GetUserByName(e.target.value).subscribe(
+     {
+      next:(data)=>{
+        this.users = data;
+      },
+      error:(err)=>{}
+    }
+    )
+  }
+
+
+
+  removeFromHistory(id:any){
+    this.searchService.DeleteHistory(id).subscribe();
+    this.ngOnInit();
+    
+  }
+
+  deleteAllHistory(){
+    this.searchService.DeleteAllHistory().subscribe();
+    this.ngOnInit();
+  }
+
+
+
+  addUserToSearchHistory(id:any){
+    this.searchService.StoreSearchedUserByID(id).subscribe(
+      {
+      next:(data)=>{},
+      error:(err)=>{}
+      }
+    )
+  }
+             // End OF Search Handling Methods 
+
   openPopUp() {
     let PopUp :any =document.getElementById("PopUp");
     let create :any =document.getElementById("create-alert-menu");
@@ -141,4 +213,7 @@ export class SidebarComponent implements OnInit{
     this.tokenStorage.signOut() ;
     this.router.navigate(["login"]) ;
   }
+
+
+
 }

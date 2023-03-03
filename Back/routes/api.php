@@ -37,7 +37,10 @@ Route::post('/login', [AuthController::class, 'login']);
         //Route::get('/posts/search/{title}', [PostController::class, 'search']);
 
 // public likes routes
-    //your likes route
+    
+
+
+
 
 // private posts and authors routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
@@ -115,13 +118,14 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     // logout
         Route::post('/logout', [AuthController::class, 'logout']);
 
-    //History routes
+    // History routes
     Route::POST('/search/store/{id}',[SearchHistoryController::class,'store']);
     Route::GET('/search/{name}',[SearchHistoryController::class,'search']);
     Route::delete('/search/deleteHistory/{id}',[SearchHistoryController::class,'deleteHistory']);
+    Route::delete('/search/deleteAllHistory',[SearchHistoryController::class,'deleteAllHistory']);
     Route::get('/search/History/{id}/users',[SearchHistoryController::class,'searchHistory']);
 
-    //Followers and Followings routes
+    // Followers and Followings routes
     Route::POST('/follow/followerStore/{id}',[FollowerController::class,'followerstore']);
     Route::get('/follow/followerNumber/{id}',[FollowerController::class,'followernumber']);
     Route::get('/follow/followingNumber/{id}',[FollowerController::class,'followingnumber']);

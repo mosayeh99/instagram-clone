@@ -21,6 +21,9 @@ class SearchHistoryController extends Controller
 
     public function search($name){
         $users= User::where("username","like","%".$name."%")->get();
+        if(!$name){
+            $users='';
+        }
         foreach($users as $user){
             $searchedUser[]=new SearchHistoryResource($user);
         }
@@ -42,5 +45,11 @@ class SearchHistoryController extends Controller
     public function deleteHistory($id){
         SearchHistory::where('user_id_other', '=', $id)->delete();
         return response("History Deleted Successfully");
+    }
+
+
+    public function deleteAllHistory(){
+        SearchHistory::truncate();
+        return response(" All History Deleted Successfully");
     }
 }
