@@ -27,13 +27,11 @@ use App\Http\Controllers\Api\StoryController;
 Route::middleware('auth:sanctum')->get('/user_profile', function (Request $request) {
     return $request->user();
 });
-<<<<<<< HEAD
 Route::get('fetch', [App\Http\Controllers\ChatsController::class, 'fetchMessages']);
 
 Route::post('send', [App\Http\Controllers\ChatsController::class, 'sendMessage']);
 Route::post('recive', [App\Http\Controllers\ChatsController::class, 'reciveMessage']);
 Route::get('users', [App\Http\Controllers\ChatsController::class, 'getUsers']);
-=======
 
 
 // register and login
@@ -44,7 +42,7 @@ Route::post('/login', [AuthController::class, 'login']);
         //Route::get('/posts/search/{title}', [PostController::class, 'search']);
 
 // public likes routes
-    
+
 
 
 
@@ -149,4 +147,3 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
    Route::get('/stories', [StoryController::class, 'StoryIndex']);
    Route::post('/stories/add_story',[StoryController::class, 'StoryStore']);
    Route::delete('/stories/delete_story/{id}', [StoryController::class, 'StoryDestroy']);
->>>>>>> main
