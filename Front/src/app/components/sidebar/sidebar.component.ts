@@ -1,5 +1,5 @@
 
-import {Component,OnInit} from '@angular/core';
+
 import { SearchHistoriesService } from 'src/app/services/search-histories.service';
 import {StoriesService} from 'src/app/services/stories.service';
 
@@ -137,26 +137,26 @@ export class SidebarComponent implements OnInit{
   isCreatePost: boolean = false;
   isCreateStory: boolean = false;
 
-  currentUrl:string;
+  // currentUrl:string;
   reelForm: FormGroup;
   postForm: FormGroup;
   storyForm: FormGroup;
 
-  constructor(private reelSrv:ReelsService, private postSrv:PostsService, private fb: FormBuilder, private userSrv:UsersService, private tokenStorage: TokenStorageService ,private router: Router) {
-    this.currentUrl = window.location.pathname;
-    this.reelForm = this.fb.group({
-      caption: [''],
-      newReel: [''],
-    });
-    this.postForm = this.fb.group({
-      caption: [''],
-      newPost: [''],
-    });
-    this.storyForm = this.fb.group({
-      caption: [''],
-      newStory: [''],
-    });
-  }
+  // constructor(private reelSrv:ReelsService, private postSrv:PostsService, private fb: FormBuilder, private userSrv:UsersService, private tokenStorage: TokenStorageService ,private router: Router) {
+  //   this.currentUrl = window.location.pathname;
+  //   this.reelForm = this.fb.group({
+  //     caption: [''],
+  //     newReel: [''],
+  //   });
+  //   this.postForm = this.fb.group({
+  //     caption: [''],
+  //     newPost: [''],
+  //   });
+  //   this.storyForm = this.fb.group({
+  //     caption: [''],
+  //     newStory: [''],
+  //   });
+  // }
 
   // Create new reel
   onSelectReel(event:any) {
@@ -166,16 +166,16 @@ export class SidebarComponent implements OnInit{
     }
   }
 
-  onSubmitReel() {
-    let reelData = new FormData();
-    reelData.append('caption', this.reelForm.get('caption').value);
-    reelData.append('reel', this.reelForm.get('newReel').value);
-    this.reelSrv.AddReel(reelData).subscribe({
-      next: res => console.log(res),
-      error: err => console.log(err)
-    });
-    this.cancelPopUp();
-  }
+  // onSubmitReel() {
+  //   let reelData = new FormData();
+  //   reelData.append('caption', this.reelForm.get('caption').value);
+  //   reelData.append('reel', this.reelForm.get('newReel').value);
+  //   this.reelSrv.AddReel(reelData).subscribe({
+  //     next: res => console.log(res),
+  //     error: err => console.log(err)
+  //   });
+  //   this.cancelPopUp();
+  // }
 
   // Create new post
   onSelectPost(event:any) {
@@ -185,34 +185,34 @@ export class SidebarComponent implements OnInit{
     }
   }
 
-  onSubmitPost() {
-    let postData = new FormData();
-    Object.values(this.postForm.get('newPost').value).forEach((file : File) => {
-      postData.append('images[]', file)
-    });
-    postData.append('caption', this.postForm.get('caption').value);
-    this.postSrv.AddPost(postData).subscribe({
-      next: res => console.log(res),
-      error: err => console.log(err)
-    });
-    this.cancelPopUp();
-  }
+  // onSubmitPost() {
+  //   let postData = new FormData();
+  //   Object.values(this.postForm.get('newPost').value).forEach((file : File) => {
+  //     postData.append('images[]', file)
+  //   });
+  //   postData.append('caption', this.postForm.get('caption').value);
+  //   this.postSrv.AddPost(postData).subscribe({
+  //     next: res => console.log(res),
+  //     error: err => console.log(err)
+  //   });
+  //   this.cancelPopUp();
+  // }
 
   loginUserInfo:any;
-  ngOnInit(): void {
-    this.userSrv.GetLoginUser().subscribe({
-      next: value => {
-        this.loginUserInfo = value;
-        console.log(this.loginUserInfo)
-      },
-      error: err => console.log(err)
-    })
-  }
+  // ngOnInit(): void {
+  //   this.userSrv.GetLoginUser().subscribe({
+  //     next: value => {
+  //       this.loginUserInfo = value;
+  //       console.log(this.loginUserInfo)
+  //     },
+  //     error: err => console.log(err)
+  //   })
+  // }
 
-  logOut(){
-    this.tokenStorage.signOut() ;
-    this.router.navigate(["login"]) ;
-  }
+  // logOut(){
+  //   this.tokenStorage.signOut() ;
+  //   this.router.navigate(["login"]) ;
+  // }
 
 
 
