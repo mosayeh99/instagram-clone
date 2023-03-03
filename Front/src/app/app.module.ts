@@ -38,6 +38,8 @@ import { InteractionsComponent } from './components/activity/activity-components
 import { PhotosComponent } from './components/activity/activity-components/photos/photos.component';
 import { HistoryComponent } from './components/activity/activity-components/history/history.component';
 import { DownloadComponent } from './components/activity/activity-components/download/download.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -76,15 +78,18 @@ import { DownloadComponent } from './components/activity/activity-components/dow
     InteractionsComponent,
     PhotosComponent,
     HistoryComponent,
-    DownloadComponent
+    DownloadComponent,
+
 
 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
