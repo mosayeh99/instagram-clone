@@ -13,6 +13,16 @@ const httpOptions = {
 })
 export class AuthService {
 
+  getAuthStatus() {
+
+    if(window.sessionStorage.getItem("auth-user") !== null){
+      return true 
+    }
+    else{
+      return false
+    }
+  }
+
   constructor(private AuthRes: HttpClient) { }
 
 
