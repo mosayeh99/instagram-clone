@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserCollection;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource ;
@@ -13,6 +14,17 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+    public function getLoginUser()
+    {
+        $user = User::findOrFail(auth('api')->user()->id);
+        return response(new UserResource($user), 200);
+    }
+
+//    public function getUserDetailsByUsername($username)
+//    {
+//        $user = User::where('username', $username)->get();
+//        return response(new UserCollection($user), 200);
+//    }
 
     /**
      * Display a listing of the resource.

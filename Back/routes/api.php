@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\LikeController;
 use App\Http\Controllers\Api\ReelController;
 use App\Http\Controllers\Api\SaveController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\SearchHistoryController;
@@ -42,6 +43,10 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::get('/torres', [AuthController::class, 'torres']);
+
+    // ------------------------Get Login User info--------------
+//    Route::get('users/{username}', [UserController::class, 'getUserDetailsByUsername']);
+    Route::get('users/login', [UserController::class, 'getLoginUser']);
 
     //--------------------------Post------------------------------
     Route::controller(PostController::class)->group(function () {
@@ -123,13 +128,13 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::delete('/follow/unfollow/{id}',[FollowerController::class,'unfollow']);
     Route::get('/follow/user/{id}/followers',[FollowerController::class,'userFollowers'])->name('followers');
     Route::get('/follow/user/{id}/followings',[FollowerController::class,'userFollowings']);
-    
-    
+
+
 
 });
 
 
 // ------------------Stories------------------------
-   Route::get('/stories', [StoryController::class, 'StoryIndex']);   
+   Route::get('/stories', [StoryController::class, 'StoryIndex']);
    Route::post('/stories/add_story',[StoryController::class, 'StoryStore']);
    Route::delete('/stories/delete_story/{id}', [StoryController::class, 'StoryDestroy']);

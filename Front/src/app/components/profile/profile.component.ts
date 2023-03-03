@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {UsersService} from "../../services/users.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent {
-  highlights = 
+export class ProfileComponent implements OnInit {
+  highlights =
         ["assets/images/profile/highlight/story1.jpg",
         "assets/images/profile/highlight/story2.jpg" ,
         "assets/images/profile/highlight/story3.jpg",
@@ -22,7 +24,7 @@ export class ProfileComponent {
         // [
         // "Chelsea" , "Marsilya" , "Man City" , "Arsenal" , "Man United" ,
         // "Byern Munich" , "BVB" , "Benfica" ,"PSG" , "Barcelona"
-      
+
         // ]
   ];
 
@@ -35,12 +37,14 @@ highlightName = [
   nameShow = "";
   count = 0;
   interval:any;
-  constructor() { 
+  username:string;
+  constructor(private userSrv:UsersService, private activeRoute:ActivatedRoute) {
+    this.username = activeRoute.snapshot.params['username'];
+    console.log(this.username);
       this.imageShow = this.highlights[0] ;
       // this.nameShow = this.highlights[1][0] ;
       this.nameShow = this.highlightName[0] ;
     }
-
 
     setting() {
     let alert :any =document.getElementById("alert-overlay");
@@ -55,7 +59,7 @@ highlightName = [
     followers() {
       let alert :any =document.getElementById("alert-overlay");
       let followers :any =document.getElementById("followers-alert-menu");
-        
+
         alert.style.display = "block" ;
         followers.style.transition= " 0.2s ease-in-out" ;
         followers.style.visibility = "visible" ;
@@ -65,7 +69,7 @@ highlightName = [
     following() {
       let alert :any =document.getElementById("alert-overlay");
       let following :any =document.getElementById("following-alert-menu");
-        
+
         alert.style.display = "block" ;
         following.style.transition= " 0.2s ease-in-out" ;
         following.style.visibility = "visible" ;
@@ -83,6 +87,11 @@ highlightName = [
     followers.style.opacity = 0 ;
   }
 
-
+  ngOnInit(): void {
+    // this.userSrv.GetAllUserDetails(this.username).subscribe({
+    //   next: value => console.log(value),
+    //   error: err => console.log(err)
+    // })
+  }
 
 }

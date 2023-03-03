@@ -135,10 +135,10 @@
             <button id="settingBtn"style="border:0; background-color: white;" (click)="openPopUp()">Create</button>
           </div>
         </div>
-        <div class="sidebar-link sidebar-link-profile" routerLinkActive="active" (click)="CloseDrawers()">
-           <a routerLink="/profile">
+        <div *ngIf="loginUserInfo" class="sidebar-link sidebar-link-profile" routerLinkActive="active" (click)="CloseDrawers()">
+           <a routerLink="/profile/{{loginUserInfo.username}}">
           <div class="link-profile-img">
-            <img src="assets/images/sidebar/profile.jpg" alt="Profile Image">
+            <img src="{{loginUserInfo.imageSrc}}" alt="Profile Image">
           </div>
           <div class="link-text link-profile-text">Profile</div>
            </a>
