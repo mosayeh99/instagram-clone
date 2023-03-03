@@ -10,7 +10,7 @@ export class SearchHistoriesService {
 
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': `Bearer `
+    'Authorization': `Bearer ${JSON.parse(sessionStorage.getItem('auth-user')).token}`
   });
 
   private BaseUrl = "http://localhost:8000/api/search";
@@ -26,7 +26,7 @@ export class SearchHistoriesService {
   DeleteHistory(id:any){
     return this.searchRes.delete(this.BaseUrl+'/deleteHistory/'+ id,{headers: this.headers});
   }
-  
+
   GetUsersFromSearchHistory(id:any){
     return this.searchRes.get(this.BaseUrl+'/History/'+ id +'/users',{headers: this.headers});
 
