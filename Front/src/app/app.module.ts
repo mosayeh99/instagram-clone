@@ -38,10 +38,6 @@ import { InteractionsComponent } from './components/activity/activity-components
 import { PhotosComponent } from './components/activity/activity-components/photos/photos.component';
 import { HistoryComponent } from './components/activity/activity-components/history/history.component';
 import { DownloadComponent } from './components/activity/activity-components/download/download.component';
-<<<<<<< HEAD
-import { FormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
-=======
 import { ACtivityPhotosPostsComponent } from './components/activity/activity-components/photos/activity-photos-posts/activity-photos-posts.component';
 import { ACtivityPhotosReelsComponent } from './components/activity/activity-components/photos/activity-photos-reels/activity-photos-reels.component';
 import { ACtivityPhotosVideosComponent } from './components/activity/activity-components/photos/activity-photos-videos/activity-photos-videos.component';
@@ -52,7 +48,6 @@ import { ACtivityInteractionsRepliesComponent } from './components/activity/acti
 import { ACtivityInteractionsReviewsComponent } from './components/activity/activity-components/interactions/activity-interactions-reviews/activity-interactions-reviews.component';
 import {HttpClientModule} from "@angular/common/http";
 import { AuthGuard } from './services/auth.guard';
->>>>>>> main
 
 @NgModule({
   declarations: [
@@ -92,11 +87,6 @@ import { AuthGuard } from './services/auth.guard';
     PhotosComponent,
     HistoryComponent,
     DownloadComponent,
-<<<<<<< HEAD
-
-
-
-=======
     ACtivityPhotosPostsComponent,
     ACtivityPhotosReelsComponent,
     ACtivityPhotosVideosComponent,
@@ -105,18 +95,10 @@ import { AuthGuard } from './services/auth.guard';
     ACtivityInteractionsCommentsComponent,
     ACtivityInteractionsRepliesComponent,
     ACtivityInteractionsReviewsComponent,
-    
->>>>>>> main
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-<<<<<<< HEAD
-    FormsModule,
-    HttpClientModule
-  ],
-  providers: [ ],
-=======
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule
@@ -124,7 +106,7 @@ import { AuthGuard } from './services/auth.guard';
   providers: [
     AuthGuard
   ],
->>>>>>> main
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
