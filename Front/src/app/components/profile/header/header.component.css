@@ -364,3 +364,69 @@ Remove or comment-out the code block below to see how the browser will fall-back
         }
     }
 }
+
+
+/* --------Followers and Following pop up display-------- */
+
+  .search-drawer-result .recent-search-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+    max-height: calc(100vh - 200px);
+    padding-bottom: 20px;
+  }
+  
+  .recent-search-content .recent-search-user {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+  }
+  
+  .recent-search-user .result-user-img img {
+    width: 44px;
+  }
+  
+  .recent-search-user .result-user-info {
+    flex: 1;
+    padding-left: 12px;
+    font-size: 14px;
+  }
+  
+  .result-user-info .user-unique-name {
+    font-weight: 500;
+    padding-bottom: 4px;
+    margin-bottom: 0;
+  }
+  
+  .result-user-info .user-name {
+    color: var(--secondry-text);
+    margin-bottom: 0;
+  }
+  
+  .recent-search-user .clear-user-result-btn {
+    cursor: pointer;
+  }
+
+  
+  .line {
+    height: 1px;
+    width: 100%;
+    background-color: #dbdbdb;
+  }
+
+  /* .separator {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #999;
+    margin-top: 6px;
+  } */
+
+  .green {
+    background-color: green;
+}
+
+.red {
+    background-color: red;
+}

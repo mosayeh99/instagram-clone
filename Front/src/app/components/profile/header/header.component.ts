@@ -1,11 +1,33 @@
-import { Component } from '@angular/core';
+import { Component ,OnInit } from '@angular/core';
+import { count } from 'rxjs';
+import { FollowersService } from 'src/app/services/followers.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+  FollowersNumber:any;
+  FollowingsNumber:any;
+  FollowersName:any;
+  FollowingsName:any;
+
+  //Follow Test Button
+  toggle = true;
+status = 'Follow'; 
+
+enableDisableRule() {
+    this.toggle = !this.toggle;
+    this.status = this.toggle ? 'Follow' : 'UnFollow';
+    if(this.status == 'UnFollow' ){
+      this.FollowerService.MakeFollow('3').subscribe();
+      this.ngOnInit();
+    }else if (this.status == 'Follow' ) {
+      this.FollowerService.MakeUnfollow('3').subscribe();
+      this.ngOnInit();
+    }
+}
   setting() {
     let alert :any =document.getElementById("alert-overlay");
     let setting :any =document.getElementById("setting-alert-menu");
@@ -24,6 +46,17 @@ export class HeaderComponent {
         followers.style.transition= " 0.2s ease-in-out" ;
         followers.style.visibility = "visible" ;
         followers.style.opacity = 1 ;
+
+      this.FollowerService.GetAllFollowers('1').subscribe(
+        {
+          next:(data)=>{
+            this.FollowersName = data;
+            console.log(data);
+  
+          },
+          error:(err)=>{} 
+        }
+      ) 
       }
 
     following() {
@@ -34,6 +67,18 @@ export class HeaderComponent {
         following.style.transition= " 0.2s ease-in-out" ;
         following.style.visibility = "visible" ;
         following.style.opacity = 1 ;
+
+        this.FollowerService.GetAllFollowings('1').subscribe(
+          {
+            next:(data)=>{
+              this.FollowingsName = data;
+              console.log(data);
+    
+            },
+            error:(err)=>{} 
+          }
+        ) 
+
       }
 
     cancel(){
@@ -49,4 +94,32 @@ export class HeaderComponent {
     following.style.visibility = "hidden" ;
     following.style.opacity = 0 ;
   }
-}
+
+  constructor(public FollowerService:FollowersService){}
+  ngOnInit(): void {
+    // throw new Error('Method not implemented.');
+    this.FollowerService.GetFollowersNumber('1').subscribe(
+      {
+        next:(data)=>{
+          this.FollowersNumber = data;
+          console.log(data);
+        },
+        error:(err)=>{}
+      }
+    )
+
+    this.FollowerService.GetFollowingsNumber('1').subscribe(
+      {
+        next:(data)=>{
+          this.FollowingsNumber = data;
+          console.log(data);
+
+        },
+        error:(err)=>{}
+      }
+    )
+
+
+    
+  }
+  }

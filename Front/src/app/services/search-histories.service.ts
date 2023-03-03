@@ -15,8 +15,8 @@ export class SearchHistoriesService {
 
   private BaseUrl = "http://localhost:8000/api/search";
 
-  StoreSearchedUserByID(user:any, id:any){
-    return this.searchRes.post(this.BaseUrl+'/store/'+id, user,{headers: this.headers});
+  StoreSearchedUserByID( id:any){
+    return this.searchRes.post(this.BaseUrl+'/store/'+id, {headers: this.headers});
   }
 
   GetUserByName(name:any){
@@ -29,6 +29,11 @@ export class SearchHistoriesService {
   
   GetUsersFromSearchHistory(id:any){
     return this.searchRes.get(this.BaseUrl+'/History/'+ id +'/users',{headers: this.headers});
+
+  }
+
+  DeleteAllHistory(){
+    return this.searchRes.delete(this.BaseUrl+'/deleteAllHistory',{headers: this.headers});
 
   }
 
