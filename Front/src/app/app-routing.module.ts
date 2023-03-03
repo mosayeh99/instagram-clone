@@ -39,20 +39,22 @@ import { ACtivityPhotosPostsComponent } from './components/activity/activity-com
 import { ACtivityPhotosReelsComponent } from './components/activity/activity-components/photos/activity-photos-reels/activity-photos-reels.component';
 import { ACtivityPhotosVideosComponent } from './components/activity/activity-components/photos/activity-photos-videos/activity-photos-videos.component';
 import { ACtivityPhotosHighlightsComponent } from './components/activity/activity-components/photos/activity-photos-highlights/activity-photos-highlights.component';
+import { AuthGuard } from './services/auth.guard';
 const routes: Routes = [
-  {path:'', component: HomeComponent},
+  {path:'', component: HomeComponent,canActivate:[AuthGuard]},
   {path:'login', component:LoginComponent},
   {path:'register', component:RegisterComponent},
-  {path:'profile', component:ProfileComponent , children: [
+  {path:'profile/:username', component:ProfileComponent ,canActivate:[AuthGuard] , children: [
     {path:'', component:GalleryComponent},
     {path:'myreels', component:MyreelsComponent},
     {path:'saved', component:SavedComponent},
     {path:'tagged', component:TaggedComponent},
-  ]},
-  {path:'explore', component:ExploreComponent},
-  {path:'reels', component:ReelsComponent},
-  {path:'messages', component:MessagesComponent},
-  {path:'settings', component:SettingsComponent,children: [
+  ],
+ },
+  {path:'explore', component:ExploreComponent,canActivate:[AuthGuard]},
+  {path:'reels', component:ReelsComponent,canActivate:[AuthGuard]},
+  {path:'messages', component:MessagesComponent,canActivate:[AuthGuard]},
+  {path:'settings', component:SettingsComponent,canActivate:[AuthGuard],children: [
     {path:"",component:EditProfileComponent},
     {path:"changepassword",component:ChangePasswordComponent},
     {path:"appsandwebsites",component:AppsAndWebsitesComponent},
@@ -67,14 +69,14 @@ const routes: Routes = [
     {path:"help",component:HelpComponent},
     {path:"digitalcollectibles",component:DigitalCollectiblesComponent},
   ]},
-  {path:'activity', component:ActivityComponent,children:[
+  {path:'activity', component:ActivityComponent,canActivate:[AuthGuard],children:[
     {path:"interactions",component:InteractionsComponent,children:[
       {path:"",component:ACtivityInteractionslikesComponent},
       {path:"comments",component:ACtivityInteractionsCommentsComponent},
       {path:"story_replies",component:ACtivityInteractionsRepliesComponent},
       {path:"reviews",component:ACtivityInteractionsReviewsComponent}
     ]},
-    {path:"photos_and_videos",component:PhotosComponent,children:[
+    {path:"photos_and_videos",component:PhotosComponent,canActivate:[AuthGuard],children:[
       {path:"",component:ACtivityPhotosPostsComponent},
       {path:"reels",component:ACtivityPhotosReelsComponent},
       {path:"videos",component:ACtivityPhotosVideosComponent},
@@ -83,11 +85,12 @@ const routes: Routes = [
     {path:"account_history",component:HistoryComponent},
     {path:"download",component:DownloadComponent}
   ]},
-  
+
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }

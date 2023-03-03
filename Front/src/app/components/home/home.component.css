@@ -1,12 +1,6 @@
 * {
-
   border: none;
 }
-
-/* body {
-  font-family: -apple-system, system-ui, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  background: #fafafa;
-} */
 
 .navbar {
   position: fixed;
@@ -20,13 +14,11 @@
 }
 
 .navbar .container {
-  /* background-color: #555; */
   padding: 15px 0;
   width: 75%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* margin: 0 auto; */
 }
 
 .container .logo {
@@ -57,7 +49,6 @@
 .nav-links {
   font-weight: lighter;
   color: rgb(172, 172, 172);
-  /* background: #333  ; */
 }
 
 .nav-group .nav-item {
@@ -99,7 +90,6 @@
 main {
   width: calc(100vw - 220px);
   margin-left: auto;
-  /* width: 100%; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -108,17 +98,14 @@ main {
 
 main .container {
   position: relative;
-  /* margin-top: 60px; */
   width: 65%;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  /* background: #ddd; */
 }
 
 .col-9 {
   width: 65%;
-  /* margin-top: 30px; */
 }
 
 .statuses {
@@ -173,7 +160,6 @@ main .container {
   width: 33%;
   position: -webkit-sticky;
   position: sticky;
-  /* top: 90px; */
 }
 
 .col-3 h4 {
@@ -184,7 +170,6 @@ main .container {
   margin-bottom: 20px;
   position: relative;
   width: 100%;
-  /* min-height: 400px; */
   display: inline-block;
 }
 
@@ -218,30 +203,20 @@ main .container {
 
 .col-3 .card .top .userDetails h3 span {
   font-size: 0.75em;
-}
-
-.col-3 .card .top .userDetails h3 span {
-  font-size: 0.75em;
+  color: var(--secondry-text);
 }
 
 .col-9 .card {
   margin-bottom: 20px;
   position: relative;
   width: 100%;
-  /* min-height: 400px; */
   display: inline-block;
-  /* border: 1px solid rgba(7, 7, 7, 0.24); */
 }
 
 .col-9 .card .top {
-  /* padding: 10px 20px; */
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.col-9 .card .bottom {
-  padding: 10px 20px;
 }
 
 .col-9 .card .top .userDetails {
@@ -299,7 +274,6 @@ main .container {
 }
 
 .col-9 .card .top .userDetails h3 {
-  /* width: 100%; */
   font-size: 16px;
   color: #4d4d4f;
   font-weight: 500;
@@ -330,6 +304,17 @@ main .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 15px;
+}
+
+.actionBtns .heart svg,
+.actionBtns .right svg {
+  display: none;
+}
+
+.actionBtns .heart svg.active,
+.actionBtns .right svg.active {
+  display: inline-block;
 }
 
 .actionBtns svg {
@@ -349,10 +334,9 @@ main .container {
 
 .message {
   font-weight: 400;
-  margin-top: 5px;
   font-size: 14px;
   color: #777;
-  line-height: 1.5em;
+  margin-bottom: 14px;
 }
 
 .message b {
@@ -365,29 +349,24 @@ main .container {
 }
 
 .comments {
-  margin-top: 10px;
   font-weight: 400;
-  color: #999;
+  color: var(--secondry-text);
+  font-size: 14px;
 }
 
 .addComments {
   display: flex;
   align-items: center;
-  margin-top: 20px;
-  border-top: 1px solid #ddd;
-  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 20px;
+  margin: 12px 0;
 }
 
-.addComments a {
+.addComments button {
   color: #1d92ffcb;
   font-weight: 500;
-}
-
-.addComments .reaction {
-  position: relative;
-  font-size: 1.3rem;
-  margin-right: 10px;
-  color: rgb(88, 88, 88);
+  background-color: transparent;
+  border: 0;
 }
 
 input.text {

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Observable, Subject, tap} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -9,11 +10,14 @@ export class ReelsService {
   constructor(private reelsRes:HttpClient) { }
 
   private headers = new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer 1|286ZJOvJJHvhNCfelaouXZ9LAz6OgO1gvzbPKUs9`
+    "Accept": 'application/json',
+    "Authorization": `Bearer 1|286ZJOvJJHvhNCfelaouXZ9LAz6OgO1gvzbPKUs9`
   });
 
   private BaseUrl = "http://localhost:8000/api/reels";
+  GetAllReels() {
+    return this.reelsRes.get(this.BaseUrl,{headers: this.headers});
+  }
   GetAllUserReels(id: any){
     return this.reelsRes.get(this.BaseUrl+'/user/'+id,{headers: this.headers});
   }

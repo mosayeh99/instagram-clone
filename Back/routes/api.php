@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\LikeController;
 use App\Http\Controllers\Api\ReelController;
 use App\Http\Controllers\Api\SaveController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\SearchHistoryController;
@@ -46,9 +47,14 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::get('/torres', [AuthController::class, 'torres']);
 
+    // ------------------------Get Login User info--------------
+//    Route::get('users/{username}', [UserController::class, 'getUserDetailsByUsername']);
+    Route::get('users/login', [UserController::class, 'getLoginUser']);
+
     //--------------------------Post------------------------------
     Route::controller(PostController::class)->group(function () {
-        Route::get('posts/user/{id}', 'index');
+        Route::get('posts', 'index');
+        Route::get('posts/user/{id}', 'getUserPosts');
         Route::post('posts', 'store');
         Route::get('posts/{id}', 'show');
         Route::PUT('posts/{id}', 'update');
@@ -57,7 +63,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     //--------------------------Reel------------------------------
     Route::controller(ReelController::class)->group(function () {
-        Route::get('reels/user/{id}', 'index');
+        Route::get('reels', 'index');
+        Route::get('reels/user/{id}', 'getUserReels');
         Route::post('reels', 'store');
         Route::get('reels/{id}', 'show');
         Route::PUT('reels/{id}', 'update');
@@ -95,11 +102,11 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::controller(SaveController::class)->group(function () {
         // post
         Route::post('saves/post/{id}', 'addPostToSaved');
-        Route::DELETE('saves/post/{id}', 'removePostFromSaved');
+        Route::DELETE('saves/post/{id}/delete', 'removePostFromSaved');
         Route::get('saves/post/user/{id}', 'savedPosts');
         // reel
         Route::post('saves/reel/{id}', 'addReelToSaved');
-        Route::DELETE('saves/reel/{id}', 'removeReelFromSaved');
+        Route::DELETE('saves/reel/{id}/delete', 'removeReelFromSaved');
         Route::get('saves/reel/user/{id}', 'savedReels');
     });
 
@@ -125,14 +132,13 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::delete('/follow/unfollow/{id}',[FollowerController::class,'unfollow']);
     Route::get('/follow/user/{id}/followers',[FollowerController::class,'userFollowers'])->name('followers');
     Route::get('/follow/user/{id}/followings',[FollowerController::class,'userFollowings']);
-    
-    
 
-    // ------------------Stories------------------------
-    Route::get('/stories/Stories_testing',[StoryController::class, 'StoryIndex']);
-    Route::get('/stories/add_story',[StoryController::class, 'StoryCreate']);
-    Route::post('/stories/add_story',[StoryController::class, 'StoryStore']);
-    Route::delete('/stories/Stories_testing/delete_story/{id}',[StoryController::class, 'StoryDestroy']);
+
 
 });
 
+
+// ------------------Stories------------------------
+   Route::get('/stories', [StoryController::class, 'StoryIndex']);
+   Route::post('/stories/add_story',[StoryController::class, 'StoryStore']);
+   Route::delete('/stories/delete_story/{id}', [StoryController::class, 'StoryDestroy']);

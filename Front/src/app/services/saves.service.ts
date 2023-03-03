@@ -15,22 +15,22 @@ export class SavesService {
 
   private BaseUrl = "http://localhost:8000/api/saves";
 
-  AddPostToSaved(user:any, id:any) {
-    return this.savesRes.post(this.BaseUrl+'/post/'+id, user,{headers: this.headers});
+  AddPostToSaved(id:string) {
+    return this.savesRes.post(this.BaseUrl+'/post/'+id, '',{headers: this.headers});
   }
-  RemovePostFromSaved(id:any) {
-    return this.savesRes.delete(this.BaseUrl+'/post/'+id,{headers: this.headers});
+  RemovePostFromSaved(id:string) {
+    return this.savesRes.delete(this.BaseUrl+'/post/'+id+'/delete',{headers: this.headers});
   }
-  GetAllUserSavedPosts(id:any) {
+  GetAllUserSavedPosts(id:string) {
     return this.savesRes.get(this.BaseUrl+'/post/user/'+id,{headers: this.headers});
   }
-  AddReelToSaved(user:any, id:any) {
-    return this.savesRes.post(this.BaseUrl+'/reel/'+id, user,{headers: this.headers});
+  AddReelToSaved(id:string) {
+    return this.savesRes.post(this.BaseUrl+'/reel/'+id, '',{headers: this.headers});
   }
-  RemoveReelFromSaved(id:any) {
-    return this.savesRes.delete(this.BaseUrl+'/reel/'+id,{headers: this.headers});
+  RemoveReelFromSaved(id:string) {
+    return this.savesRes.delete(this.BaseUrl+'/reel/'+id+'/delete',{headers: this.headers});
   }
-  GetAllUserSavedReels(id:any) {
+  GetAllUserSavedReels(id:string) {
     return this.savesRes.get(this.BaseUrl+'/reel/user/'+id,{headers: this.headers});
   }
 }

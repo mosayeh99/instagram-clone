@@ -8,11 +8,14 @@ export class PostsService {
   constructor(private postsRes:HttpClient) { }
 
   private headers = new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${localStorage.getItem('token')}`
+    'Accept': 'application/json',
+    'Authorization': `Bearer 1|286ZJOvJJHvhNCfelaouXZ9LAz6OgO1gvzbPKUs9`
   });
 
   private BaseUrl = "http://localhost:8000/api/posts";
+  GetAllPosts(){
+    return this.postsRes.get(this.BaseUrl,{headers: this.headers});
+  }
   GetAllUserPosts(id: any){
     return this.postsRes.get(this.BaseUrl+'/user/'+id, {headers: this.headers});
   }

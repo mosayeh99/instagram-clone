@@ -1,6 +1,8 @@
 import { Component , OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { StoriesService} from 'src/app/services/stories.service';
+import { CommentsService } from 'src/app/services/comments.service';
+import { LikesService } from 'src/app/services/likes.service';
+import { PostsService } from 'src/app/services/posts.service';
+import { SavesService } from 'src/app/services/saves.service';
 
 @Component({
   selector: 'app-home',
@@ -8,17 +10,37 @@ import { StoriesService} from 'src/app/services/stories.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  stories:any;
-  id=0;
-  constructor(public myService:StoriesService , myActivate:ActivatedRoute) {
-  this.id = myActivate.snapshot.params["id"];
-  }
+  posts:any;
+  constructor(private postSrv:PostsService, private likeSrv:LikesService, private saveSrv:SavesService, private commentSrv:CommentsService) {}
+
   ngOnInit(): void {
-    this.myService.GetAllStories().subscribe({
-      next:(data)=>{this.stories = data;},
-    });
-    this.myService.DeleteStory(this.id).subscribe({
-      next:(data)=>{this.stories = data;},
+    this.postSrv.GetAllPosts().subscribe({
+      next: data => {this.posts = data; console.log(data)},
+      error: err => console.log(err)
     })
+  }
+
+  onAddComment(id:string, event:any) {
+    let comment = event.target.previousElementSibling.value;
+    if(comment){
+      this.commentSrv.AddPostComment({"body":comment},id).subscribe({
+        next: res => console.log(res),
+        error: err => console.log(err)
+      });
+      event.target.previousElementSibling.value = '';
+    }
+  }
+
+  onAddPostLike(id:string){
+    this.likeSrv.AddPostLike(id).subscribe();
+  }
+  onRemovePostLike(id:string){
+    this.likeSrv.RemovePostLike(id).subscribe();
+  }
+  onAddPostToSaved(id:string){
+    this.saveSrv.AddPostToSaved(id).subscribe();
+  }
+  onRemovePostFromSaved(id:string){
+    this.saveSrv.RemovePostFromSaved(id).subscribe();
   }
 }

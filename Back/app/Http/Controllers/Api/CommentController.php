@@ -25,11 +25,11 @@ class CommentController extends Controller
     {
         $post = Post::findOrFail($id);
         $post->comments()->create([
+            'user_id' => auth('api')->user()->id,
             'body' => $request->body,
-            'user_id' => '4',
             'replied_comment_id' => $request->repliedCommentId,
         ]);
-        return response('Comment Added', 201);
+        return response(["msg"=>'Comment Added'], 201);
     }
 
     //--------------------Reel Comments---------------------
@@ -46,11 +46,11 @@ class CommentController extends Controller
     {
         $reel = Reel::findOrFail($id);
         $reel->comments()->create([
+            'user_id' => auth('api')->user()->id,
             'body' => $request->body,
-            'user_id' => '1',
             'replied_comment_id' => $request->repliedCommentId,
         ]);
-        return response('Comment Saved', 201);
+        return response(["msg"=>'Comment Saved'], 201);
     }
 
     //--------------------Comment Replies---------------------
