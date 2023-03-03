@@ -2,15 +2,16 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { PostsService } from 'src/app/services/posts.service';
 import { ReelsService } from 'src/app/services/reels.service';
 import { TokenStorageService } from '../../services/token-storage.service';
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit{
   isSearchActive:boolean = false;
   isNotificationActive:boolean = false;
   isSidebarTextActive:boolean = true;
@@ -69,7 +70,7 @@ export class SidebarComponent {
   postForm: FormGroup;
   storyForm: FormGroup;
 
-  constructor(private reelSrv:ReelsService, private postSrv:PostsService, private fb: FormBuilder, private tokenStorage: TokenStorageService ,private router: Router) {
+  constructor(private reelSrv:ReelsService, private postSrv:PostsService, private fb: FormBuilder, private userSrv:UsersService, private tokenStorage: TokenStorageService ,private router: Router) {
     this.currentUrl = window.location.pathname;
     this.reelForm = this.fb.group({
       caption: [''],
@@ -125,6 +126,16 @@ export class SidebarComponent {
     this.cancelPopUp();
   }
 
+  loginUserInfo:any;
+  ngOnInit(): void {
+    this.userSrv.GetLoginUser().subscribe({
+      next: value => {
+        this.loginUserInfo = value;
+        console.log(this.loginUserInfo)
+      },
+      error: err => console.log(err)
+    })
+  }
 
   logOut(){
     this.tokenStorage.signOut() ;

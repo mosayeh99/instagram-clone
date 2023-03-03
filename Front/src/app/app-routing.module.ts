@@ -43,7 +43,7 @@ const routes: Routes = [
   {path:'', component: HomeComponent},
   {path:'login', component:LoginComponent},
   {path:'register', component:RegisterComponent},
-  {path:'profile', component:ProfileComponent , children: [
+  {path:'profile/:username', component:ProfileComponent , children: [
     {path:'', component:GalleryComponent},
     {path:'myreels', component:MyreelsComponent},
     {path:'saved', component:SavedComponent},
@@ -83,7 +83,7 @@ const routes: Routes = [
     {path:"account_history",component:HistoryComponent},
     {path:"download",component:DownloadComponent}
   ]},
-  
+
 ];
 
 @NgModule({
