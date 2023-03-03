@@ -22,12 +22,12 @@ document.addEventListener('click', (e) => {
   }
 });
 
-function addHeart(e){
+function addReelHeart(e){
   e.classList.toggle('active');
   e.nextElementSibling.classList.toggle('active');
   e.parentElement.nextElementSibling.textContent = Number(e.parentElement.nextElementSibling.textContent) +1;
 }
-function removeHeart(e){
+function removeReelHeart(e){
   e.classList.toggle('active');
   e.previousElementSibling.classList.toggle('active');
   e.parentElement.nextElementSibling.textContent = Number(e.parentElement.nextElementSibling.textContent) -1;

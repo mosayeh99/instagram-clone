@@ -37,11 +37,11 @@ class PostController extends Controller
             $images[] = "images/$path";
         }
         Post::create([
-            'user_id' => '1',
+            'user_id' => auth('api')->user()->id,
             'caption' => $request->caption,
             'img_src' => $images
         ]);
-        return response('Post Created successfully',201);
+        return response(["msg"=>'Post Created successfully'], 201);
     }
 
     public function show($id)
@@ -62,7 +62,7 @@ class PostController extends Controller
         $post->update([
             'caption' => $request->caption,
         ]);
-        return response('Post Updated',200);
+        return response(["msg"=>'Post Updated'], 200);
     }
 
     public function destroy($id)

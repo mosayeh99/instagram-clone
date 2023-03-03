@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -47,14 +47,13 @@ import { ACtivityInteractionsCommentsComponent } from './components/activity/act
 import { ACtivityInteractionsRepliesComponent } from './components/activity/activity-components/interactions/activity-interactions-replies/activity-interactions-replies.component';
 import { ACtivityInteractionsReviewsComponent } from './components/activity/activity-components/interactions/activity-interactions-reviews/activity-interactions-reviews.component';
 import {HttpClientModule} from "@angular/common/http";
-import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
     ProfileComponent,
-    HomeComponent,    
+    HomeComponent,
     ExploreComponent,
     ReelsComponent,
     MessagesComponent,
@@ -103,7 +102,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
