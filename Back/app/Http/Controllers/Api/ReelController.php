@@ -33,11 +33,11 @@ class ReelController extends Controller
         $file = $request->file('reel');
         $path = $file->store('reels', 'reelsDisk');
         $reel = Reel::create([
-            'user_id' => '1',
+            'user_id' => auth('api')->user()->id,
             'caption' => $request->caption,
             'reel_src' => "videos/$path",
         ]);
-        return response('Reel Created successfully',201);
+        return response(["msg"=>'Reel Created successfully'],201);
     }
 
     public function show($id)
@@ -58,12 +58,12 @@ class ReelController extends Controller
         $reel->update([
             'caption' => $request->caption,
         ]);
-        return response('Reel Updated',200);
+        return response(["msg"=>'Reel Updated'],200);
     }
 
     public function destroy($id)
     {
         Reel::destroy($id);
-        return response('Reel Deleted',200);
+        return response(["msg"=>'Reel Deleted'],200);
     }
 }

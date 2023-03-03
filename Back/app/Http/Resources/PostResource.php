@@ -22,6 +22,8 @@ class PostResource extends JsonResource
             'images' => $this->img_src,
             'likesCount' => $this->likes()->count(),
             'commentsCount' => $this->comments()->count(),
+            'likeStatus' => $this->likes->where('user_id', auth('api')->user()->id)->count(),
+            'saveStatus' => $this->saves->where('user_id', auth('api')->user()->id)->count(),
             'createdSince' => Carbon::parse($this->created_at)->shortAbsoluteDiffForHumans(),
         ];
     }

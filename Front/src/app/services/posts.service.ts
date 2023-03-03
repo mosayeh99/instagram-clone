@@ -8,8 +8,8 @@ export class PostsService {
   constructor(private postsRes:HttpClient) { }
 
   private headers = new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${localStorage.getItem('token')}`
+    'Accept': 'application/json',
+    'Authorization': `Bearer 1|286ZJOvJJHvhNCfelaouXZ9LAz6OgO1gvzbPKUs9`
   });
 
   private BaseUrl = "http://localhost:8000/api/posts";

@@ -17,14 +17,14 @@ class LikeController extends Controller
         $post->likes()->create([
             'user_id' => auth('api')->user()->id
         ]);
-        return response('Like Add Successfully', 201);
+        return response(["msg"=>'Like Add Successfully'], 201);
     }
 
     public function removePostLike($id)
     {
         $post = Post::findOrFail($id);
         $post->likes()->where('user_id', auth('api')->user()->id)->delete();
-        return response('Like Removed', 200);
+        return response(["msg"=>'Like Removed'], 200);
     }
 
     public function postUsersLikes($id)
@@ -43,14 +43,14 @@ class LikeController extends Controller
         $reel->likes()->create([
             'user_id' => auth('api')->user()->id,
         ]);
-        return response(['msg'=>'Like Add Successfully'], 201);
+        return response(["msg"=>'Like Add Successfully'], 201);
     }
 
     public function removeReelLike($id)
     {
         $reel = Reel::findOrFail($id);
         $reel->likes()->where('user_id', auth('api')->user()->id)->delete();
-        return response(['msg'=>'Like Removed'], 200);
+        return response(["msg"=>'Like Removed'], 200);
     }
 
     public function reelUsersLikes($id)
@@ -67,13 +67,13 @@ class LikeController extends Controller
     {
         $comment = Comment::findOrFail($id);
         $comment->likes()->create(['user_id' => auth('api')->user()->id]);
-        return response(['msg'=>'Like Add Successfully'], 201);
+        return response(["msg"=>'Like Add Successfully'], 201);
     }
 
     public function removeCommentLike($id)
     {
         $comment = Comment::findOrFail($id);
         $comment->likes()->where('user_id', auth('api')->user()->id)->delete();
-        return response(['msg'=>'Like Removed'], 200);
+        return response(["msg"=>"Like Removed"], 200);
     }
 }
