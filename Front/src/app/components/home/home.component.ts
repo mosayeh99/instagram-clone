@@ -1,11 +1,8 @@
 import { Component , OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
 import { CommentsService } from 'src/app/services/comments.service';
 import { LikesService } from 'src/app/services/likes.service';
 import { PostsService } from 'src/app/services/posts.service';
 import { SavesService } from 'src/app/services/saves.service';
-import { StoriesService} from 'src/app/services/stories.service';
 
 @Component({
   selector: 'app-home',

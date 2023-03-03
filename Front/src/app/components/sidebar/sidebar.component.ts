@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
-import {Component, OnInit} from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { PostsService } from 'src/app/services/posts.service';
 import { ReelsService } from 'src/app/services/reels.service';
+import { TokenStorageService } from '../../services/token-storage.service';
+import {Component} from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -68,7 +69,7 @@ export class SidebarComponent {
   postForm: FormGroup;
   storyForm: FormGroup;
 
-  constructor(private reelSrv:ReelsService, private postSrv:PostsService, private fb: FormBuilder) {
+  constructor(private reelSrv:ReelsService, private postSrv:PostsService, private fb: FormBuilder, private tokenStorage: TokenStorageService ,private router: Router) {
     this.currentUrl = window.location.pathname;
     this.reelForm = this.fb.group({
       caption: [''],
@@ -122,5 +123,11 @@ export class SidebarComponent {
       error: err => console.log(err)
     });
     this.cancelPopUp();
+  }
+
+
+  logOut(){
+    this.tokenStorage.signOut() ;
+    this.router.navigate(["login"]) ;
   }
 }
