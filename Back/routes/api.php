@@ -48,8 +48,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/torres', [AuthController::class, 'torres']);
 
     // ------------------------Get Login User info--------------
-//    Route::get('users/{username}', [UserController::class, 'getUserDetailsByUsername']);
-    Route::get('users/login', [UserController::class, 'getLoginUser']);
+    Route::get('users/{username}', [UserController::class, 'getUserDetailsByUsername']);
+    Route::get('users/get/info', [UserController::class, 'getLoginUser']);
 
     //--------------------------Post------------------------------
     Route::controller(PostController::class)->group(function () {

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\UserCollection;
+use App\Http\Resources\UserDetailsResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource ;
@@ -20,11 +20,11 @@ class UserController extends Controller
         return response(new UserResource($user), 200);
     }
 
-//    public function getUserDetailsByUsername($username)
-//    {
-//        $user = User::where('username', $username)->get();
-//        return response(new UserCollection($user), 200);
-//    }
+    public function getUserDetailsByUsername($username)
+    {
+        $user = User::where('username', $username)->first();
+        return response(new UserDetailsResource($user), 200);
+    }
 
     /**
      * Display a listing of the resource.
