@@ -88,10 +88,10 @@ highlightName = [
   }
 
   ngOnInit(): void {
-    // this.userSrv.GetAllUserDetails(this.username).subscribe({
-    //   next: value => console.log(value),
-    //   error: err => console.log(err)
-    // })
+    this.userSrv.GetAllUserDetails(this.username).subscribe({
+      next: value => console.log(value),
+      error: err => console.log(err)
+    })
   }
 
 }

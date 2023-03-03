@@ -10,16 +10,16 @@ export class UsersService {
 
   private headers = new HttpHeaders({
     'Accept': 'application/json',
-    'Authorization': `Bearer 1|286ZJOvJJHvhNCfelaouXZ9LAz6OgO1gvzbPKUs9`
+    'Authorization': `Bearer ${JSON.parse(sessionStorage.getItem('auth-user')).token}`
   });
 
   private BaseUrl = "http://localhost:8000/api/users";
 
   GetLoginUser() {
-    return this.userRes.get(this.BaseUrl+'/login', {headers: this.headers});
+    return this.userRes.get(this.BaseUrl+'/get/info', {headers: this.headers});
   }
 
-  // GetAllUserDetails(username:string) {
-  //   return this.userRes.get(this.BaseUrl+'/'+username, {headers: this.headers});
-  // }
+  GetAllUserDetails(username:string) {
+    return this.userRes.get(this.BaseUrl+'/'+username, {headers: this.headers});
+  }
 }

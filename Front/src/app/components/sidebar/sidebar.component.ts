@@ -129,10 +129,7 @@ export class SidebarComponent implements OnInit{
   loginUserInfo:any;
   ngOnInit(): void {
     this.userSrv.GetLoginUser().subscribe({
-      next: value => {
-        this.loginUserInfo = value;
-        console.log(this.loginUserInfo)
-      },
+      next: value => this.loginUserInfo = value,
       error: err => console.log(err)
     })
   }
