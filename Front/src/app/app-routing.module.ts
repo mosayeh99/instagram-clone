@@ -41,9 +41,9 @@ import { ACtivityPhotosVideosComponent } from './components/activity/activity-co
 import { ACtivityPhotosHighlightsComponent } from './components/activity/activity-components/photos/activity-photos-highlights/activity-photos-highlights.component';
 import { AuthGuard } from './services/auth.guard';
 const routes: Routes = [
-  {path:'', component: HomeComponent,canActivate:[AuthGuard]},
   {path:'login', component:LoginComponent},
   {path:'register', component:RegisterComponent},
+  {path:'', component: HomeComponent,canActivate:[AuthGuard]},
   {path:'profile', component:ProfileComponent ,canActivate:[AuthGuard] , children: [
     {path:'', component:GalleryComponent},
     {path:'myreels', component:MyreelsComponent},

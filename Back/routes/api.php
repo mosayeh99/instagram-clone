@@ -123,13 +123,13 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::delete('/follow/unfollow/{id}',[FollowerController::class,'unfollow']);
     Route::get('/follow/user/{id}/followers',[FollowerController::class,'userFollowers'])->name('followers');
     Route::get('/follow/user/{id}/followings',[FollowerController::class,'userFollowings']);
-    
-    
+
+
 
 });
 
 
 // ------------------Stories------------------------
-   Route::get('/stories', [StoryController::class, 'StoryIndex']);   
+   Route::get('/stories', [StoryController::class, 'StoryIndex']);
    Route::post('/stories/add_story',[StoryController::class, 'StoryStore']);
    Route::delete('/stories/delete_story/{id}', [StoryController::class, 'StoryDestroy']);

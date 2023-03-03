@@ -18,7 +18,6 @@ isLoggedIn = false;
 isLoginFailed = false;
 errorMessage = '';
 roles: string[] = [];
-cont :any =document.getElementById("formbox") ;
 
 
 constructor(private authService: AuthService, private tokenStorage: TokenStorageService ,private router: Router,private route: ActivatedRoute) { }
@@ -43,7 +42,6 @@ onSubmit(): void {
       this.roles = this.tokenStorage.getUser().roles;
       const returnUrl =this.route.snapshot.queryParams["returnUrl"] ||'/';
       this.router.navigateByUrl(returnUrl) ;
-      console.log(this.roles)
 
     },
     err => {
@@ -58,8 +56,5 @@ reloadPage(): void {
   window.location.reload();
   
 }
-// redirectToHome(){
-//   this.router.navigateByUrl(["home"]) ;
-// }
 }
 
