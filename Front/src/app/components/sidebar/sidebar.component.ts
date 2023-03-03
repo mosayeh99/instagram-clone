@@ -2,12 +2,10 @@
 
 import { SearchHistoriesService } from 'src/app/services/search-histories.service';
 import {StoriesService} from 'src/app/services/stories.service';
-
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { PostsService } from 'src/app/services/posts.service';
 import { ReelsService } from 'src/app/services/reels.service';
 import { TokenStorageService } from '../../services/token-storage.service';
-import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 
@@ -53,66 +51,6 @@ export class SidebarComponent implements OnInit{
     this.isSidebarTextActive = true;
   }
 
-  currentUrl:string;
-  constructor(public myService:StoriesService ,public searchService:SearchHistoriesService) {
-    this.currentUrl = window.location.pathname;
-
-  }
-                             // Search Handling Methods 
-   ngOnInit(): void {
-    // throw new Error('Method not implemented.');
-
-    this.searchService.GetUsersFromSearchHistory('1').subscribe(
-      {
-        next:(data)=>{
-          this.saved = data;
-        },
-        error:(err)=>{}
-      }
-      
-    )
-  }
-
-
-  search(e:any){
-    if(!e.target.value){
-      this.users ='';
-    }
-    this.searchService.GetUserByName(e.target.value).subscribe(
-     {
-      next:(data)=>{
-        this.users = data;
-      },
-      error:(err)=>{}
-    }
-    )
-  }
-
-
-
-  removeFromHistory(id:any){
-    this.searchService.DeleteHistory(id).subscribe();
-    this.ngOnInit();
-    
-  }
-
-  deleteAllHistory(){
-    this.searchService.DeleteAllHistory().subscribe();
-    this.ngOnInit();
-  }
-
-
-
-  addUserToSearchHistory(id:any){
-    this.searchService.StoreSearchedUserByID(id).subscribe(
-      {
-      next:(data)=>{},
-      error:(err)=>{}
-      }
-    )
-  }
-             // End OF Search Handling Methods 
-
   openPopUp() {
     let PopUp :any =document.getElementById("PopUp");
     let create :any =document.getElementById("create-alert-menu");
@@ -142,6 +80,7 @@ export class SidebarComponent implements OnInit{
   postForm: FormGroup;
   storyForm: FormGroup;
 
+<<<<<<< HEAD
   // constructor(private reelSrv:ReelsService, private postSrv:PostsService, private fb: FormBuilder, private userSrv:UsersService, private tokenStorage: TokenStorageService ,private router: Router) {
   //   this.currentUrl = window.location.pathname;
   //   this.reelForm = this.fb.group({
@@ -157,6 +96,23 @@ export class SidebarComponent implements OnInit{
   //     newStory: [''],
   //   });
   // }
+=======
+  constructor(private reelSrv:ReelsService, private postSrv:PostsService, private fb: FormBuilder, private userSrv:UsersService, private tokenStorage: TokenStorageService, public searchService:SearchHistoriesService ,private router: Router) {
+    this.currentUrl = window.location.pathname;
+    this.reelForm = this.fb.group({
+      caption: [''],
+      newReel: [''],
+    });
+    this.postForm = this.fb.group({
+      caption: [''],
+      newPost: [''],
+    });
+    this.storyForm = this.fb.group({
+      caption: [''],
+      newStory: [''],
+    });
+  }
+>>>>>>> 1e9a67049d6158953c20ad9319a029ac488845ad
 
   // Create new reel
   onSelectReel(event:any) {
@@ -199,6 +155,7 @@ export class SidebarComponent implements OnInit{
   // }
 
   loginUserInfo:any;
+<<<<<<< HEAD
   // ngOnInit(): void {
   //   this.userSrv.GetLoginUser().subscribe({
   //     next: value => {
@@ -208,12 +165,63 @@ export class SidebarComponent implements OnInit{
   //     error: err => console.log(err)
   //   })
   // }
+=======
+  ngOnInit(): void {
+    this.userSrv.GetLoginUser().subscribe({
+      next: value => this.loginUserInfo = value,
+      error: err => console.log(err)
+    })
+
+    // search Service
+    this.searchService.GetUsersFromSearchHistory('1').subscribe(
+      {
+        next:(data)=>{
+          this.saved = data;
+        },
+        error:(err)=>{}
+      }
+
+    )
+  }
+>>>>>>> 1e9a67049d6158953c20ad9319a029ac488845ad
 
   // logOut(){
   //   this.tokenStorage.signOut() ;
   //   this.router.navigate(["login"]) ;
   // }
 
+  // Search Handling Methods
+  search(e:any){
+    if(!e.target.value){
+      this.users ='';
+    }
+    this.searchService.GetUserByName(e.target.value).subscribe(
+      {
+        next:(data)=>{
+          this.users = data;
+        },
+        error:(err)=>{}
+      }
+    )
+  }
 
-
+  // removeFromHistory(id:any){
+  //   this.searchService.DeleteHistory(id).subscribe();
+  //   this.ngOnInit();
+  // }
+  //
+  // deleteAllHistory(){
+  //   this.searchService.DeleteAllHistory().subscribe();
+  //   this.ngOnInit();
+  // }
+  //
+  // addUserToSearchHistory(id:any){
+  //   this.searchService.StoreSearchedUserByID(id).subscribe(
+  //     {
+  //       next:(data)=>{},
+  //       error:(err)=>{}
+  //     }
+  //   )
+  // }
+  // End OF Search Handling Methods
 }

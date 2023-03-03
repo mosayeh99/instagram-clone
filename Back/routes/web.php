@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\LikeController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\ReelController;
 use App\Http\Controllers\Api\SaveController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\FollowerController;
 
@@ -24,6 +25,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('users/{username}', [UserController::class, 'getUserDetailsByUsername']);
+Route::get('users/get/info', [UserController::class, 'getLoginUser']);
 
 //---------------------Posts------------------------------
 Route::get('/posts/user/{id}', [PostController::class, 'index'])->name('posts.index');
