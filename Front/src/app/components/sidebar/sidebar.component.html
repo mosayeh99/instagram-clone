@@ -26,7 +26,7 @@
     </div>    
 <!--  -->
 
-<aside *ngIf="currentUrl != '/login' && currentUrl != '/register'">
+<aside *ngIf="currentUrl != '/login' && currentUrl != '/register'" id="sidebar">
   <div class="sidebar" [ngClass]="isSidebarTextActive ? 'link-text-is-active' : ''">
     <div class="sidebar-head-logo" [ngClass]="isSearchActive || isNotificationActive ? 'active' : ''">
       <a routerLink="">

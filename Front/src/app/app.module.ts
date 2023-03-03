@@ -48,6 +48,7 @@ import { ACtivityInteractionsRepliesComponent } from './components/activity/acti
 import { ACtivityInteractionsReviewsComponent } from './components/activity/activity-components/interactions/activity-interactions-reviews/activity-interactions-reviews.component';
 import {HttpClientModule} from "@angular/common/http";
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthGuard } from './services/auth.guard';
 
 @NgModule({
   declarations: [
@@ -94,9 +95,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ACtivityInteractionslikesComponent,
     ACtivityInteractionsCommentsComponent,
     ACtivityInteractionsRepliesComponent,
-    ACtivityInteractionsReviewsComponent
-
-
+    ACtivityInteractionsReviewsComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -105,7 +105,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
