@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { TokenStorageService } from '../services/token-storage.service';
 
 const AUTH_API = 'http://127.0.0.1:8000/api';
 
@@ -12,6 +13,16 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
+
+  getAuthStatus() {
+
+    if(window.sessionStorage.getItem("auth-user") !== null){
+      return true 
+    }
+    else{
+      return false
+    }
+  }
 
   constructor(private AuthRes: HttpClient) { }
 

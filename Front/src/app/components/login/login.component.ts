@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit  {
   form: any = {
     email: null,
     password: null
-};
+  };
 isLoggedIn = false;
 isLoginFailed = false;
 errorMessage = '';
@@ -43,7 +43,8 @@ onSubmit(): void {
       this.roles = this.tokenStorage.getUser().roles;
       const returnUrl =this.route.snapshot.queryParams["returnUrl"] ||'/';
       this.router.navigateByUrl(returnUrl) ;
-      
+      console.log(this.roles)
+
     },
     err => {
       this.errorMessage = err.error.message;
@@ -57,9 +58,6 @@ reloadPage(): void {
   window.location.reload();
   
 }
-
-
-
 // redirectToHome(){
 //   this.router.navigateByUrl(["home"]) ;
 // }
