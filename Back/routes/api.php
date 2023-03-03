@@ -27,6 +27,11 @@ use App\Http\Controllers\Api\StoryController;
 Route::middleware('auth:sanctum')->get('/user_profile', function (Request $request) {
     return $request->user();
 });
+Route::get('fetch', [App\Http\Controllers\ChatsController::class, 'fetchMessages']);
+
+Route::post('send', [App\Http\Controllers\ChatsController::class, 'sendMessage']);
+Route::post('recive', [App\Http\Controllers\ChatsController::class, 'reciveMessage']);
+Route::get('users', [App\Http\Controllers\ChatsController::class, 'getUsers']);
 
 
 // register and login
@@ -37,7 +42,7 @@ Route::post('/login', [AuthController::class, 'login']);
         //Route::get('/posts/search/{title}', [PostController::class, 'search']);
 
 // public likes routes
-    
+
 
 
 
@@ -48,8 +53,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/torres', [AuthController::class, 'torres']);
 
     // ------------------------Get Login User info--------------
-//    Route::get('users/{username}', [UserController::class, 'getUserDetailsByUsername']);
-    Route::get('users/login', [UserController::class, 'getLoginUser']);
+    Route::get('users/{username}', [UserController::class, 'getUserDetailsByUsername']);
+    Route::get('users/get/info', [UserController::class, 'getLoginUser']);
 
     //--------------------------Post------------------------------
     Route::controller(PostController::class)->group(function () {
