@@ -9,7 +9,7 @@ export class PostsService {
 
   private headers = new HttpHeaders({
     'Accept': 'application/json',
-    'Authorization': `Bearer ${JSON.parse(sessionStorage.getItem('auth-user')).token}`
+    // 'Authorization': `Bearer ${JSON.parse(sessionStorage.getItem('auth-user')).token}`
   });
 
   private BaseUrl = "http://localhost:8000/api/posts";

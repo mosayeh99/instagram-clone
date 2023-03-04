@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import Pusher from 'pusher-js';
+// import Pusher from 'pusher-js';
 
 
 @Component({
@@ -19,16 +19,16 @@ fetchedData!: fetchedData[]
   ngOnInit(): void {
     this.getAllMessage()
     // pusher
-    Pusher.logToConsole = true;
+    // Pusher.logToConsole = true;
 
-    const pusher = new Pusher('91f6d26206d7be8fd74d', {
-      cluster: 'mt1'
-    });
+    // const pusher = new Pusher('91f6d26206d7be8fd74d', {
+    //   cluster: 'mt1'
+    // });
 
-    const channel = pusher.subscribe('chat');
-    channel.bind('MessageSent', (data: any) => {
-     this.messageModel.push(data);
-    });
+    // const channel = pusher.subscribe('chat');
+    // channel.bind('MessageSent', (data: any) => {
+    //  this.messageModel.push(data);
+    // });
   }
 
   send(){

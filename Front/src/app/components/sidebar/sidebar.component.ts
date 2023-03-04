@@ -143,7 +143,12 @@ export class SidebarComponent implements OnInit{
       error: err => console.log(err)
     })
 
-    // search Service
+this.getAllFromHistory();   
+  
+  }
+
+  //GetElementFromSearchHistory
+  getAllFromHistory(){
     this.searchService.GetUsersFromSearchHistory('1').subscribe(
       {
         next:(data)=>{
@@ -175,23 +180,23 @@ export class SidebarComponent implements OnInit{
     )
   }
 
-  // removeFromHistory(id:any){
-  //   this.searchService.DeleteHistory(id).subscribe();
-  //   this.ngOnInit();
-  // }
-  //
-  // deleteAllHistory(){
-  //   this.searchService.DeleteAllHistory().subscribe();
-  //   this.ngOnInit();
-  // }
-  //
-  // addUserToSearchHistory(id:any){
-  //   this.searchService.StoreSearchedUserByID(id).subscribe(
-  //     {
-  //       next:(data)=>{},
-  //       error:(err)=>{}
-  //     }
-  //   )
-  // }
+  removeFromHistory(id:any){
+    this.searchService.DeleteHistory(id).subscribe();
+    this.getAllFromHistory();
+  }
+  
+  deleteAllHistory(){
+    this.searchService.DeleteAllHistory().subscribe();
+    this.getAllFromHistory();
+  }
+  
+  addUserToSearchHistory(id:any){
+    this.searchService.StoreSearchedUserByID(id).subscribe(
+      {
+        next:(data)=>{},
+        error:(err)=>{}
+      }
+    )
+  }
   // End OF Search Handling Methods
 }

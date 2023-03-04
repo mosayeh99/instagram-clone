@@ -27,6 +27,10 @@ use App\Http\Controllers\Api\StoryController;
 Route::middleware('auth:sanctum')->get('/user_profile', function (Request $request) {
     return $request->user();
 });
+
+
+
+
 Route::get('fetch', [App\Http\Controllers\ChatsController::class, 'fetchMessages']);
 
 Route::post('send', [App\Http\Controllers\ChatsController::class, 'sendMessage']);
