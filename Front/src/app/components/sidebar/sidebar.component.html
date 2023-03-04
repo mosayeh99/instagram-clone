@@ -1,6 +1,6 @@
 <div id="PopUp" (click)="cancelPopUp()"></div>
 <div id="create-alert-menu">
-  <div class="createMenu" [ngClass]="isCreateReel || isCreatePost ? '' : 'active'">
+  <div class="createMenu" [ngClass]="isCreateReel || isCreatePost || isCreateStory ? '' : 'active'">
     <p class="create-head mb-0">Create</p>
     <div class="PopUp-body">
       <svg
@@ -9,11 +9,11 @@
       <div class="d-grid gap-2 col-6 mx-auto">
         <button class="btn btn-primary btn-sm" type="button" (click)="isCreatePost = !isCreatePost">Create post</button>
         <button class="btn btn-primary btn-sm" type="button" (click)="isCreateReel = !isCreateReel">Create reel</button>
-        <button class="btn btn-primary btn-sm" type="button">Create story</button>
+        <button class="btn btn-primary btn-sm" type="button" (click)="isCreateStory = !isCreateStory">Create story</button>
       </div>
     </div>
   </div>
-  <form (ngSubmit)="onSubmitReel()" [formGroup]="reelForm" class="new-reel" [ngClass]="isCreateReel ? 'active' : ''" enctype="multipart/form-data">
+  <form *ngIf="loginUserInfo" (ngSubmit)="onSubmitReel()" [formGroup]="reelForm" class="new-reel" [ngClass]="isCreateReel ? 'active' : ''" enctype="multipart/form-data">
     <div class="new-reel-head">
       <div (click)="isCreateReel = !isCreateReel" role="button">
         <svg aria-label="Back" color="rgb(38, 38, 38)" fill="rgb(38, 38, 38)" height="24" role="img" viewBox="0 0 24 24" width="24"><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="2.909" x2="22.001" y1="12.004" y2="12.004"></line><polyline fill="none" points="9.276 4.726 2.001 12.004 9.276 19.274" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polyline></svg>
@@ -28,9 +28,9 @@
       <div class="reel-content-right">
         <div class="user-info">
           <div class="user-img">
-            <img src="assets/images/sidebar/profile-img-not-found.jpg" alt="">
+            <img src="{{loginUserInfo.imageSrc}}" alt="">
           </div>
-          <div class="user-name">Mohamed Elsayeh</div>
+          <div class="user-name">{{loginUserInfo.username}}</div>
         </div>
         <div class="caption">
           <textarea  placeholder="Write a caption..." formControlName="caption"></textarea>
@@ -38,7 +38,7 @@
       </div>
     </div>
   </form>
-  <form (ngSubmit)="onSubmitPost()" [formGroup]="postForm" class="new-reel" [ngClass]="isCreatePost ? 'active' : ''" enctype="multipart/form-data">
+  <form *ngIf="loginUserInfo" (ngSubmit)="onSubmitPost()" [formGroup]="postForm" class="new-reel" [ngClass]="isCreatePost ? 'active' : ''" enctype="multipart/form-data">
     <div class="new-reel-head">
       <div (click)="isCreatePost = !isCreatePost" role="button">
         <svg aria-label="Back" color="rgb(38, 38, 38)" fill="rgb(38, 38, 38)" height="24" role="img" viewBox="0 0 24 24" width="24"><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="2.909" x2="22.001" y1="12.004" y2="12.004"></line><polyline fill="none" points="9.276 4.726 2.001 12.004 9.276 19.274" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polyline></svg>
@@ -53,9 +53,34 @@
       <div class="reel-content-right">
         <div class="user-info">
           <div class="user-img">
-            <img src="assets/images/sidebar/profile-img-not-found.jpg" alt="">
+            <img src="{{loginUserInfo.imageSrc}}" alt="">
           </div>
-          <div class="user-name">Mohamed Elsayeh</div>
+          <div class="user-name">{{loginUserInfo.username}}</div>
+        </div>
+        <div class="caption">
+          <textarea  placeholder="Write a caption..." formControlName="caption"></textarea>
+        </div>
+      </div>
+    </div>
+  </form>
+  <form *ngIf="loginUserInfo" (ngSubmit)="onSubmitStory()" [formGroup]="storyForm" class="new-reel" [ngClass]="isCreateStory ? 'active' : ''" enctype="multipart/form-data">
+    <div class="new-reel-head">
+      <div (click)="isCreateStory = !isCreateStory" role="button">
+        <svg aria-label="Back" color="rgb(38, 38, 38)" fill="rgb(38, 38, 38)" height="24" role="img" viewBox="0 0 24 24" width="24"><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="2.909" x2="22.001" y1="12.004" y2="12.004"></line><polyline fill="none" points="9.276 4.726 2.001 12.004 9.276 19.274" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polyline></svg>
+      </div>
+      <p class="mb-0">Create new post</p>
+      <button type="submit">share</button>
+    </div>
+    <div class="reel-content">
+      <div class="upload-img-sec">
+        <input type="file" (change)="onSelectStory($event)">
+      </div>
+      <div class="reel-content-right">
+        <div class="user-info">
+          <div class="user-img">
+            <img src="{{loginUserInfo.imageSrc}}" alt="">
+          </div>
+          <div class="user-name">{{loginUserInfo.username}}</div>
         </div>
         <div class="caption">
           <textarea  placeholder="Write a caption..." formControlName="caption"></textarea>

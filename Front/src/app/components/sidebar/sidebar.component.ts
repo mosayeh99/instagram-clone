@@ -80,7 +80,7 @@ export class SidebarComponent implements OnInit{
   postForm: FormGroup;
   storyForm: FormGroup;
 
-  constructor(private reelSrv:ReelsService, private postSrv:PostsService, private fb: FormBuilder, private userSrv:UsersService, private tokenStorage: TokenStorageService, public searchService:SearchHistoriesService ,private router: Router) {
+  constructor(private reelSrv:ReelsService, private postSrv:PostsService, private storySrv:StoriesService, private fb: FormBuilder, private userSrv:UsersService, private tokenStorage: TokenStorageService, public searchService:SearchHistoriesService ,private router: Router) {
     this.currentUrl = window.location.pathname;
     this.reelForm = this.fb.group({
       caption: [''],
@@ -136,10 +136,31 @@ export class SidebarComponent implements OnInit{
     this.cancelPopUp();
   }
 
+  // Create new story
+  onSelectStory(event:any) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.storyForm.get('newStory').setValue(file);
+    }
+  }
+
+  onSubmitStory() {
+    let storyData = new FormData();
+    storyData.append('storyImg', this.storyForm.get('newStory').value);
+    this.storySrv.AddStory(storyData).subscribe({
+      next: res => console.log(res),
+      error: err => console.log(err)
+    });
+    this.cancelPopUp();
+  }
+
   loginUserInfo:any;
   ngOnInit(): void {
     this.userSrv.GetLoginUser().subscribe({
-      next: value => this.loginUserInfo = value,
+      next: value => {
+        this.loginUserInfo = value;
+        this.userSrv.loginUser =value;
+      },
       error: err => console.log(err)
     })
 

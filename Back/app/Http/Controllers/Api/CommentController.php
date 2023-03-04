@@ -24,12 +24,12 @@ class CommentController extends Controller
     public function storePostComment(Request $request, $id)
     {
         $post = Post::findOrFail($id);
-        $post->comments()->create([
+        $comment = $post->comments()->create([
             'user_id' => auth('api')->user()->id,
             'body' => $request->body,
             'replied_comment_id' => $request->repliedCommentId,
         ]);
-        return response(["msg"=>'Comment Added'], 201);
+        return response(new CommentResource($comment), 201);
     }
 
     //--------------------Reel Comments---------------------
@@ -54,9 +54,9 @@ class CommentController extends Controller
     }
 
     //--------------------Comment Replies---------------------
-    public function commentReplies($id)
+    public function commentsReplies()
     {
-        $replies = Comment::where('replied_comment_id', $id)->get();
+        $replies = Comment::whereNotNull('replied_comment_id')->get();
         foreach ($replies as $reply){
             $commentReplies[] = new CommentResource($reply);
         }

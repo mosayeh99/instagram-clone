@@ -94,7 +94,7 @@ import { AuthGuard } from './services/auth.guard';
     ACtivityInteractionslikesComponent,
     ACtivityInteractionsCommentsComponent,
     ACtivityInteractionsRepliesComponent,
-    ACtivityInteractionsReviewsComponent,
+    ACtivityInteractionsReviewsComponent
   ],
   imports: [
     BrowserModule,

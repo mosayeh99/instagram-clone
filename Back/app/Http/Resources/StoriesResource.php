@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -15,7 +16,10 @@ class StoriesResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'story_src' => asset($this->story_img),
+            'storyCreator' => new UserResource($this->user),
+            'storySrc' => asset($this->story_img),
+            'storyNum' => $this->id,
+            'createdSince' => Carbon::parse($this->created_at)->shortAbsoluteDiffForHumans(),
         ];
     }
 }

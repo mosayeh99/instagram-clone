@@ -12,7 +12,7 @@ class ReelController extends Controller
 {
     public function index()
     {
-        $allReels = Reel::all();
+        $allReels = Reel::orderBy('id', 'desc')->get();
         foreach ($allReels as $reel){
             $reels[] = new ReelResource($reel);
         }
