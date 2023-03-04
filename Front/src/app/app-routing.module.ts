@@ -40,9 +40,11 @@ import { ACtivityPhotosReelsComponent } from './components/activity/activity-com
 import { ACtivityPhotosVideosComponent } from './components/activity/activity-components/photos/activity-photos-videos/activity-photos-videos.component';
 import { ACtivityPhotosHighlightsComponent } from './components/activity/activity-components/photos/activity-photos-highlights/activity-photos-highlights.component';
 import { AuthGuard } from './services/auth.guard';
+import { ResetComponent } from './components/reset/reset.component';
 const routes: Routes = [
   {path:'login', component:LoginComponent},
   {path:'register', component:RegisterComponent},
+  {path:'reset', component:ResetComponent},
   {path:'', component: HomeComponent,canActivate:[AuthGuard]},
   {path:'profile/:username', component:ProfileComponent ,canActivate:[AuthGuard] , children: [
     {path:'', component:GalleryComponent},

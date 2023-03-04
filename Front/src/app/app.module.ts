@@ -48,6 +48,7 @@ import { ACtivityInteractionsRepliesComponent } from './components/activity/acti
 import { ACtivityInteractionsReviewsComponent } from './components/activity/activity-components/interactions/activity-interactions-reviews/activity-interactions-reviews.component';
 import {HttpClientModule} from "@angular/common/http";
 import { AuthGuard } from './services/auth.guard';
+import { ResetComponent } from './components/reset/reset.component';
 
 @NgModule({
   declarations: [
@@ -94,7 +95,8 @@ import { AuthGuard } from './services/auth.guard';
     ACtivityInteractionslikesComponent,
     ACtivityInteractionsCommentsComponent,
     ACtivityInteractionsRepliesComponent,
-    ACtivityInteractionsReviewsComponent
+    ACtivityInteractionsReviewsComponent,
+    ResetComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,216 @@
+
+
+body {
+    font-family: sans-serif;
+    background-color: #fafafa;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    box-sizing: border-box;
+  }
+  
+  a {
+    text-decoration: none;
+
+  }
+  
+  .resetcontainer {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+    font-size: 14px;
+  }
+  
+  .box {
+    max-width: 400px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #ffff;
+    border: 1px solid #e6e6e6;
+    border-radius: 1px;
+    margin: 0 0 10px;
+    padding: 10px 0;
+    flex-grow: 1;
+  }
+  
+  .svglogo{
+    text-align: center;
+    margin-top: -20px;
+  }
+
+  .hint{
+    font-size: 14px;
+    color : rgb(142 142 142) ;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;  }
+
+
+.field {
+    margin: 10px 0;
+    position: relative;
+    font-size: 14px;
+    width: 100%;
+    text-overflow: ellipsis;
+  }
+  input {
+    padding: 20;
+    font-size: 12px;
+    width: 16rem;
+    height: 2.5rem;
+    outline: none;
+    background: var(--seccondry-bg-color);
+    border-radius: 3px;
+    border: 1px solid #efefef;
+  }
+  
+  /* label intial position*/
+  
+  label {
+    position: absolute;
+    pointer-events: none;
+    left: 10px;
+    padding-bottom: 15px;
+    transform: translateY(10px);
+    line-height: 6px;
+    transition: all ease-out 0.1s;
+    font-size: 14px;
+    color: #999;
+    padding-top: 6px;
+  }
+  
+  /* hiding placeholder in all browsers */
+  
+  input::placeholder {
+    visibility: hidden;
+  }
+  
+  /* hiding  placeholder in mozilla */
+  .reset-form ::-moz-placeholder {
+    color: transparent;
+  }
+  
+  /* label final position */
+  input:not(:placeholder-shown) + label {
+    transform: translateY(0);
+    font-size: 11px;
+  }
+  
+  /* input padding increases if placeholder is not shown */
+  input:not(:placeholder-shown) {
+    padding-top: 14px;
+    padding-bottom: 2px;
+  }
+  
+  .login-button {
+    text-align: center;
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid transparent;
+    background-color:rgb(0 149 246)	;
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .login-button:hover{
+    background-color: rgb(24 119 242);;
+  }
+  
+  
+  .separator {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #999;
+    margin-top: 6px;
+  }
+  
+  .separator .line {
+    height: 1px;
+    width: 40%;
+    background-color: #dbdbdb;
+  }
+  
+  .other {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px ;;
+  }
+  
+  .create-new-account {
+    margin: 1rem;
+    margin-bottom: 50px;
+    border: 0;
+    cursor: pointer;
+    font-size: 14px;
+    color:  rgb(38 38 38);
+    font-weight: 600;
+    background: transparent;
+  }
+  .create-new-account:hover{
+    color :rgb(142 142 142) ;
+  }
+
+  .back-login {
+
+    border: 0;
+    cursor: pointer;
+    font-size: 14px;
+    color:  rgb(38 38 38);
+    font-weight: 600;
+    background: transparent;
+  }
+
+  .back-login:hover{
+    color :rgb(142 142 142) ;
+  }
+
+  
+  .cant-reset {
+    font-size: 12px;
+    color: #003569;
+  }
+  
+  .signup {
+    color: #3897f0;
+    font-weight: 600;
+  }
+
+  .footer{
+    bottom: 0;
+    height: 2.5rem;
+    margin-top: 50px;
+  }
+  
+  .footer ul{
+    text-align: center;
+    padding :5px ;
+  }
+  .footer ul li{
+    display: inline;
+    padding :5px ;
+    margin-right: 5px;
+  }
+  .footer ul li a{
+    text-decoration: none;
+    font-size: 12px; 
+    color:  var(--secondry-text);
+  }
+  
+  .footer p{
+    /* margin: 10px 0; */
+    text-align: center;
+    color: var(--secondry-text);
+    font-size: 14px;
+    padding-bottom: 20px;
+  }
