@@ -10,12 +10,13 @@ export class TokenStorageService {
   constructor() { }
 
   signOut(): void {
+    // window.sessionStorage.setItem('auth-token',JSON.stringify(null));
     window.sessionStorage.clear();
   }
 
   public saveToken(token: string): void {
     window.sessionStorage.removeItem(TOKEN_KEY);
-    window.sessionStorage.setItem(TOKEN_KEY, token);
+    window.sessionStorage.setItem(TOKEN_KEY, JSON.stringify(token));
   }
 
   public getToken(): string | null {
@@ -32,7 +33,6 @@ export class TokenStorageService {
     if (user) {
       return JSON.parse(user);
     }
-
     return {};
   }
 

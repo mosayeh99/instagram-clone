@@ -35,16 +35,14 @@ onSubmit(): void {
   const { email, password } = this.form;
 
   this.authService.login(email, password).subscribe(data => {
-      this.tokenStorage.saveToken(data.accessToken);
+      this.tokenStorage.saveToken(data.token);
       this.tokenStorage.saveUser(data);
-      
+
       this.isLoginFailed = false;
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
       const returnUrl =this.route.snapshot.queryParams["returnUrl"] ||'/';
-      this.router.navigateByUrl(returnUrl) ;
-      console.log(this.roles)
-
+      this.router.navigateByUrl(returnUrl);
     },
     err => {
       this.errorMessage = err.error.message;
@@ -56,7 +54,7 @@ onSubmit(): void {
 
 reloadPage(): void {
   window.location.reload();
-  
+
 }
 // redirectToHome(){
 //   this.router.navigateByUrl(["home"]) ;

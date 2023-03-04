@@ -10,7 +10,7 @@ export class CommentsService {
 
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': `Bearer ${JSON.parse(sessionStorage.getItem('auth-user')).token}`
+    'Authorization': `Bearer ${JSON.parse(sessionStorage.getItem('auth-token'))}`
   });
 
   private BaseUrl = "http://localhost:8000/api/comments";
