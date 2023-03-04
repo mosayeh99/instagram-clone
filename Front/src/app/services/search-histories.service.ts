@@ -16,7 +16,7 @@ export class SearchHistoriesService {
   private BaseUrl = "http://localhost:8000/api/search";
 
   StoreSearchedUserByID( id:any){
-    return this.searchRes.post(this.BaseUrl+'/store/'+id, {headers: this.headers});
+    return this.searchRes.post(this.BaseUrl+'/store/'+id,'', {headers: this.headers});
   }
 
   GetUserByName(name:any){

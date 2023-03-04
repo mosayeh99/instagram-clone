@@ -12,7 +12,7 @@ class SearchHistoryController extends Controller
 {
     public function store($id){
         $history =SearchHistory::Create([
-            'user_id_self' => '1' ,
+            'user_id_self' => auth('api')->user()->id,
             'user_id_other' => $id ,
         ]);
         return response($history,200);
