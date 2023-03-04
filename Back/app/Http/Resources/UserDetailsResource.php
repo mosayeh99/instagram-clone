@@ -19,9 +19,9 @@ class UserDetailsResource extends JsonResource
             'name' => $this->name,
             'username' => $this->username,
             'imageSrc' => asset($this->profile_img),
-            'posts' => PostResource::collection($this->posts),
-            'reels' => ReelResource::collection($this->reels),
-            'saves' => $this->saves,
+            'posts' => PostResource::collection($this->posts()->orderBy('id', 'desc')->get()),
+            'reels' => ReelResource::collection($this->reels()->orderBy('id', 'desc')->get()),
+            'saves' => $this->saves()->orderBy('id', 'desc')->get(),
         ];
     }
 }

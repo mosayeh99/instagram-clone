@@ -1,28 +1,31 @@
-import { HttpClient } from '@angular/common/http'; // for Methods (get-post-...)
+import {HttpClient, HttpHeaders} from '@angular/common/http'; // for Methods (get-post-...)
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StoriesService {
-  // ------- URL -------
+  constructor(private storyRes:HttpClient) { }
+
+  private headers = new HttpHeaders({
+    'Accept': 'application/json',
+    'Authorization': `Bearer ${JSON.parse(sessionStorage.getItem('auth-token'))}`
+  });
+
   private Base_URL = "http://localhost:8000/api/stories";
-  constructor(private myClient:HttpClient) { }
-  
+
   // ------- Methods -------
   GetAllStories(){
-    return this.myClient.get(this.Base_URL);
+    return this.storyRes.get(this.Base_URL, {headers: this.headers});
   }
-  GetStoryById(id:number){
-    return this.myClient.get(this.Base_URL + "/" + id );
-  }
+  // GetStoryById(id:number){
+  //   return this.storyRes.get(this.Base_URL + "/" + id );
+  // }
   AddStory(story:any){
-    return this.myClient.post(this.Base_URL+ "/add_story" , story)
+    return this.storyRes.post(this.Base_URL+ "/add_story" , story, {headers: this.headers})
   }
-  EditStory(id:number , editstory:any){
-    return this.myClient.put(this.Base_URL + "/" + id , editstory )
-  }
-  DeleteStory(id:number){
-    return this.myClient.delete(this.Base_URL + "/delete_story/" + id)
+
+  DeleteStory(id:any){
+    return this.storyRes.delete(this.Base_URL + "/delete/" + id, {headers: this.headers})
   }
 }

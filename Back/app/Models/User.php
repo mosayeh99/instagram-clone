@@ -62,6 +62,11 @@ class User extends Authenticatable
         return $this->hasMany(Reel::class);
     }
 
+    public function stories(): HasMany
+    {
+        return $this->hasMany(Story::class);
+    }
+
     public function likes(): HasMany
     {
         return $this->hasMany(Like::class);

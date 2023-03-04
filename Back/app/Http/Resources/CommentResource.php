@@ -18,8 +18,12 @@ class CommentResource extends JsonResource
 //        return parent::toArray($request);
         return [
             'commentCreator' => new UserResource($this->user),
+            'commentNum' => $this->id,
             'comment' => $this->body,
             'likesCount' => $this->likes()->count(),
+            'commentRepliesCount' => $this->where('replied_comment_id', $this->id)->count(),
+            'repliedCommentId' => $this->replied_comment_id,
+            'likeStatus' => $this->likes->where('user_id', auth('api')->user()->id)->count(),
             'createdSince' => Carbon::parse($this->created_at)->shortAbsoluteDiffForHumans(),
         ];
     }

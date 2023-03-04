@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PostResource;
+use App\Http\Resources\PostWithCommentsResource;
 use App\Models\Post;
 use App\Models\Reel;
 use App\Models\User;
@@ -13,7 +14,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $allPosts = Post::all();
+        $allPosts = Post::orderBy('id', 'desc')->get();
         foreach ($allPosts as $post){
             $posts[] = new PostResource($post);
         }
@@ -47,7 +48,7 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
-        return response(new PostResource($post), 200);
+        return response(new PostWithCommentsResource($post), 200);
     }
 
 //    public function edit($id)

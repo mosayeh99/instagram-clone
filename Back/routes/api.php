@@ -89,7 +89,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::get('comments/reel/{id}', 'allPostComments');
         Route::post('comments/reel/{id}', 'storePostComment');
         // post & reel
-        Route::get('comments/{id}/reply', 'commentReplies');
+        Route::get('comments/replies', 'commentsReplies');
     });
 
     //--------------------------Like------------------------------
@@ -142,12 +142,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/follow/user/followers',[FollowerController::class,'userFollowers'])->name('followers');
     Route::get('/follow/user/followings',[FollowerController::class,'userFollowings']);
 
-
-
+    // ------------------Stories------------------------
+    Route::get('stories', [StoryController::class, 'StoryIndex']);
+    Route::post('stories/add_story',[StoryController::class, 'StoryStore']);
+    Route::delete('stories/delete/{id}', [StoryController::class, 'StoryDestroy']);
 });
-
-
-// ------------------Stories------------------------
-   Route::get('/stories', [StoryController::class, 'StoryIndex']);
-   Route::post('/stories/add_story',[StoryController::class, 'StoryStore']);
-   Route::delete('/stories/delete_story/{id}', [StoryController::class, 'StoryDestroy']);

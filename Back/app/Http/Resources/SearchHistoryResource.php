@@ -19,8 +19,7 @@ class SearchHistoryResource extends JsonResource
             'id'=>$this->id,
             'name' =>$this->name,
             'username' =>$this->username,
-            // 'image' =>asset($this->profile_img)
-            'image' =>$this->profile_img
+            'image' =>asset($this->profile_img)
         ];
 
     }
