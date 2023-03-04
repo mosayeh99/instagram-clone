@@ -3,7 +3,7 @@
   <main>
     <div class="preview">
       <!------------------------- user ------------------------>
-      <div id="user-name1">ahmed hassan</div>
+      <div id="user-name1">ahmed</div>
       <!------------------------------------------------------->
       <div class="d-flex align-items-start">
         <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -11,10 +11,10 @@
           <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">
             <div>
                 <span id="pic-div">
-                  <img id="pic" src="assets/images/massege/232475936_2999812896932106_124302062026537119_n.jpg">
+                  <img id="pic" src="assets/images/massege/saeed.PNG">
                 </span>
                 <div id="chat-username">
-                  <span id="name">edriso</span>
+                  <span id="name">mahmoud saad</span>
                   <span id="msg">how are you..</span>
                 </div>
               </div>
@@ -73,7 +73,7 @@
 
                     <div>
                         <span id="chat-pic">
-                      <img id="pic" src="assets/images/massege/232475936_2999812896932106_124302062026537119_n.jpg"/>
+                      <img id="pic" src="assets/images/massege/saeed.PNG"/>
                       </span>
                         </div>
                     <div class="icon">
@@ -89,8 +89,8 @@
                   <div class="sender" onclick="like()">Yeah. I think I did good🙈</div><div id="heart">❤️</div>
                     <div class="receiver">Wow I'm soo happy for you</div>
                   <div class="sender" onclick="like()">Thanks for always supporting me. Means a lot💖</div><div id="heart">❤️</div>
-                    <div class="receiver">your most welcome</div>
-                    <div class="receiver" *ngFor="let mesg of fetchedData">{{mesg.message}}</div>
+                    <!-- <div class="receiver">your most welcome</div> -->
+                    <div class="receiver" *ngFor="let mesg of fetchedData">{{mesg.message}}<div >{{mesg.updated_at| date:'shortTime'}}</div></div>
                   <div class="user-input"></div>
                   <div class="input-msg">
                     <input type="text" id="send-input"  placeholder="type something" [(ngModel)]="messageModel.message" />
