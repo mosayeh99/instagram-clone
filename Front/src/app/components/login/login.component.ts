@@ -41,12 +41,8 @@ onSubmit(): void {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
       const returnUrl =this.route.snapshot.queryParams["returnUrl"] ||'/';
-<<<<<<< HEAD
-      this.router.navigateByUrl(returnUrl);
-=======
       this.router.navigateByUrl(returnUrl) ;
 
->>>>>>> main
     },
     err => {
       this.errorMessage = err.error.message;
