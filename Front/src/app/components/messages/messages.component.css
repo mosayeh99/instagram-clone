@@ -88,6 +88,7 @@ body {
   align-items: flex-start;
   height: 80vh;
   width: 100%;
+  /* width: 190%; */
   overflow-y: scroll;
   overflow-x: none;
   }
@@ -155,6 +156,7 @@ body {
   padding: 10px;
   height: auto;
   width: auto;
+  /* here */
   max-width: 140px;
   border-radius: 20px;
   border: 1px solid var(--medium-grey);
@@ -210,7 +212,9 @@ body {
   }
   .sender, .receiver, .user-input {
     min-width: 140px;
+    /* width: 70%; */
     width: auto;
+    /* margin: 10px auto; */
   }
   }
   @media screen and (max-width: 600px)
