@@ -21,14 +21,14 @@
 <div id="followers-alert-menu">
     <div class="followersMenu">
         <div style="font-weight: bolder;">
-            <p style="display:inline-block;" >Followings</p><a id="cancel-followers" (click)="cancel()" style="margin-left: 150px;">X</a><hr>
+            <p style="display:inline-block;" >Followers</p><a id="cancel-followers" (click)="cancel()" style="margin-left: 150px;">X</a><hr>
         </div>
 
         <div class="recent-search-content" *ngFor="let w of FollowersName" >
         <div class="recent-search-user " >
             <div class="result-user-img">
-              <img src="assets/images/sidebar/profile-img-not-found.jpg" alt="Profile Image Not Found">
-              <!-- <img src="{{w[0].name}}" alt="Profile Image Not Found"> -->
+              <!-- <img src="assets/images/sidebar/profile-img-not-found.jpg" alt="Profile Image Not Found"> -->
+              <img src="{{w[0].profile_img}}" alt="Profile Image Not Found">
             </div>
             <div class="result-user-info"  style="cursor:pointer;">
               <p class="user-unique-name">{{w[0].name}}</p>
@@ -52,8 +52,8 @@
         <div class="recent-search-content" *ngFor="let n of FollowingsName">
             <div class="recent-search-user "  >
                 <div class="result-user-img">
-                  <img src="assets/images/sidebar/profile-img-not-found.jpg" alt="Profile Image Not Found">
-                  <!-- <img src="{{w[0].name}}" alt="Profile Image Not Found"> -->
+                  <!-- <img src="assets/images/sidebar/profile-img-not-found.jpg" alt="Profile Image Not Found"> -->
+                  <img src="{{n[0].profile_img}}" alt="Profile Image Not Found">
                   <div class="line"></div>
                 </div>
                 <div class="result-user-info"  style="cursor:pointer;">
@@ -102,8 +102,8 @@
 
 				<ul>
 					<li><span class="profile-stat-count">529</span> posts</li>
-					<li (click)="followers()"><span class="profile-stat-count" *ngFor="let F of FollowersNumber">{{F.count}}</span> followers</li>
-					<li (click)="following()"><span class="profile-stat-count" *ngFor="let s of FollowingsNumber">{{s.count}}</span> following</li>
+					<li (click)="followers()"><span class="profile-stat-count" *ngFor="let F  of FollowersNumber"><span>{{F.count }}</span></span> followers</li>
+					<li (click)="following()"><span class="profile-stat-count" *ngFor="let s of FollowingsNumber"><span>{{s.count }}</span></span> following</li>
 				</ul>
 			</div>
 

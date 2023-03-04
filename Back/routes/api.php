@@ -27,6 +27,10 @@ use App\Http\Controllers\Api\StoryController;
 Route::middleware('auth:sanctum')->get('/user_profile', function (Request $request) {
     return $request->user();
 });
+
+
+
+
 Route::get('fetch', [App\Http\Controllers\ChatsController::class, 'fetchMessages']);
 
 Route::post('send', [App\Http\Controllers\ChatsController::class, 'sendMessage']);
@@ -132,11 +136,11 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     // Followers and Followings routes
     Route::POST('/follow/followerStore/{id}',[FollowerController::class,'followerstore']);
-    Route::get('/follow/followerNumber/{id}',[FollowerController::class,'followernumber']);
-    Route::get('/follow/followingNumber/{id}',[FollowerController::class,'followingnumber']);
+    Route::get('/follow/followerNumber',[FollowerController::class,'followernumber']);
+    Route::get('/follow/followingNumber',[FollowerController::class,'followingnumber']);
     Route::delete('/follow/unfollow/{id}',[FollowerController::class,'unfollow']);
-    Route::get('/follow/user/{id}/followers',[FollowerController::class,'userFollowers'])->name('followers');
-    Route::get('/follow/user/{id}/followings',[FollowerController::class,'userFollowings']);
+    Route::get('/follow/user/followers',[FollowerController::class,'userFollowers'])->name('followers');
+    Route::get('/follow/user/followings',[FollowerController::class,'userFollowings']);
 
     // ------------------Stories------------------------
     Route::get('stories', [StoryController::class, 'StoryIndex']);

@@ -233,6 +233,7 @@ aside .sidebar.link-text-is-active {
 
 .recent-search-user .result-user-img img {
   width: 44px;
+  border-radius: 50%;
 }
 
 .recent-search-user .result-user-info {
