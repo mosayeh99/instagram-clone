@@ -153,6 +153,7 @@ this.getAllFromHistory();
       {
         next:(data)=>{
           this.saved = data;
+          console.log(this.saved);
         },
         error:(err)=>{}
       }
@@ -168,14 +169,18 @@ this.getAllFromHistory();
   // Search Handling Methods
   search(e:any){
     if(!e.target.value){
-      this.users ='';
+      this.users =[];
     }
     this.searchService.GetUserByName(e.target.value).subscribe(
       {
         next:(data)=>{
           this.users = data;
+          console.log(this.users);
         },
-        error:(err)=>{}
+        error:(err)=>{
+          console.log(this.users);
+
+        }
       }
     )
   }

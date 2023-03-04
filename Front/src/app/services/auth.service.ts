@@ -15,11 +15,11 @@ export class AuthService {
 
   getAuthStatus() {
 
-    if(window.sessionStorage.getItem("auth-user") !== null){
-      return true 
+    if(window.sessionStorage.getItem("auth-token") == null){
+      return false
     }
     else{
-      return false
+      return true
     }
   }
 

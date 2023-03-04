@@ -11,7 +11,7 @@ export class ReelsService {
 
   private headers = new HttpHeaders({
     "Accept": 'application/json',
-    // "Authorization": `Bearer ${JSON.parse(sessionStorage.getItem('auth-user')).token}`
+    "Authorization": `Bearer ${JSON.parse(sessionStorage.getItem('auth-token'))}`
   });
 
   private BaseUrl = "http://localhost:8000/api/reels";

@@ -34,9 +34,9 @@ onSubmit(): void {
   const { email, password } = this.form;
 
   this.authService.login(email, password).subscribe(data => {
-      this.tokenStorage.saveToken(data.accessToken);
+      this.tokenStorage.saveToken(data.token);
       this.tokenStorage.saveUser(data);
-      
+
       this.isLoginFailed = false;
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
@@ -54,7 +54,7 @@ onSubmit(): void {
 
 reloadPage(): void {
   window.location.reload();
-  
+
 }
 }
 

@@ -385,6 +385,7 @@ Remove or comment-out the code block below to see how the browser will fall-back
   
   .recent-search-user .result-user-img img {
     width: 44px;
+    border-radius: 50%;
   }
   
   .recent-search-user .result-user-info {
@@ -415,13 +416,6 @@ Remove or comment-out the code block below to see how the browser will fall-back
     background-color: #dbdbdb;
   }
 
-  /* .separator {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #999;
-    margin-top: 6px;
-  } */
 
   .green {
     background-color: green;

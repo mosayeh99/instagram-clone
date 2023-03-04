@@ -47,7 +47,7 @@ enableDisableRule() {
         followers.style.visibility = "visible" ;
         followers.style.opacity = 1 ;
 
-      this.FollowerService.GetAllFollowers('1').subscribe(
+      this.FollowerService.GetAllFollowers().subscribe(
         {
           next:(data)=>{
             this.FollowersName = data;
@@ -68,14 +68,16 @@ enableDisableRule() {
         following.style.visibility = "visible" ;
         following.style.opacity = 1 ;
 
-        this.FollowerService.GetAllFollowings('1').subscribe(
+        this.FollowerService.GetAllFollowings().subscribe(
           {
             next:(data)=>{
               this.FollowingsName = data;
               console.log(data);
     
             },
-            error:(err)=>{} 
+            error:(err)=>{
+              console.log(err);
+            } 
           }
         ) 
 
@@ -98,21 +100,27 @@ enableDisableRule() {
   constructor(public FollowerService:FollowersService){}
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
-    this.FollowerService.GetFollowersNumber('1').subscribe(
+    this.FollowerService.GetFollowersNumber().subscribe(
       {
         next:(data)=>{
-          this.FollowersNumber = data;
-          console.log(data);
+        //   if(data){
+        //     console.log(data);
+        //     this.FollowersNumber=[{count:0}];
+        //   }else{
+        //   this.FollowersNumber = data;
+        //   console.log(data);
+        // }
+        this.FollowersNumber = data;
         },
         error:(err)=>{}
       }
     )
 
-    this.FollowerService.GetFollowingsNumber('1').subscribe(
+    this.FollowerService.GetFollowingsNumber().subscribe(
       {
         next:(data)=>{
           this.FollowingsNumber = data;
-          console.log(data);
+          // console.log(data);
 
         },
         error:(err)=>{}
