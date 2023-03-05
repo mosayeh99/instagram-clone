@@ -26,7 +26,10 @@ export class CommentsService {
   AddReelComment(comment:any, id:any) {
     return this.commentRes.post(this.BaseUrl+'/reel/'+id,comment,{headers: this.headers});
   }
-  GetAllCommentsReplies() {
-    return this.commentRes.get(this.BaseUrl+'/replies',{headers: this.headers});
+  GetPostCommentsReplies(id:any) {
+    return this.commentRes.get(this.BaseUrl+'/post/replies/'+id,{headers: this.headers});
+  }
+  GetReelCommentsReplies(id:any) {
+    return this.commentRes.get(this.BaseUrl+'/reel/replies/'+id,{headers: this.headers});
   }
 }

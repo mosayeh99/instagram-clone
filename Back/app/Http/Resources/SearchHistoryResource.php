@@ -21,6 +21,5 @@ class SearchHistoryResource extends JsonResource
             'username' =>$this->username,
             'image' =>asset($this->profile_img)
         ];
-
     }
 }

@@ -22,4 +22,8 @@ export class UsersService {
   GetAllUserDetails(username:string) {
     return this.userRes.get(this.BaseUrl+'/'+username, {headers: this.headers});
   }
+
+  GetUserById(id:any) {
+    return this.userRes.get(this.BaseUrl+'users/user/'+id, {headers: this.headers});
+  }
 }

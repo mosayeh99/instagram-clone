@@ -92,11 +92,11 @@ export class HomeComponent implements OnInit {
     this.postSrv.GetPostById(id).subscribe({
       next: value => {
         this.post = value;
+        this.onGetCommentsReplies(this.post.postNum);
         console.log(value)
       },
       error: err => console.log(err)
     })
-    this.onGetCommentsReplies();
   }
 
   onAddCommentLike(id:string){
@@ -107,8 +107,8 @@ export class HomeComponent implements OnInit {
   }
 
   commentReplies:any;
-  onGetCommentsReplies(){
-    this.commentSrv.GetAllCommentsReplies().subscribe({
+  onGetCommentsReplies(id:any){
+    this.commentSrv.GetPostCommentsReplies(id).subscribe({
       next: value => {
         this.commentReplies = value;
         console.log(value)

@@ -59,6 +59,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     // ------------------------Get Login User info--------------
     Route::get('users/{username}', [UserController::class, 'getUserDetailsByUsername']);
     Route::get('users/get/info', [UserController::class, 'getLoginUser']);
+    Route::get('users/user/{id}', [UserController::class, 'getUserById']);
 
     //--------------------------Post------------------------------
     Route::controller(PostController::class)->group(function () {
@@ -85,11 +86,11 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         // post
         Route::get('comments/post/{id}', 'allPostComments');
         Route::post('comments/post/{id}', 'storePostComment');
+        Route::get('comments/post/replies/{id}', 'postCommentsReplies');
         // reel
-        Route::get('comments/reel/{id}', 'allPostComments');
-        Route::post('comments/reel/{id}', 'storePostComment');
-        // post & reel
-        Route::get('comments/replies', 'commentsReplies');
+        Route::get('comments/reel/{id}', 'allReelComments');
+        Route::post('comments/reel/{id}', 'storeReelComment');
+        Route::get('comments/reel/replies/{id}', 'reelCommentsReplies');
     });
 
     //--------------------------Like------------------------------

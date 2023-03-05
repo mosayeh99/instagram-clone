@@ -1,7 +1,7 @@
 <main>
-  <!--------------------------------- statues ------------------------------->
   <div class="container">
     <div class="col-9">
+      <!--------------- statues ---------->
       <div class="statuses" *ngIf="stories">
         <div class="status" *ngFor="let story of stories; let number = index" (click)="showStory(number + 1)">
           <div class="image">
