@@ -32,6 +32,15 @@ class CommentController extends Controller
         return response(new CommentResource($comment), 201);
     }
 
+    public function postCommentsReplies($id)
+    {   $post = Post::findOrFail($id);
+        $replies = $post->comments()->whereNotNull('replied_comment_id')->get();
+        foreach ($replies as $reply){
+            $commentReplies[] = new CommentResource($reply);
+        }
+        return response($commentReplies, 200);
+    }
+
     //--------------------Reel Comments---------------------
     public function allReelComments($id)
     {
@@ -45,18 +54,18 @@ class CommentController extends Controller
     public function storeReelComment(Request $request, $id)
     {
         $reel = Reel::findOrFail($id);
-        $reel->comments()->create([
+        $comment = $reel->comments()->create([
             'user_id' => auth('api')->user()->id,
             'body' => $request->body,
             'replied_comment_id' => $request->repliedCommentId,
         ]);
-        return response(["msg"=>'Comment Saved'], 201);
+        return response(new CommentResource($comment), 201);
     }
 
-    //--------------------Comment Replies---------------------
-    public function commentsReplies()
+        public function reelCommentsReplies($id)
     {
-        $replies = Comment::whereNotNull('replied_comment_id')->get();
+        $reel = Reel::findOrFail($id);
+        $replies = $reel->comments()->whereNotNull('replied_comment_id')->get();
         foreach ($replies as $reply){
             $commentReplies[] = new CommentResource($reply);
         }

@@ -157,3 +157,132 @@ main {
   height: 24px;
   border-radius: 5px;
 }
+
+/*---------Reel comments--------*/
+.reel-comments-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0 0 0 / 60%);
+  z-index: 9999;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.reel-comments-container.active {
+  display: flex;
+}
+
+.reel-comments {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 500px;
+  height: 500px;
+  border-radius: 5px;
+}
+
+.reel-comments .head {
+  display: flex;
+  padding: 16px;
+  border-bottom: 1px solid var(--separator);
+}
+
+.reel-comments .content {
+  min-height: 0;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.reel-comments .content .comment-items {
+  display: flex;
+  padding: 16px;
+}
+
+.content .comment-items .user-img img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.content .comment-items .comment-body {
+  flex: 1;
+}
+
+.content .comment-items .comment-body .comment-reply {
+  display: flex;
+  gap: 20px;
+  color: var(--secondry-text);
+  margin-top: 16px;
+}
+
+.content .comment-items .comment-body .comment-reply button {
+  background-color: transparent;
+  border: 0;
+}
+
+.reel-comments .content .comment-items .heart-icon svg {
+  display: none;
+  margin-left: 20px;
+}
+
+.reel-comments .content .comment-items .heart-icon svg.active {
+  display: block;
+}
+
+.reel-comments .reply-to {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--heightlight-bg-color);
+  padding: 16px;
+}
+
+.reel-comments .comment-input {
+  position: relative;
+  padding: 16px;
+}
+
+.reel-comments .comment-input input {
+  width: 100%;
+  border: 1px solid var(--secondry-text);
+  padding: 6px 40px 6px 10px;
+  border-radius: 15px;
+  outline: 0;
+}
+
+.reel-comments .comment-input .post-comment-btn {
+  position: absolute;
+  top: 50%;
+  right: 32px;
+  transform: translateY(-50%);
+  background-color: transparent;
+  color: var(--primary-button);
+  border: 0;
+}
+
+.view-replies-comments {
+  margin-left: 70px;
+}
+
+.view-replies-comments .comment-replies {
+  display: none;
+}
+
+.view-replies-comments .comment-replies.active {
+  display: block;
+}
+
+.loading-comments-icon {
+  width: 50px;
+  animation: loadingIcon 0.8s infinite linear;
+}
+
+@keyframes loadingIcon {
+  to {
+    transform: rotate(360deg);
+  }
+}

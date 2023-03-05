@@ -15,10 +15,10 @@ class CommentResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-//        return parent::toArray($request);
         return [
             'commentCreator' => new UserResource($this->user),
             'commentNum' => $this->id,
+            'commentableId' => $this->commentable_id,
             'comment' => $this->body,
             'likesCount' => $this->likes()->count(),
             'commentRepliesCount' => $this->where('replied_comment_id', $this->id)->count(),

@@ -1,4 +1,4 @@
-<main>
+<main xmlns="http://www.w3.org/1999/html">
   <div class="reels" onscroll="playVideoOnScroll()" *ngIf="reels; else falseBlock">
     <div class="reel" *ngFor="let reel of reels; let number = index">
       <div class="main-video-section">
@@ -39,7 +39,7 @@
           </div>
           <div class="likes-count">{{reel.likesCount}}</div>
         </div>
-        <div class="comments-items">
+        <div class="comments-items" (click)="onGetComment(reel.reelNum); isCommentsActive = !isCommentsActive">
           <div class="comments-icon">
             <svg aria-label="Comment" color="rgb(38, 38, 38)" fill="rgb(38, 38, 38)" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Comment</title><path d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path></svg>
           </div>
@@ -65,4 +65,94 @@
         </div>
       </div>
     </ng-template>
+  <div class="reel-comments-container" [ngClass]="isCommentsActive ? 'active' : ''">
+    <div class="reel-comments">
+      <div class="head">
+        <div></div>
+        <div class="fw-bold flex-grow-1 d-flex justify-content-center">Comments</div>
+        <div role="button" (click)="isCommentsActive = !isCommentsActive">
+          <svg aria-label="Close" color="rgb(38, 38, 38)" fill="rgb(38, 38, 38)" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Close</title><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="21" x2="3" y1="3" y2="21"></line><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="21" x2="3" y1="21" y2="3"></line></svg>
+        </div>
+      </div>
+      <div class="content">
+        <div class="comment-items" *ngIf="submittedComment">
+          <a routerLink="/profile/{{submittedComment.commentCreator.username}}" class="user-img">
+            <img src="{{submittedComment.commentCreator.imageSrc}}" alt="">
+          </a>
+          <div class="comment-body">
+            <div class="comment">
+              <a routerLink="/profile/{{submittedComment.commentCreator.username}}" class="fw-bold text-decoration-none text-dark">{{submittedComment.commentCreator.username}} &nbsp;</a>
+              <span class="body">{{submittedComment.comment}}</span>
+            </div>
+            <div class="comment-reply">
+              <span>{{submittedComment.createdSince}}</span>
+              <button (click)="onReplyToComment(submittedComment.commentCreator.username, submittedComment.commentNum)">reply</button>
+            </div>
+          </div>
+          <div class="heart-icon">
+            <svg  [ngClass]="submittedComment.likeStatus ? '' : 'active'" onclick="addCommentHeart(this)" (click)="onAddCommentLike(submittedComment.commentNum)" aria-label="Like" color="rgb(38, 38, 38)" fill="rgb(38, 38, 38)" height="12" role="img" viewBox="0 0 24 24" width="12"><path d="M16.792 3.904A4.989 4.989 0 0 1 21.5 9.122c0 3.072-2.652 4.959-5.197 7.222-2.512 2.243-3.865 3.469-4.303 3.752-.477-.309-2.143-1.823-4.303-3.752C5.141 14.072 2.5 12.167 2.5 9.122a4.989 4.989 0 0 1 4.708-5.218 4.21 4.21 0 0 1 3.675 1.941c.84 1.175.98 1.763 1.12 1.763s.278-.588 1.11-1.766a4.17 4.17 0 0 1 3.679-1.938m0-2a6.04 6.04 0 0 0-4.797 2.127 6.052 6.052 0 0 0-4.787-2.127A6.985 6.985 0 0 0 .5 9.122c0 3.61 2.55 5.827 5.015 7.97.283.246.569.494.853.747l1.027.918a44.998 44.998 0 0 0 3.518 3.018 2 2 0 0 0 2.174 0 45.263 45.263 0 0 0 3.626-3.115l.922-.824c.293-.26.59-.519.885-.774 2.334-2.025 4.98-4.32 4.98-7.94a6.985 6.985 0 0 0-6.708-7.218Z"></path></svg>
+            <svg [ngClass]="submittedComment.likeStatus ? 'active' : ''" onclick="removeCommentHeart(this)" (click)="onRemoveCommentLike(submittedComment.commentNum)" aria-label="Unlike" color="rgb(255, 48, 64)" fill="rgb(255, 48, 64)" height="12" role="img" viewBox="0 0 48 48" width="12"><path d="M34.6 3.1c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5s1.1-.2 1.6-.5c1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"></path></svg>
+          </div>
+        </div>
+        <div *ngIf="comments">
+          <div  *ngFor="let comment of comments">
+            <div class="comment-items">
+              <a routerLink="/profile/{{comment.commentCreator.username}}" class="user-img">
+                <img src="{{comment.commentCreator.imageSrc}}" alt="">
+              </a>
+              <div class="comment-body">
+                <div class="comment">
+                  <a routerLink="/profile/{{comment.commentCreator.username}}" class="fw-bold text-decoration-none text-dark">{{comment.commentCreator.username}} &nbsp;</a>
+                  <span class="body">{{comment.comment}}</span>
+                </div>
+                <div class="comment-reply">
+                  <span>{{comment.createdSince}}</span>
+                  <button (click)="onReplyToComment(comment.commentCreator.username, comment.commentNum)">reply</button>
+                </div>
+              </div>
+              <div class="heart-icon">
+                <svg  [ngClass]="comment.likeStatus ? '' : 'active'" onclick="addCommentHeart(this)" (click)="onAddCommentLike(comment.commentNum)" aria-label="Like" color="rgb(38, 38, 38)" fill="rgb(38, 38, 38)" height="12" role="img" viewBox="0 0 24 24" width="12"><path d="M16.792 3.904A4.989 4.989 0 0 1 21.5 9.122c0 3.072-2.652 4.959-5.197 7.222-2.512 2.243-3.865 3.469-4.303 3.752-.477-.309-2.143-1.823-4.303-3.752C5.141 14.072 2.5 12.167 2.5 9.122a4.989 4.989 0 0 1 4.708-5.218 4.21 4.21 0 0 1 3.675 1.941c.84 1.175.98 1.763 1.12 1.763s.278-.588 1.11-1.766a4.17 4.17 0 0 1 3.679-1.938m0-2a6.04 6.04 0 0 0-4.797 2.127 6.052 6.052 0 0 0-4.787-2.127A6.985 6.985 0 0 0 .5 9.122c0 3.61 2.55 5.827 5.015 7.97.283.246.569.494.853.747l1.027.918a44.998 44.998 0 0 0 3.518 3.018 2 2 0 0 0 2.174 0 45.263 45.263 0 0 0 3.626-3.115l.922-.824c.293-.26.59-.519.885-.774 2.334-2.025 4.98-4.32 4.98-7.94a6.985 6.985 0 0 0-6.708-7.218Z"></path></svg>
+                <svg [ngClass]="comment.likeStatus ? 'active' : ''" onclick="removeCommentHeart(this)" (click)="onRemoveCommentLike(comment.commentNum)" aria-label="Unlike" color="rgb(255, 48, 64)" fill="rgb(255, 48, 64)" height="12" role="img" viewBox="0 0 48 48" width="12"><path d="M34.6 3.1c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5s1.1-.2 1.6-.5c1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"></path></svg>
+              </div>
+            </div>
+            <div class="view-replies-comments" *ngIf="comment.commentRepliesCount">
+              <button onclick="ToggleCommentReplies(this)" class="bg-transparent mb-3 border-0">ــــــــــــــــ&nbsp;&nbsp;View replies ({{comment.commentRepliesCount}})</button>
+              <div class="comment-replies" *ngFor="let commentReply of commentReplies">
+                <div class="comment-items ps-0" *ngIf="commentReply.repliedCommentId == comment.commentNum">
+                  <a routerLink="/profile/{{commentReply.commentCreator.username}}" class="user-img">
+                    <img src="{{commentReply.commentCreator.imageSrc}}" alt="">
+                  </a>
+                  <div class="comment-body">
+                    <div class="comment">
+                      <a routerLink="/profile/{{commentReply.commentCreator.username}}" class="fw-bold text-decoration-none text-dark">{{commentReply.commentCreator.username}} &nbsp;</a>
+                      <span class="body">{{commentReply.comment}}</span>
+                    </div>
+                    <div class="comment-reply">
+                      <span>{{commentReply.createdSince}}</span>
+                      <button (click)="onReplyToComment(commentReply.commentCreator.username, commentReply.commentNum)">reply</button>
+                    </div>
+                  </div>
+                  <div class="heart-icon">
+                    <svg  [ngClass]="comment.likeStatus ? '' : 'active'" onclick="addCommentHeart(this)" (click)="onAddCommentLike(comment.commentNum)" aria-label="Like" color="rgb(38, 38, 38)" fill="rgb(38, 38, 38)" height="12" role="img" viewBox="0 0 24 24" width="12"><path d="M16.792 3.904A4.989 4.989 0 0 1 21.5 9.122c0 3.072-2.652 4.959-5.197 7.222-2.512 2.243-3.865 3.469-4.303 3.752-.477-.309-2.143-1.823-4.303-3.752C5.141 14.072 2.5 12.167 2.5 9.122a4.989 4.989 0 0 1 4.708-5.218 4.21 4.21 0 0 1 3.675 1.941c.84 1.175.98 1.763 1.12 1.763s.278-.588 1.11-1.766a4.17 4.17 0 0 1 3.679-1.938m0-2a6.04 6.04 0 0 0-4.797 2.127 6.052 6.052 0 0 0-4.787-2.127A6.985 6.985 0 0 0 .5 9.122c0 3.61 2.55 5.827 5.015 7.97.283.246.569.494.853.747l1.027.918a44.998 44.998 0 0 0 3.518 3.018 2 2 0 0 0 2.174 0 45.263 45.263 0 0 0 3.626-3.115l.922-.824c.293-.26.59-.519.885-.774 2.334-2.025 4.98-4.32 4.98-7.94a6.985 6.985 0 0 0-6.708-7.218Z"></path></svg>
+                    <svg [ngClass]="comment.likeStatus ? 'active' : ''" onclick="removeCommentHeart(this)" (click)="onRemoveCommentLike(comment.commentNum)" aria-label="Unlike" color="rgb(255, 48, 64)" fill="rgb(255, 48, 64)" height="12" role="img" viewBox="0 0 48 48" width="12"><path d="M34.6 3.1c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5s1.1-.2 1.6-.5c1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"></path></svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reply-to" *ngIf="isReply">
+        <div>Replying to {{usernameToReply}}</div>
+        <div (click)="isReply = !isReply">
+          <svg aria-label="at" color="rgb(38, 38, 38)" fill="rgb(38, 38, 38)" height="14" role="img" viewBox="0 0 24 24" width="14"><title>at</title><polyline fill="none" points="20.643 3.357 12 12 3.353 20.647" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polyline><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" x1="20.649" x2="3.354" y1="20.649" y2="3.354"></line></svg>
+        </div>
+      </div>
+      <div class="comment-input">
+          <input type="text" placeholder="Add comment...">
+          <button *ngIf="!isReply" class="post-comment-btn" (click)="onAddComment(reelIdOfComments, $event)">Post</button>
+          <button *ngIf="isReply" class="post-comment-btn" (click)="onAddReplyToComment(reelIdOfComments, $event)">Post</button>
+      </div>
+    </div>
+  </div>
 </main>
