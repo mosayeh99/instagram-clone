@@ -32,10 +32,14 @@
           #password="ngModel" />
           <label for="password">Password</label>
         </div>
+        <div 
+        id="err" style="display:none"  class="alert alert-danger"
+        role="alert">
+        Email is already exists
+      </div>
+          <button class="signup-button" title="login" (click)="register()">Sign Up</button>
 
-          <button class="signup-button" title="login">Sign Up</button>
-
-       
+      
           <div class="box">
             <p>Have an account? <a class="login" routerLink="/login">Log in</a></p>
           </div>

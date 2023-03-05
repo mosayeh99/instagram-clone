@@ -51,6 +51,16 @@ onSubmit(): void {
     );
 }
 
+login(){
+  let err :any =document.getElementById("err");
+  let password :any =document.getElementById("password");
+  if(window.sessionStorage.getItem("auth-token") == null && password != null){
+   err.style.display ="block" ;
+  }
+  else{
+
+  }
+}
 
 reloadPage(): void {
   window.location.reload();
