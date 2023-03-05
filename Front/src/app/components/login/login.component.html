@@ -41,10 +41,16 @@
       <div *ngIf="password.errors['minlength']">
         Password must be at least 6 characters
       </div>
+      
     </div>
+    <div 
+      id="err" style="display:none"  class="alert alert-danger"
+      role="alert">
+      Your Email Or Password is not valid
     </div>
-
-      <button class="login-button" title="login" >Log In</button>
+  </div>
+  
+  <button class="login-button" title="login" (click)="login()">Log In</button>
       <div class="separator">
         <div class="line"></div>
         <p>OR</p>
