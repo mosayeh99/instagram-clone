@@ -10,11 +10,8 @@ use Illuminate\Http\Request;
 class StoryController extends Controller
 {
     public function StoryIndex(){
-        $AllStories = Story::orderBy('id', 'desc')->get();
-        foreach ($AllStories as $story){
-            $stories[] = new StoriesResource($story);
-        }
-        return response($stories , 200);
+        $stories = Story::latest()->get();
+        return response()->json(StoriesResource::collection($stories), 200);
     }
 
     public function StoryStore(Request $request){
@@ -24,12 +21,12 @@ class StoryController extends Controller
              'user_id' => auth('api')->user()->id,
              'story_img' => "images/$path"
          ]);
-        return response(["msg"=>'Story Created successfully'],201);
+        return response()->json(["msg"=>'Story Created successfully'],201);
     }
 
     public function StoryDestroy ($id) {
-        $story = Story::destroy($id);
-        return response(["msg"=>'Story Deleted'],200);
+        Story::destroy($id);
+        return response()->json(["msg"=>'Story Deleted'],202);
     }
 
 }

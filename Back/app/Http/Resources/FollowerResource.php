@@ -15,9 +15,10 @@ class FollowerResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'name' =>$this->name,
-            'username' =>$this->username,
-            'image' =>asset($this->profile_img)
+            'userNum' => $this->user->id,
+            'name' => $this->user->name,
+            'username' => $this->user->username,
+            'imageSrc' => asset($this->user->profile_img)
         ];
 
     }
