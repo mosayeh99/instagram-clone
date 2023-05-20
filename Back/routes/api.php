@@ -1,12 +1,15 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\PasswordResetController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\LikeController;
 use App\Http\Controllers\Api\ReelController;
 use App\Http\Controllers\Api\SaveController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\VerifyEmailController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\SearchHistoryController;
@@ -40,7 +43,7 @@ Route::get('users', [App\Http\Controllers\ChatsController::class, 'getUsers']);
 
 // register and login
 Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 // public post routes
         //Route::get('/posts/search/{title}', [PostController::class, 'search']);
@@ -54,8 +57,6 @@ Route::post('/login', [AuthController::class, 'login']);
 // private posts and authors routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
 
-    Route::get('/torres', [AuthController::class, 'torres']);
-
     // ------------------------Get Login User info--------------
     Route::get('users/{username}', [UserController::class, 'getUserDetailsByUsername']);
     Route::get('users/get/info', [UserController::class, 'getLoginUser']);
@@ -65,7 +66,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::controller(PostController::class)->group(function () {
         Route::get('posts', 'index');
         Route::get('posts/user/{id}', 'getUserPosts');
-        Route::post('posts', 'store');
+        Route::post('posts', 'store')->name('posts.store');
         Route::get('posts/{id}', 'show');
         Route::PUT('posts/{id}', 'update');
         Route::DELETE('posts/{id}', 'destroy');
@@ -147,4 +148,28 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('stories', [StoryController::class, 'StoryIndex']);
     Route::post('stories/add_story',[StoryController::class, 'StoryStore']);
     Route::delete('stories/delete/{id}', [StoryController::class, 'StoryDestroy']);
+
+    // ------------------Notification--------------------
+    Route::controller(\App\Http\Controllers\Api\NotificationController::class)->group(function () {
+       Route::get('/notifications', 'getLastMonthNotification');
+       Route::get('/notifications/find', 'isThereUnreadNotification');
+       Route::get('/notifications/mark-all-as-read', 'markAllNotificationAsRead');
+    });
 });
+
+// Verify email
+Route::get('/email/verify/{id}/{hash}', VerifyEmailController::class)
+    ->middleware(['signed', 'throttle:6,1'])
+    ->name('verification.verify');
+
+// Forget password
+Route::post('/forgot-password', [PasswordResetController::class, 'sendPasswordRestLink'])
+    ->middleware('guest')->name('password.email');
+
+// Reset Password
+Route::get('/reset-password/{token}', function (string $token) {
+    return view('auth.reset-password', ['token' => $token]);
+})->middleware('guest')->name('password.reset');
+
+Route::post('/reset-password', [PasswordResetController::class, 'updatePassword'])
+    ->middleware('guest')->name('password.update');

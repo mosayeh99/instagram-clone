@@ -12,20 +12,14 @@ class ReelController extends Controller
 {
     public function index()
     {
-        $allReels = Reel::orderBy('id', 'desc')->get();
-        foreach ($allReels as $reel){
-            $reels[] = new ReelResource($reel);
-        }
-        return response($reels, 200);
+        $reels = Reel::latest()->get();
+        return response()->json(ReelResource::collection($reels));
     }
 
     public function getUserReels($id)
     {
         $user = User::findOrFail($id);
-        foreach ($user->reels as $reel){
-            $reels[] = new ReelResource($reel);
-        }
-        return response($reels, 200);
+        return response()->json(ReelResource::collection($user->reels));
     }
 
     public function store(Request $request)
@@ -37,13 +31,13 @@ class ReelController extends Controller
             'caption' => $request->caption,
             'reel_src' => "videos/$path",
         ]);
-        return response(["msg"=>'Reel Created successfully'],201);
+        return response()->json(["msg"=>'Reel Created successfully'],201);
     }
 
     public function show($id)
     {
         $reel = Reel::findOrFail($id);
-        return response(new ReelResource($reel), 200);
+        return response()->json(new ReelResource($reel));
     }
 
 //    public function edit($id)
@@ -58,12 +52,12 @@ class ReelController extends Controller
         $reel->update([
             'caption' => $request->caption,
         ]);
-        return response(["msg"=>'Reel Updated'],200);
+        return response()->json(["msg"=>'Reel Updated']);
     }
 
     public function destroy($id)
     {
         Reel::destroy($id);
-        return response(["msg"=>'Reel Deleted'],200);
+        return response()->json(["msg"=>'Reel Deleted'],202);
     }
 }

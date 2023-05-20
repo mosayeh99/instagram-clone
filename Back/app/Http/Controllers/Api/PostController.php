@@ -6,28 +6,22 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\PostResource;
 use App\Http\Resources\PostWithCommentsResource;
 use App\Models\Post;
-use App\Models\Reel;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class PostController extends Controller
 {
     public function index()
     {
-        $allPosts = Post::orderBy('id', 'desc')->get();
-        foreach ($allPosts as $post){
-            $posts[] = new PostResource($post);
-        }
-        return response($posts, 200);
+        $posts = Post::latest()->get();
+        return response()->json(PostResource::collection($posts));
     }
 
     public function getUserPosts($id)
     {
         $user = User::findOrFail($id);
-        foreach ($user->posts as $post){
-            $posts[] = new PostResource($post);
-        }
-        return response($posts, 200);
+        return response()->json(PostResource::collection($user->posts));
     }
 
     public function store(Request $request)
@@ -37,18 +31,25 @@ class PostController extends Controller
             $path = $image->store('posts', 'imagesDisk');
             $images[] = "images/$path";
         }
-        Post::create([
+        $post = Post::create([
             'user_id' => auth('api')->user()->id,
             'caption' => $request->caption,
             'img_src' => $images
         ]);
-        return response(["msg"=>'Post Created successfully'], 201);
+//        Mail::to(auth('api')->user())->send(new PostCreated($post));
+        $followers = auth('api')->user()->followers;
+        foreach($followers as $follower) {
+            $user = $follower->user;
+            $usersToNotified[] = $user;
+        }
+        Notification::send($usersToNotified, new \App\Notifications\PostCreated($post));
+        return response()->json(["msg"=>'Post Created successfully'], 201);
     }
 
     public function show($id)
     {
         $post = Post::findOrFail($id);
-        return response(new PostWithCommentsResource($post), 200);
+        return response()->json(new PostWithCommentsResource($post));
     }
 
 //    public function edit($id)
@@ -63,12 +64,12 @@ class PostController extends Controller
         $post->update([
             'caption' => $request->caption,
         ]);
-        return response(["msg"=>'Post Updated'], 200);
+        return response()->json(["msg"=>'Post Updated']);
     }
 
     public function destroy($id)
     {
         Post::destroy($id);
-        return response('Post Deleted',200);
+        return response()->json(["msg"=>'Post Deleted'],202);
     }
 }
